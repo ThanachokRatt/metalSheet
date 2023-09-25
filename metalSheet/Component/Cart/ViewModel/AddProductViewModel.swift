@@ -12,6 +12,7 @@ class AddProductViewModel: ObservableObject {
     @Published private(set) var items: [CartModel] = []{
         didSet{
             saveItem()
+            UserDefaults.standard.set(total, forKey: totalKey)
         }
     }
     @Published private(set) var total: Int = 0
@@ -22,13 +23,19 @@ class AddProductViewModel: ObservableObject {
     @Published private(set) var selectedQty: String = "1"
     
     let itemsCartKey: String = "cart_List"
+ 
     let totalKey: String = "total_key"
-    
+
     init(){
         getItems()
-        self.total = UserDefaults.standard.integer(forKey: totalKey)
+        calculateTotal()
+ 
     }
     
+    func calculateTotal() {
+            total = items.reduce(0) { $0 + $1.calculatedPrice }
+        }
+
     
     
     func updateisCategoryEnabled(_ newValue: Bool) {
@@ -71,9 +78,6 @@ class AddProductViewModel: ObservableObject {
         let calculatedPrice = updatedProduct.calculatedPrice
             
         total += calculatedPrice
-        
-        updatedProduct.total  = total
-            
             // Append the updated product to the products array
         items.append(updatedProduct)
     }
@@ -88,14 +92,18 @@ class AddProductViewModel: ObservableObject {
     func getItems(){
         guard let data = UserDefaults.standard.data(forKey: itemsCartKey),
               let savedItem = try? JSONDecoder().decode([CartModel].self, from: data)
+           
         else{return}
         
         self.items = savedItem
+      
+        
+
           }
     
-    func addItem(productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String,total:Int) {
+    func addItem(productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String) {
         
-        let newItem = CartModel(productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty,total: total)
+        let newItem = CartModel(productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
         
         items.append(newItem)
         
@@ -111,8 +119,7 @@ class AddProductViewModel: ObservableObject {
         if let encodedData = try? JSONEncoder().encode(items){
             UserDefaults.standard.set(encodedData, forKey: itemsCartKey)
             
-            // Save the total to UserDefaults whenever it changes
-            UserDefaults.standard.set(total, forKey: totalKey)
+            
         }
     }
 }

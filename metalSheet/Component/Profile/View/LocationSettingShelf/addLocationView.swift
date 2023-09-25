@@ -21,6 +21,7 @@ struct addLocationView: View {
     @State  var isHomeSelected = false // สถานะการเลือกที่อยู่บ้าน
     @State var isWorkSelected = false // สถานะการเลือกที่อยู่ที่ทำงาน
     @State var addressType = ""
+    @State var isSelected = false
     
     //alert
     @State var alertTitle: String = ""
@@ -103,7 +104,13 @@ struct addLocationView: View {
     }
     func Save() {
         if textcheck() {
-            locationViewModel.addItem(name: name, phone: phoneNumber, addressOne: address2, addressTwo: address1, postCode: postCode, addressType: addressType)
+            if locationViewModel.items.isEmpty {
+                        isSelected = true
+                    } else {
+                        isSelected = false
+                    }
+            
+            locationViewModel.addItem(name: name, phone: phoneNumber, addressOne: address2, addressTwo: address1, postCode: postCode, addressType: addressType,isSelected: isSelected )
             presentationMode.wrappedValue.dismiss()
         }
         

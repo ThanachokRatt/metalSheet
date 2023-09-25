@@ -15,8 +15,9 @@ struct LocationItemModel: Identifiable,Codable{
     let adressTwo: String
     let postCode: String
     let addressType:String
+    var isSelected: Bool
     
-    init(id: String = UUID().uuidString,name: String, phone: String, addressOne: String, adressTwo: String, postCode: String, addressType: String) {
+    init(id: String = UUID().uuidString,name: String, phone: String, addressOne: String, adressTwo: String, postCode: String, addressType: String,isSelected:Bool) {
         self.id = id
         self.name = name
         self.phone = phone
@@ -24,9 +25,10 @@ struct LocationItemModel: Identifiable,Codable{
         self.adressTwo = adressTwo
         self.postCode = postCode
         self.addressType = addressType
+        self.isSelected = isSelected
     }
     func updateCompletion() -> LocationItemModel{
-        return LocationItemModel(id: id,name: name, phone: phone, addressOne: addressOne, adressTwo: adressTwo, postCode: postCode, addressType: addressType)
+        return LocationItemModel(id: id,name: name, phone: phone, addressOne: addressOne, adressTwo: adressTwo, postCode: postCode, addressType: addressType, isSelected: !isSelected)
     }
  
 }

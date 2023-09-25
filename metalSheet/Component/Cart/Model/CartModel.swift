@@ -29,19 +29,16 @@ struct CartModel: Identifiable,Codable{
     var selectedLong: String = ""
     var selectedQty: String = ""
     
-    var total: Int = 0
+  
     
     var calculatedPrice: Int {
       return currentPrice * (Int(selectedLong) ?? 1) * (Int(selectedQty) ?? 1)
     }
     
     
-    var total2: Int {
-        return  total + currentPrice * (Int(selectedLong) ?? 1) * (Int(selectedQty) ?? 1)
+  
     
-    }
-    
-    init(id: String = UUID().uuidString, productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String,total: Int) {
+    init(id: String = UUID().uuidString, productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String) {
         self.id = id
         self.productImage = productImage
         self.productName = productName
@@ -55,10 +52,10 @@ struct CartModel: Identifiable,Codable{
         self.selectedColorCategory = selectedColorCategory
         self.selectedLong = selectedLong
         self.selectedQty = selectedQty
-        self.total = total
+        
     }
     func updateCart() -> CartModel{
-        return CartModel(id:id,productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty, total: total)
+        return CartModel(id:id,productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
     }
 }
 

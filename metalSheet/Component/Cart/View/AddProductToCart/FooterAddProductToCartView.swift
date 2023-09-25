@@ -21,7 +21,7 @@ struct FooterAddProductToCartView: View {
             Spacer()
             
             Button(action: {
-                
+            
                 addProductHistoryModel.addToCart(product: viewModel)
                 
                 

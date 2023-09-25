@@ -12,7 +12,9 @@ class LocationViewModel: ObservableObject {
         didSet{
             saveItems()
         }
+    
     }
+    @Published var selectedItemId: String? = nil
     
     let itemsKey: String = "location_List"
     
@@ -40,20 +42,28 @@ class LocationViewModel: ObservableObject {
     func moveItem(from: IndexSet, to: Int){
         items.move(fromOffsets: from, toOffset: to)
     }
-    func  addItem(name:String,phone:String,addressOne:String,addressTwo:String,postCode:String,addressType:String){
-        let newItem = LocationItemModel(name: name, phone: phone, addressOne: addressOne, adressTwo: addressTwo, postCode: postCode, addressType: addressType)
+    func  addItem(name:String,phone:String,addressOne:String,addressTwo:String,postCode:String,addressType:String,isSelected:Bool){
+        let newItem = LocationItemModel(name: name, phone: phone, addressOne: addressOne, adressTwo: addressTwo, postCode: postCode, addressType: addressType,isSelected: isSelected)
         items.append(newItem)
     }
     func updateItem(item: LocationItemModel){
         if let index = items.firstIndex(where: {$0.id == item.id}){
             items[index] = item.updateCompletion()
+            
+            
+            for i in 0..<items.count{
+                if i != index{
+                    items[i].isSelected = false
+                }
+            }
         }
         
     }
+    
     func saveItems(){
         if let encodedData = try? JSONEncoder().encode(items){
             UserDefaults.standard.set(encodedData, forKey: itemsKey)
-        }
+        } 
     }
     
 }

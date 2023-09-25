@@ -15,9 +15,10 @@ struct ListRowView:View{
         
         VStack(alignment: .leading, spacing: 0) {
                 HStack{
-                    Image(systemName: "mappin.and.ellipse")
+                    
+                    Image(systemName: item.isSelected ? "checkmark.circle" : "circle")
                         .resizable()
-                        .foregroundColor(.red).opacity(0.8)
+                        .foregroundColor(item.isSelected ? .green : .red)
                         .frame(width: 30,height: 30)
                     
                     VStack (spacing:5){
@@ -45,6 +46,10 @@ struct ListRowView:View{
                                     .background(RoundedRectangle(cornerRadius: 5, style: .continuous)
                                         .stroke(Color.gray.opacity(0.8), lineWidth: 1))
                                     .frame(maxWidth: .infinity,alignment: .leading)
+                                Text(item.isSelected ? "(ค่าเริ่มต้น)" : "")
+                                    .frame(maxWidth: .infinity,alignment: .leading)
+                                    .foregroundColor(.red)
+                                
                             }.font(.system(size: 12))
                             
                             
@@ -75,5 +80,14 @@ struct ListRowView:View{
         
         
     }
+}
+struct ListRowView_Previews: PreviewProvider {
+    
+    
+    static var previews: some View {
+        ListRowView(item: LocationItemModel(name: "ธนโชค รัตนโมรา", phone: "0809095399", addressOne: "92/362", adressTwo: "หมู่บ้านชัยพฤกษ์ คลอง4 จ.ปทุมธานี", postCode: "12130", addressType: "บ้าน",isSelected: true)
+        )
+    }
+
 }
 
