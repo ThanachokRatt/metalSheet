@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D5C11D59-93EC-4244-89B8-708D72944CBE"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F61AF69-91E3-43FF-BB87-E25D86BFC15E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "metalSheet/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "connectToAPI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8F61AF69-91E3-43FF-BB87-E25D86BFC15E - 86d917fc21de89ca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.ContentView.connectToAPI() -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Desktop/DevelopmentSwiftUI/metalSheet/metalSheet/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "436">
+               </Location>
+               <Location
+                  uuid = "8F61AF69-91E3-43FF-BB87-E25D86BFC15E - 86d917fc21de89ca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.ContentView.connectToAPI() -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Desktop/DevelopmentSwiftUI/metalSheet/metalSheet/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "520">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
