@@ -122,6 +122,12 @@ class AddProductViewModel: ObservableObject {
             
         }
     }
+    func removeAllItems() {
+        items.removeAll()
+        total = 0
+        UserDefaults.standard.removeObject(forKey: itemsCartKey)
+        UserDefaults.standard.removeObject(forKey: totalKey)
+    }
 }
 
 

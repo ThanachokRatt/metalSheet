@@ -12,7 +12,6 @@ struct loginShelfView: View {
    // @State private var responseText = ""
     
     var body: some View {
-        NavigationView{
             ZStack {
                 Color("green123")
                     .ignoresSafeArea()
@@ -36,7 +35,7 @@ struct loginShelfView: View {
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                   
                 }
-            }
+            
 
         }
         .accentColor(Color(.black))

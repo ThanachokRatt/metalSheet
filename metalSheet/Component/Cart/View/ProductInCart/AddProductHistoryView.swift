@@ -32,7 +32,7 @@ struct AddProductHistoryView: View {
                     }
                     .padding()
                     HStack{
-                        NavigationLink(destination: orderView()) {
+                        NavigationLink(destination: orderView(viewModel: viewModel)) {
                             HStack {
                                 Text("สั่งสินค้า")
                                     .padding()

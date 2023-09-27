@@ -29,49 +29,41 @@ struct FooterAddProductToCartView: View {
                 stepperQty = 1
             }, label: {
                 VStack (spacing: 5){
-                    Image(systemName: "basket.fill")
-                        .foregroundColor(Color(.red).opacity(0.7))
+                    Image(systemName: "basket")
+                        .font(.system(size: 16))
+                        .foregroundColor(.white)
                        
-                    Text("เพิ่มสินค้าลงตะกร้า")
-                        .font(.system(size: 12))
-                        .foregroundColor(.black)
+                    Text("เพิ่มลงตะกร้า")
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundColor(.white)
+                       
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 5)
-                .background(Color.white)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                     .stroke(Color(.black), lineWidth: 3)
-                )
-                .shadow(radius: 1)
-                .cornerRadius(10)
+                .padding(.horizontal, 50)
+                .padding(.vertical, 8)
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [Color("orange"), Color("red1"), Color("red1")]),
+                                   startPoint: .topLeading,
+                                   endPoint: .bottomTrailing)
+                    .opacity(0.8)
+                                )
+                
+                .shadow(radius: 3)
+                .cornerRadius(30)
+              
             })
          
             
-            Button(action: {
-                print("but it now")
-            }, label: {
-                Text("ซื้อสินค้า")
-                    
-                    .font(.subheadline)
-                                       .padding(.horizontal, 20)
-                                       .padding(.vertical, 14)
-                                       .background(Color.white)
-                                       .cornerRadius(10)
-                                       .foregroundColor(Color(.black))
-                                       .overlay(
-                                           RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color(.black), lineWidth: 1.5)
-                                       )
-                                       .shadow(radius: 1)
-            })
+        
          
         }
-        .padding(20)
+        .padding(EdgeInsets(top: 16, leading: 16, bottom: 18, trailing: 16))
         .padding(.horizontal)
         .background(Color("lipstick"))
+        
         .cornerRadius(50, corners: .topLeft)
+        
         .frame(maxHeight: .infinity, alignment:  .bottom)
+
     }
 }
 

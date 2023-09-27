@@ -16,8 +16,17 @@ struct searchProductView: View {
     var body: some View {
         HStack {
             HStack {
-                Image(systemName: "magnifyingglass")
-                    .padding(.trailing,8)
+                Button(action: {
+                    // Handle search here using the searchText
+                    print("Search: \(searchText)")
+                }) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(Color.black)
+                        .padding(.trailing, 8)
+                        
+                }
+
+              
                 TextField("Search Product", text: $searchText)
                 
             }.padding(.all,15)

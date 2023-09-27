@@ -20,11 +20,11 @@ struct loginButtonView: View {
                 .font(.headline)
                 .cornerRadius(30)
             .foregroundColor(Color(.white))
-            
+            .fullScreenCover(isPresented: $isPresented, content: {
+                AllView()
+            })
         }
-        .fullScreenCover(isPresented: $isPresented, content: {
-            AllView()
-        })
+      
 
     }
 }

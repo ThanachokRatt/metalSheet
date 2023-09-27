@@ -10,7 +10,8 @@ import SwiftUI
 struct AllView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     @StateObject var addProductHistoryModel = AddProductViewModel()
- 
+  //  @StateObject var navigationStackController = NavigationStackController()
+   
     var body: some View {
         NavigationStack {
             ZStack {
@@ -20,6 +21,7 @@ struct AllView: View {
                     homeShelfView()
                 case .cart:
                     ProductCartView()
+                    
              
                 case .signout:
                     profileSettingShelfView()
@@ -28,7 +30,9 @@ struct AllView: View {
                 TabBar()
             }
         }.accentColor(.black)
-            .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
+    //    .environmentObject(navigationStackController)
+            
     }
 }
 
@@ -37,5 +41,6 @@ struct AllView_Previews: PreviewProvider {
         AllView()
             .environmentObject(AddProductViewModel())
             .environmentObject(LocationViewModel())
+            .environmentObject(NavigationStackController())
     }
 }

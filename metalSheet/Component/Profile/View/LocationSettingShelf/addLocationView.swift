@@ -41,8 +41,8 @@ struct addLocationView: View {
                         
                     }
                     Section(header: Text("ที่อยู่").font(.body)) {
-                        TextField("จังหวัดม เขต/อำเภอ", text: $address1)
-                        TextField("บ้านเลขที่,ซอย,หมู่,ถนน,แขวง/ตำบล", text: $address2)
+                        TextField("จังหวัดม เขต/อำเภอ,แขวง/ตำบล", text: $address1)
+                        TextField("บ้านเลขที่,ซอย,หมู่,ถนน", text: $address2)
                         TextField("รหัสไปรษณีย์", text: $postCode)
                     }
                     Section(header: Text("ประเภทที่อยู่").font(.body)) {
