@@ -10,6 +10,8 @@ import SwiftUI
 struct AllView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     @StateObject var addProductHistoryModel = AddProductViewModel()
+    @EnvironmentObject var loginViewModel: LoginViewModel
+
   //  @StateObject var navigationStackController = NavigationStackController()
    
     var body: some View {
@@ -19,6 +21,7 @@ struct AllView: View {
                 switch selectedTab {
                 case .home:
                     homeShelfView()
+                        .environmentObject(loginViewModel)
                 case .cart:
                     ProductCartView()
                     
@@ -42,5 +45,6 @@ struct AllView_Previews: PreviewProvider {
             .environmentObject(AddProductViewModel())
             .environmentObject(LocationViewModel())
             .environmentObject(NavigationStackController())
+            .environmentObject(LoginViewModel())
     }
 }
