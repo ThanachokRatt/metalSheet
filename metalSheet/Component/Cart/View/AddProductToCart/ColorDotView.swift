@@ -34,6 +34,7 @@ struct ColorDotView: View {
 }
 
 struct ColorDotCategoryView: View {
+    
     @State private var selectedColor: String?
     let colorCategories: [String]
     let isCategoryEnabled: Bool
@@ -41,28 +42,24 @@ struct ColorDotCategoryView: View {
     init(colorCategories: [String], isCategoryEnabled: Bool) {
         self.colorCategories = colorCategories
         self.isCategoryEnabled = isCategoryEnabled
+       
     }
 
     var body: some View {
         VStack (alignment: .leading) {
-            Text("สี: \(isCategoryEnabled ? selectedColor ?? "อลูซิงค์" : "อลูซิงค์")")                .fontWeight(.semibold)
+            Text("สี: \(isCategoryEnabled ? selectedColor ?? "อลูซิงค์" : "อลูซิงค์")")
+                .fontWeight(.semibold)
               
             HStack {
                 ForEach(colorCategories, id: \.self) { color in
+                    
                     ColorCategoryView(selectedColor: $selectedColor, color: color)
                         .disabled(!isCategoryEnabled)
+                    
                 } .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  1))
             }
         }
     }
 }
 
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorDotCategoryView(colorCategories: ["ดำ","น้ำเงิน","ขาว","น้ำตาล","ชมพู","เทา","แดง","เหลือง"], isCategoryEnabled: true)
-            .environmentObject(AddProductViewModel())
-    }
-}
 

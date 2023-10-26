@@ -18,8 +18,3 @@ struct backgroundHomeView: View {
     }
 }
 
-struct backgroundHomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        backgroundHomeView()
-    }
-}

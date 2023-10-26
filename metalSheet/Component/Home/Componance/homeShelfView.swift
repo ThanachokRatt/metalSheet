@@ -8,43 +8,46 @@
 import SwiftUI
 
 struct homeShelfView: View {
-    let caption : String = "    ทรัพย์ราชันหลังคาเมทัลชีทดูแลลูกค้าแบบครบวงจรตั้งแต่เริ่มวัดโครงสร้าง หาช่าง ผลิต จัดส่ง สินค้าคุณภาพแบบครบวงจรในราคาโรงงาน"
-    @EnvironmentObject var loginViewModel: LoginViewModel
+    @StateObject var homeViewModel = HomeViewModel()
     
-    let userName : String = "Webkung054"
     var body: some View {
-        
-        NavigationView{
-         
-                ZStack {
-                    VStack (spacing:0){
-                        headerView().frame(height: 30)
-                            ScrollView (.vertical,showsIndicators: false){
-                                infoImageView2()
-                                    .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
-                                Text(caption)
-                                    .padding()
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                    .font(.subheadline).bold()
-                                
-                                VStack (spacing: 20) {
-                                    ForEach(mapCardViewModel) { i in
-                                        MapCard(mapCard: i)
-                                    }
-                                }.padding()
-                            }.safeAreaInset(edge: .bottom) {
-                                Color.clear.frame(height: 120)
+        NavigationView {
+            ZStack {
+                VStack(spacing: 0) {
+                    headerView().frame(height: 50)
+                 
+                    ScrollView(.vertical, showsIndicators: false) {
+                        if !homeViewModel.homeModel.isEmpty {
+                            infoImageView2(infoData: homeViewModel.homeModel)
+                                .padding(EdgeInsets(top: 15, leading: 0, bottom: 7, trailing: 0))
+                    
+                            homeCaptionView(infoData: homeViewModel.homeModel)
+                            VStack(spacing: 20) {
+                                ForEach(mapCardViewModel) { i in
+                                    MapCard(mapCard: i)
+                                }
                             }
-                            .ignoresSafeArea()
-                            
-                            
+                            .padding()
+                        }else{
+
+                                ProgressView()
+                                .padding(.top,10)
+                            Text("กำลังโหลด...")
+                                .font(.subheadline)
+                                .foregroundColor(Color.black.opacity(0.5))
                         }
-                      
-                
-            } .onAppear {
-                print("Name in homeShelfView: \(loginViewModel.name)")
+                        
+                        
+                    }
+                    .safeAreaInset(edge: .bottom) {
+                        Color.clear.frame(height: 120)
+                    }
+                    .ignoresSafeArea()
+                }
+                .background(Color.white)
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -52,5 +55,27 @@ struct homePageView_Previews: PreviewProvider {
     static var previews: some View {
         homeShelfView()
             .environmentObject(LoginViewModel())
+    }
+}
+
+struct homeCaptionView: View {
+    let infoData: [InfoDataModel]
+
+    var body: some View {
+        if let firstInfoData = infoData.first {
+            Text(" \(firstInfoData.descriptionHome)")
+                .padding()
+                .foregroundColor(.black)
+                .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
+                .font(.system(.subheadline))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .stroke(Color.black, lineWidth: 1)
+                        .padding(5)
+                        .shadow(radius: 2)
+                )
+                .padding(EdgeInsets(top: 0, leading: 14, bottom: -10, trailing: 14))
+                
+        }
     }
 }

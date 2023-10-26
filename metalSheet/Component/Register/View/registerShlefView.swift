@@ -20,7 +20,7 @@ struct registerShlefView: View {
     @State private var isConfirmHidden = true
     @State private var role = "ลูกค้า"
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject private var registerViewModel = RegisterViewModel()
+    @EnvironmentObject var registerViewModel:RegisterViewModel
     @State private var isRegister = false
     
     
@@ -39,6 +39,13 @@ struct registerShlefView: View {
                               passwordsMatch: $passwordsMatch,
                               isPasswordHidden: $isPasswordHidden,
                               isConfirmHidden: $isConfirmHidden)
+                .overlay(
+                                ZStack {
+                                    if registerViewModel.shouldShow{
+                                        CustomAlertViewSuccess()
+                                            .padding(.top,70)
+                                    }
+                                })
                 
                 checkboxView(role: $role)
                 
@@ -71,7 +78,7 @@ struct registerShlefView: View {
                 }){
                     registerButtonView()
                 }
-                .alert(isPresented: $registerViewModel.showAlert) {
+              /*  .alert(isPresented: $registerViewModel.showAlert) {
                     
                     Alert(title: Text("Status"),
                           message: Text(registerViewModel.alertMessage),
@@ -81,7 +88,7 @@ struct registerShlefView: View {
                         }
                     }
                     )
-                }
+                }*/
                 
                 
                 
@@ -90,6 +97,58 @@ struct registerShlefView: View {
         }
         
     }
+    struct CustomAlertViewSuccess: View {
+        @Environment(\.presentationMode) var presentationMode
+   
+        @EnvironmentObject  var  registerViewModel: RegisterViewModel
+       
+
+     
+
+        var body: some View {
+            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+                VStack(spacing: 25) {
+                    Image("removeBgLogo")
+                        .resizable()
+                        .frame(width: 170, height: 150)
+             
+                        .font(.system(size: 20))
+                      
+                   // Text("\(registerViewModel.alertMessage)!")
+                    Text("สมัครสมาชิกสำเร็จเรียบร้อย!")
+                        .font(.system(size: 22))
+                        .foregroundColor(.black)
+                        .bold()
+                        
+                    Button(action: {
+                        if registerViewModel.shouldDismiss{
+                           
+                            presentationMode.wrappedValue.dismiss()
+                            registerViewModel.setShouldShow()
+                            registerViewModel.setErrorMessage()
+                            
+                        }
+                        
+                    }) {
+                        Text("กลับสู่หน้าล็อกอิน")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 30)
+                            .background(Color("greenLogo"))
+                            .clipShape(Capsule())
+                    }
+                }
+                .padding(.vertical, 25)
+                .padding(.horizontal, 60)
+                .background(BlurView())
+                .cornerRadius(25)
+            }
+          
+            
+        }
+    }
+
 }
 struct BackgroundView: View {
     var body: some View {
@@ -119,8 +178,3 @@ struct BackgroundView: View {
     }
 }
 
-struct registerView_Previews: PreviewProvider {
-    static var previews: some View {
-        registerShlefView()
-    }
-}

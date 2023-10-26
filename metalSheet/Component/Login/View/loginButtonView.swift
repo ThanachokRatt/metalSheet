@@ -12,9 +12,7 @@ struct loginButtonView: View {
 
     var body: some View {
         VStack {
-            Button( "ล็อกอินเข้าสู่ระบบ", action: {
-   
-            }) .padding(.all, 60)
+            Text( "ล็อกอินเข้าสู่ระบบ") .padding(.all, 60)
                 .frame(height: 55)
                 .background(Color(.black))
                 .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.black, lineWidth: 1))
@@ -29,8 +27,3 @@ struct loginButtonView: View {
     }
 }
 
-struct loginButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        loginButtonView()
-    }
-}

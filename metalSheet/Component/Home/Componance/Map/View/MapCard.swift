@@ -10,7 +10,7 @@ import SwiftUI
 struct MapCard: View {
     var mapCard: MapCardViewModel
     var body: some View {
-        VStack(alignment: .leading, spacing: 8){
+        VStack(alignment: .leading, spacing: 0){
             Link(destination: URL(string: mapCard.url)!,
             label: {
                 Image(mapCard.image)
@@ -21,7 +21,7 @@ struct MapCard: View {
                     
             })
             .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
-        }
+        }.shadow(radius: 2)
    
     }
 }

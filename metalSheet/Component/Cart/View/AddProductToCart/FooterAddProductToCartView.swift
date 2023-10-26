@@ -4,7 +4,6 @@
 //
 //  Created by Schweppe on 14/9/2566 BE.
 //
-
 import SwiftUI
 
 struct FooterAddProductToCartView: View {
@@ -16,14 +15,14 @@ struct FooterAddProductToCartView: View {
     @Binding var stepperQty: Int
     
     var body: some View {
-        HStack{
+        VStack{
          
             Spacer()
             
             Button(action: {
             
                 addProductHistoryModel.addToCart(product: viewModel)
-                
+                addProductHistoryModel.updateCurrentPrice(product: viewModel)
                 
                 stepperLong = 1
                 stepperQty = 1
@@ -38,17 +37,18 @@ struct FooterAddProductToCartView: View {
                         .foregroundColor(.white)
                        
                 }
-                .padding(.horizontal, 50)
+                .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
-                .background(
+                /*.background(
                     LinearGradient(gradient: Gradient(colors: [Color("orange"), Color("red1"), Color("red1")]),
                                    startPoint: .topLeading,
                                    endPoint: .bottomTrailing)
-                    .opacity(0.8)
-                                )
+                    .opacity(1)
+                                )*/
+                .background(Color("lipstick"))
                 
                 .shadow(radius: 3)
-                .cornerRadius(30)
+                .cornerRadius(10)
               
             })
          
@@ -56,18 +56,18 @@ struct FooterAddProductToCartView: View {
         
          
         }
-        .padding(EdgeInsets(top: 16, leading: 16, bottom: 18, trailing: 16))
+        .padding(EdgeInsets(top: 16, leading: 12, bottom: 20, trailing: 12))
         .padding(.horizontal)
-        .background(Color("lipstick"))
+      
         
-        .cornerRadius(50, corners: .topLeft)
+       // .cornerRadius(50, corners: .topLeft)
         
         .frame(maxHeight: .infinity, alignment:  .bottom)
 
     }
 }
 
-struct RoundedCorner: Shape {
+/*struct RoundedCorner: Shape {
 
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
@@ -81,6 +81,6 @@ extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
-}
+}*/
 
 

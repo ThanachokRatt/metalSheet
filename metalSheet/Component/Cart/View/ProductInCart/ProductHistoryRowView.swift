@@ -6,26 +6,21 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct ProductHistoryRowView: View {
     @EnvironmentObject var addProductHistoryModel: AddProductViewModel
     var viewModel: CartModel
- 
-    
-    var calculatedPrice: Int{
-        let currentPrice = viewModel.currentPrice
-        let selectedLong = Int(addProductHistoryModel.selectedLong) ?? 1
-        let selectedQty = Int(addProductHistoryModel.selectedQty) ?? 1
-        return selectedQty * selectedLong * currentPrice
-    }
-    
-    
-  
 
     var body: some View {
         HStack(spacing: 30) {
-            Image(viewModel.productImage)
-                .resizable()
+            LazyImage(source: viewModel.productImage) { state in
+                if let image = state.image{
+                    image
+                }else {
+                    Text("กำลังโหลด...")
+                }
+            }
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 130)
                 .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  1))
@@ -35,10 +30,10 @@ struct ProductHistoryRowView: View {
                 Text(viewModel.productName).bold()
                 
                 VStack( alignment: .leading){
-                    Text("ความหนา: \(viewModel.selectedCategory)มม.")
+                    Text("ความหนา: \(viewModel.selectedCategory) มม.")
                     Text("ความยาว: \(viewModel.selectedLong) ม.")
                     Text("สี: \(viewModel.selectedColorCategory)")
-                    Text("จำนวน: \(viewModel.selectedQty) ชิ้น.")
+                    Text("จำนวน: \(viewModel.selectedQty) ชิ้น")
                    
               
                        
@@ -47,10 +42,6 @@ struct ProductHistoryRowView: View {
                 Text("฿ \(viewModel.calculatedPrice)")
                     .font(.subheadline)
                         .foregroundColor(Color(.black).opacity(0.8))
-               
-                
-             
-                
                 
             }
             Spacer()
@@ -68,9 +59,3 @@ struct ProductHistoryRowView: View {
 
 
 
-struct ProductHistoryRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProductHistoryRowView(viewModel: CartModel(productImage: "product1", productName: "ลอคสแน๊ปลอค", description: "เมทัลชีท 5 สันลอนรูปแบบทันสมัย สามารถติดตั้งแบบซ่อนสกรูได้ทำให้งานเนียนไม่รำคาญตา สามารถรีดความยาวได้ตามความต้องการ ", categories: ["0.20" ,"0.23","0.35","0.40","0.47"], priceNocolor: 56, priceColor: 63, colorCategories: ["ดำ","น้ำเงิน","ขาว","น้ำตาล","ชมพู","แดง","เหลือง"],currentPrice: 0,selectedCategory: "",selectedColorCategory: "",selectedLong: "", selectedQty: ""))
-            .environmentObject(AddProductViewModel())
-    }
-}

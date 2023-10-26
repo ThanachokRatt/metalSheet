@@ -158,9 +158,4 @@ struct textfieldView: View {
     }
 }
 
-struct textfieldView_Previews: PreviewProvider {
-    static var previews: some View {
-        registerShlefView()
-    }
-}
 

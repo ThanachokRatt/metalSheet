@@ -16,6 +16,8 @@ class RegisterViewModel: ObservableObject{
     @Published var successMessage = "" // Store the success message
     @Published var shouldDismiss = false
     @Published var errorRegisterMessage = ""
+    @Published var shouldShow = false
+    
     
     func showAlert(message: String) {
         self.alertMessage = message
@@ -38,6 +40,8 @@ class RegisterViewModel: ObservableObject{
                                 // Registration is successful, and "msg" key contains the success message
                                 self.showAlert(message: successMessage)
                                  self.shouldDismiss = true
+                                 self.shouldShow = true
+                                 self.successMessage = successMessage
                                  
                             }else if let jsonDict = value as? [String: Any],
                                      let errorMessage = jsonDict["err"] as? String {
@@ -45,7 +49,7 @@ class RegisterViewModel: ObservableObject{
                                 self.errorRegisterMessage = errorMessage
                          //       self.showAlert(message: errorMessage)
                            //     self.shouldDismiss = false
-                                
+                                self.successMessage = errorMessage
                             }
                             // Show the success message in an alert
                 completion()
@@ -53,9 +57,18 @@ class RegisterViewModel: ObservableObject{
                             // Set an error message when registration fails
                             self.showAlert(message: "Registration failed with error: \(error)")
                     self.shouldDismiss = false
+                self.successMessage = ( "Registration failed with error:\n \(error)")
+                self.shouldShow = true
+                
                 completion()
                         }
         }
         
+    }
+    func setErrorMessage(){
+        errorRegisterMessage = ""
+    }
+    func setShouldShow(){
+        shouldShow = false
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import RiveRuntime
+
 
 struct TabItem: Identifiable {
     var id = UUID()

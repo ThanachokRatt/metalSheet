@@ -14,6 +14,12 @@ struct loginShelfView: View {
     @State private var textLoginButton = "ล็อคอินเข้าสู่ระบบ"
     @State private var isPresentingAllView = false
     @EnvironmentObject var loginViewModel: LoginViewModel
+    @EnvironmentObject var locationViewModel: LocationViewModel
+    
+    @EnvironmentObject  var addProductViewModel: AddProductViewModel
+    @EnvironmentObject var personalViewModel: PersonalViewModel
+    @EnvironmentObject var orderViewModel: OrderViewModel
+    
     let green: String = "green123"
     
     var body: some View {
@@ -50,12 +56,16 @@ struct loginShelfView: View {
                         user.email = email
                         user.password = password
                         isLoggingIn = true
+                        
                         self.loginViewModel.loginUser(user: user) {
                             // This closure is called when the login operation is completed
                             isLoggingIn = false
                             if loginViewModel.loginSuccess == true{
-                                isPresentingAllView = true
-                                //  successMessageLogin ไม่ใข่ค่่าว่าง เท่ากับว่า login successfully
+                                email = ""
+                                password = ""
+                              
+                                
+                              
                             }
                             
                         }
@@ -77,9 +87,7 @@ struct loginShelfView: View {
             }
             .accentColor(Color(.black))
             .navigationViewStyle(StackNavigationViewStyle())
-            .fullScreenCover(isPresented: $isPresentingAllView){
-                AllView()
-            }
+            
         }
     }
 }
@@ -87,5 +95,9 @@ struct loginShelfView: View {
 struct loginVie_Previews: PreviewProvider {
     static var previews: some View {
         loginShelfView()
+            .environmentObject(LoginViewModel())
+            .environmentObject(LocationViewModel())
+            .environmentObject(AddProductViewModel())
+            .environmentObject(PersonalViewModel())
     }
 }
