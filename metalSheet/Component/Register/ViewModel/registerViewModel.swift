@@ -28,7 +28,8 @@ class RegisterViewModel: ObservableObject{
     func registerUser(user: RegisterModel, completion: @escaping () -> Void){
         
         let userJson = user.toJSON()
-        let apiUrl = "https://domhee-api.onrender.com/api/register"
+      //  let apiUrl = "https://domhee-api.onrender.com/api/register"
+        let apiUrl = "https://domhee-api.onrender.com/api/sign-up"
         
         AF.request(apiUrl,method: .post,parameters: userJson,encoding: JSONEncoding.default).responseJSON {
             response in
@@ -49,6 +50,7 @@ class RegisterViewModel: ObservableObject{
                                 self.errorRegisterMessage = errorMessage
                          //       self.showAlert(message: errorMessage)
                            //     self.shouldDismiss = false
+                                self.shouldShow = false
                                 self.successMessage = errorMessage
                             }
                             // Show the success message in an alert

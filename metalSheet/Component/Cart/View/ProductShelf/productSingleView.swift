@@ -36,12 +36,13 @@ struct productSingleView: View {
                     .cornerRadius(15)
                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
                 Text(viewmodel.productName)
+                       
                         .fontWeight(.bold)
                         .opacity(0.7)
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity,alignment: .leading)
                 
-                        .font(.system(size:15))
+                        .font(.system(size:18))
                    
                 }
                         

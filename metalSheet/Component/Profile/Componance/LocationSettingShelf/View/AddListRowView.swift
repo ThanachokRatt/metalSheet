@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AddListRowView: View {
+    @State private var isEditing = false
     var body: some View {
-         NavigationLink(destination: addNewlocationView()) {
+        NavigationLink(destination: addNewlocationView(isEditing: $isEditing)) {
              HStack {
                  Image(systemName: "plus.app")
                      .resizable()

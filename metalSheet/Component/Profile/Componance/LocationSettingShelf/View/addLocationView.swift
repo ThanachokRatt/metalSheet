@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct addLocationView: View {
+    var locationItem: LocationItemModel?
+    @Binding var isEditing: Bool
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var locationViewModel: LocationViewModel
 
@@ -18,9 +20,9 @@ struct addLocationView: View {
     @State var address2 = ""
     @State var postCode = ""
     @State  var selectedAddressType: AddressType? // เก็บประเภทของที่อยู่ที่ถูกเลือก
-    @State  var isHomeSelected = false // สถานะการเลือกที่อยู่บ้าน
+    @State  var isHomeSelected = true // สถานะการเลือกที่อยู่บ้าน
     @State var isWorkSelected = false // สถานะการเลือกที่อยู่ที่ทำงาน
-    @State var addressType = ""
+    @State var addressType = "บ้าน"
     @State var isSelected = false
     
     //alert
@@ -96,6 +98,27 @@ struct addLocationView: View {
                         }
                     
                     }
+                    .onAppear {
+                                if let locationItem = locationItem {
+                                    // Pre-fill the form with existing data
+                                    name = locationItem.name
+                                    phoneNumber = locationItem.phone
+                                    address1 = locationItem.addressOne
+                                    address2 = locationItem.adressTwo
+                                    postCode = locationItem.postCode
+                                    addressType = locationItem.addressType
+                                    
+                                    if locationItem.addressType == "บ้าน" {
+                                               isHomeSelected = true
+                                               isWorkSelected = false
+                                           } else {
+                                               isHomeSelected = false
+                                               isWorkSelected = true
+                                           }
+                                    
+                                }
+                            }
+                            .alert(isPresented: $showAlert, content: getAlert)
                     
             }
          
@@ -104,17 +127,31 @@ struct addLocationView: View {
     }
     func Save() {
         if textcheck() {
-            if locationViewModel.items.isEmpty {
-                        isSelected = true
-                    } else {
-                        isSelected = false
-                    }
-            
-            locationViewModel.addItem(name: name, phone: phoneNumber, addressOne: address2, addressTwo: address1, postCode: postCode, addressType: addressType,isSelected: isSelected )
+            if let locationItem = locationItem {
+                // If locationItem is not nil, it means editing an existing item
+                locationViewModel.updateItemAtIndex(
+                    index: locationViewModel.items.firstIndex(where: { $0.id == locationItem.id }) ?? 0,
+                    name: name,
+                    phone: phoneNumber,
+                    addressOne: address2,
+                    addressTwo: address1,
+                    postCode: postCode,
+                    addressType: addressType,
+                    isSelected: isSelected
+                )
+            } else {
+                // If locationItem is nil, it means  adding a new item
+                if locationViewModel.items.isEmpty {
+                    isSelected = true
+                }else {
+                    isSelected = false
+                }
+                locationViewModel.addItem(name: name, phone: phoneNumber, addressOne: address2, addressTwo: address1, postCode: postCode, addressType: addressType, isSelected: isSelected )
+            }
             presentationMode.wrappedValue.dismiss()
         }
-        
     }
+
     
     func textcheck() -> Bool {
         if name.isEmpty  || phoneNumber.isEmpty || address1.isEmpty || address2.isEmpty || postCode.isEmpty || addressType.isEmpty {

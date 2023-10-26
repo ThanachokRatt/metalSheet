@@ -13,6 +13,12 @@
 		F8206B8A2A92FD88006B728B /* loginShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8206B892A92FD88006B728B /* loginShelfView.swift */; };
 		F8206B8C2A92FD88006B728B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8206B8B2A92FD88006B728B /* Assets.xcassets */; };
 		F8206B8F2A92FD88006B728B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8206B8E2A92FD88006B728B /* Preview Assets.xcassets */; };
+		F8313C172B06979B00618CD7 /* LongStepperFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8313C162B06979B00618CD7 /* LongStepperFloat.swift */; };
+		F838E8F12AF78C6700A21513 /* OtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F838E8F02AF78C6700A21513 /* OtpView.swift */; };
+		F83EC3472AFE258200AC5A5B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F83EC3462AFE258200AC5A5B /* Alamofire */; };
+		F83EC3492AFE258D00AC5A5B /* LabeledStepper in Frameworks */ = {isa = PBXBuildFile; productRef = F83EC3482AFE258D00AC5A5B /* LabeledStepper */; };
+		F857B7E82AF92FDA00C64660 /* CooldwonOtp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */; };
+		F86563632AF88C15004633FD /* otpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86563622AF88C15004633FD /* otpViewModel.swift */; };
 		F88A2FAC2AC41A4C0025F5DC /* NavigationStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */; };
 		F892B7842AEA03AD000CF7C7 /* LabeledStepper in Frameworks */ = {isa = PBXBuildFile; productRef = F892B7832AEA03AD000CF7C7 /* LabeledStepper */; };
 		F895817B2A9EFECD00973837 /* BasketShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895817A2A9EFECD00973837 /* BasketShelfView.swift */; };
@@ -96,6 +102,10 @@
 		F8206B892A92FD88006B728B /* loginShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginShelfView.swift; sourceTree = "<group>"; };
 		F8206B8B2A92FD88006B728B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8206B8E2A92FD88006B728B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F8313C162B06979B00618CD7 /* LongStepperFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongStepperFloat.swift; sourceTree = "<group>"; };
+		F838E8F02AF78C6700A21513 /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
+		F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooldwonOtp.swift; sourceTree = "<group>"; };
+		F86563622AF88C15004633FD /* otpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpViewModel.swift; sourceTree = "<group>"; };
 		F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackController.swift; sourceTree = "<group>"; };
 		F895817A2A9EFECD00973837 /* BasketShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketShelfView.swift; sourceTree = "<group>"; };
 		F89581882A9F2B5300973837 /* backgroundHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backgroundHomeView.swift; sourceTree = "<group>"; };
@@ -172,6 +182,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83EC3492AFE258D00AC5A5B /* LabeledStepper in Frameworks */,
+				F83EC3472AFE258200AC5A5B /* Alamofire in Frameworks */,
 				F8FF7C502AC95C9F00B27D3D /* Alamofire in Frameworks */,
 				F8FF7C4D2AC95C7200B27D3D /* ObjectMapper in Frameworks */,
 				F892B7842AEA03AD000CF7C7 /* LabeledStepper in Frameworks */,
@@ -367,6 +379,7 @@
 				F89938A52AB2343B00A4AA2C /* ColorDotView.swift */,
 				F89938AB2AB240CC00A4AA2C /* CategoryView.swift */,
 				F89938A72AB234F500A4AA2C /* FooterAddProductToCartView.swift */,
+				F8313C162B06979B00618CD7 /* LongStepperFloat.swift */,
 			);
 			path = AddProductToCart;
 			sourceTree = "<group>";
@@ -708,6 +721,8 @@
 				F8ACD0052A99CBF30050A7BE /* textfieldView.swift */,
 				F8ACD0072A99CCA10050A7BE /* checkboxView.swift */,
 				F8ACD0092A99CDAD0050A7BE /* registerButtonView.swift */,
+				F838E8F02AF78C6700A21513 /* OtpView.swift */,
+				F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -724,6 +739,7 @@
 			isa = PBXGroup;
 			children = (
 				F8FF7C542AC95CD900B27D3D /* registerViewModel.swift */,
+				F86563622AF88C15004633FD /* otpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -749,6 +765,8 @@
 				F8FF7C4F2AC95C9F00B27D3D /* Alamofire */,
 				F897E0052AD18AE90061A92A /* NukeUI */,
 				F892B7832AEA03AD000CF7C7 /* LabeledStepper */,
+				F83EC3462AFE258200AC5A5B /* Alamofire */,
+				F83EC3482AFE258D00AC5A5B /* LabeledStepper */,
 			);
 			productName = metalSheet;
 			productReference = F8206B842A92FD88006B728B /* metalSheet.app */;
@@ -830,6 +848,7 @@
 				F8FF7C522AC95CB800B27D3D /* RegisterModel.swift in Sources */,
 				F8BAFA442AD95AC00045131D /* OrderModel.swift in Sources */,
 				F8ACD0082A99CCA10050A7BE /* checkboxView.swift in Sources */,
+				F857B7E82AF92FDA00C64660 /* CooldwonOtp.swift in Sources */,
 				F89938A82AB234F500A4AA2C /* FooterAddProductToCartView.swift in Sources */,
 				F81B88F92AB1C04400850B88 /* ProductCartView.swift in Sources */,
 				F80465672ABF6C8C00379D76 /* LocationModel.swift in Sources */,
@@ -845,6 +864,7 @@
 				F89BD0112AB18BA8006D099C /* signOutBtnView.swift in Sources */,
 				F8A9D8382AC1AFEF00D73683 /* orderView.swift in Sources */,
 				F89819592AB0D3A40069EDCE /* AddListRowView.swift in Sources */,
+				F8313C172B06979B00618CD7 /* LongStepperFloat.swift in Sources */,
 				F8B15E3D2AB8D93800B4C9A5 /* AddProductViewModel.swift in Sources */,
 				F8BF91302AAABB4F0071F2F3 /* productSingleView.swift in Sources */,
 				F89F12B02ACF395A00912492 /* ResetPasswordViewModel.swift in Sources */,
@@ -852,6 +872,7 @@
 				F898195B2AB0D6100069EDCE /* addLocationView.swift in Sources */,
 				F8B057912AA74C7500E9A0B8 /* AllView.swift in Sources */,
 				F8A1BDF02AA84173005FA5AE /* TabBarViewModel.swift in Sources */,
+				F838E8F12AF78C6700A21513 /* OtpView.swift in Sources */,
 				F8BAFA462AD95AD00045131D /* OrderViewModel.swift in Sources */,
 				F89938A62AB2343B00A4AA2C /* ColorDotView.swift in Sources */,
 				F8A425572AADAF0800D4CE99 /* profileModel.swift in Sources */,
@@ -866,6 +887,7 @@
 				F8A69F7A2AE30567003BE8F2 /* LineButton.swift in Sources */,
 				F89888372A9B29A7008ED3FB /* registerButtonInLoginView.swift in Sources */,
 				F898195D2AB0DF950069EDCE /* addNewlocationView.swift in Sources */,
+				F86563632AF88C15004633FD /* otpViewModel.swift in Sources */,
 				F8ACD00E2A99D68E0050A7BE /* loginButtonView.swift in Sources */,
 				F89659302AE522B1007BA11B /* infoImageViewModel.swift in Sources */,
 				F8ACD00A2A99CDAD0050A7BE /* registerButtonView.swift in Sources */,
@@ -939,7 +961,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -993,7 +1015,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1011,7 +1033,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
-				DEVELOPMENT_TEAM = U62Y7H9HZ9;
+				DEVELOPMENT_TEAM = CF5C5AM9GU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Saprachan;
@@ -1026,7 +1048,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thanachok.metalSheet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sqwewebr.metsdqweb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1042,7 +1064,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
-				DEVELOPMENT_TEAM = U62Y7H9HZ9;
+				DEVELOPMENT_TEAM = CF5C5AM9GU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Saprachan;
@@ -1057,7 +1079,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thanachok.metalSheet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sqwewebr.metsdqweb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1124,6 +1146,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F83EC3462AFE258200AC5A5B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F8FF7C4E2AC95C9F00B27D3D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		F83EC3482AFE258D00AC5A5B /* LabeledStepper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F892B7822AEA03AD000CF7C7 /* XCRemoteSwiftPackageReference "LabeledStepper" */;
+			productName = LabeledStepper;
+		};
 		F892B7832AEA03AD000CF7C7 /* LabeledStepper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F892B7822AEA03AD000CF7C7 /* XCRemoteSwiftPackageReference "LabeledStepper" */;

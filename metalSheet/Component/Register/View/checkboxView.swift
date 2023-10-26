@@ -16,18 +16,19 @@ struct checkboxView: View {
     
     var body: some View {
         HStack(spacing: 15) {
+            
             Button(action: {
                 selectedOption = 0
                 role = (options[selectedOption])
               
             }) {
-                Image(systemName: selectedOption == 0 ? "checkmark.square.fill" : "square")
+                Image(systemName: selectedOption == 0 ? "checkmark.circle.fill" : "checkmark.circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .foregroundColor(Color(.black))
             }
             .buttonStyle(PlainButtonStyle())
-            .padding()
+      
             Text("ลูกค้า")
             
             Button(action: {
@@ -35,12 +36,14 @@ struct checkboxView: View {
                 role = (options[selectedOption])
                 print(role)
             }) {
-                Image(systemName: selectedOption == 1 ? "checkmark.square.fill" : "square")
+                Image(systemName: selectedOption == 1 ? "checkmark.circle.fill" : "checkmark.circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .foregroundColor(Color(.black))
+                  
             }
             .buttonStyle(PlainButtonStyle())
+            
             Text("ช่าง")
           
               

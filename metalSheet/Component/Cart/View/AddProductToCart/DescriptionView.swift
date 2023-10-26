@@ -12,7 +12,7 @@ struct DescriptionView: View {
     
     
     @State private var selectedIndex: Int = 2
-    @State var stepperLong: Int = 1
+    @State var stepperLong: Float = 1.00
     @State var stepperQty: Int = 1
     
    var viewmodel: CartModel
@@ -109,20 +109,18 @@ struct DescriptionView: View {
                     
                     
                     HStack(alignment: .bottom) {
-                        LabeledStepper("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22)
+                        LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22,longPressInterval: 0.04)
                             .padding(.top, 10)
                     }
                     .onChange(of: stepperLong) { newValue in
-                        // Print the updated value when the stepper value changes
-                        var stepperlong = ""
-                        stepperlong = "\(newValue)"
-                        addProductHistoryModel.updateSelectedLong(stepperlong)
+                        var formattedValue = String(format: "%.2f", newValue)
+                        addProductHistoryModel.updateSelectedLong(formattedValue)
                     }
 
           
                     
                     HStack(alignment: .bottom){
-                        LabeledStepper("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...22)
+                        LabeledStepper("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.06)
                         
                             .padding(.top,10)
                     }.onChange(of: stepperQty) { newValue in
@@ -131,6 +129,13 @@ struct DescriptionView: View {
                         stepperQty = "\(newValue)"
                         addProductHistoryModel.updateSelectedQty(stepperQty)
                  
+                    }
+                    HStack{
+                        Spacer()
+                        Text("(แตะค้างเพื่อเพิ่มจำนวนอย่างรวดเร็ว)")
+                            .foregroundColor(.red)
+                            .opacity(0.8)
+                            .font(.system(size: 15))
                     }
                     
                  

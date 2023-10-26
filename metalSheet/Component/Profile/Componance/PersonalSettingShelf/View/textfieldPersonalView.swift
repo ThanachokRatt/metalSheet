@@ -26,7 +26,7 @@ struct textfieldPersonalView: View {
                     HStack (spacing: 5){
                         Image(systemName: "envelope")
                             .foregroundColor(Color(.black))
-                        Text("Email")
+                        Text("อีเมล")
                             
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
@@ -52,11 +52,12 @@ struct textfieldPersonalView: View {
                     HStack (spacing: 5){
                         Image(systemName: "person.text.rectangle")
                             .foregroundColor(Color(.black))
-                        Text("Name")
+                        Text("ชื่อจริง-นามสกุล")
                            
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     TextField(loginViewModel.name,text:  $name)
+                        .foregroundColor(isEditingEnabled ? Color.black : Color.gray)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(!isEditingEnabled)
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
@@ -70,13 +71,14 @@ struct textfieldPersonalView: View {
                     HStack (spacing: 5){
                         Image(systemName: "phone")
                             .foregroundColor(Color(.black))
-                        Text("Phone")
+                        Text("เบอร์มือถือ")
                            
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     
                     
                     TextField(loginViewModel.phone,text:  $phone)
+                        .foregroundColor(isEditingEnabled ? Color.black : Color.gray)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(!isEditingEnabled)
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct addNewlocationView: View {
+    var locationItem: LocationItemModel?
+    @Binding var isEditing: Bool
     var body: some View {
         VStack(spacing: 0) {
             
@@ -18,16 +20,11 @@ struct addNewlocationView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 .padding(15)
-            addLocationView()
+            addLocationView(locationItem: locationItem, isEditing: $isEditing)
          
         }.background(Color("gray"))
     }
 }
 
 
-struct addNewlocationView_Previews: PreviewProvider {
-    static var previews: some View {
-        addNewlocationView()
-    }
-}
 

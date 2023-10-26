@@ -11,13 +11,14 @@ import Foundation
 struct TabItem: Identifiable {
     var id = UUID()
     var icon: String
+    var iconText: String
     var tab: Tab
 }
 
 var tabItems = [
-    TabItem(icon: "house.fill" , tab: .home),
-    TabItem(icon: "cart.fill",tab: .cart),
-    TabItem(icon: "person.fill",tab: .signout)
+    TabItem(icon: "house.fill" , iconText:"หน้าแรก", tab: .home),
+    TabItem(icon: "cart.fill",iconText:"รายการสินค้า", tab: .cart),
+    TabItem(icon: "person.fill",iconText:"การตั้งค่า",tab: .signout)
     
 ]
 

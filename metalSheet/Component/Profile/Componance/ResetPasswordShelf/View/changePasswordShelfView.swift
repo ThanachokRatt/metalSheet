@@ -59,7 +59,7 @@ struct changePasswordShelfView: View {
             .overlay(
                 ZStack {
                     if resetPasswordViewModel.showAlert{
-                        CustomAlertView3(alertMessage:resetPasswordViewModel.resetMessage)
+                        CustomAlertView3(alertMessage:resetPasswordViewModel.resetMessage, newPassword: newPassword)
                             .padding(.bottom,270)
                            
                     }
@@ -78,8 +78,9 @@ struct changePasswordShelfView: View {
         @EnvironmentObject var resetPasswordViewModel: ResetPasswordViewModel
         var alertMessage: String
         @EnvironmentObject var loginViewModel: LoginViewModel
-    
-     
+        
+        var newPassword: String
+        @State private var isLogin = false
 
         var body: some View {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
@@ -92,18 +93,35 @@ struct changePasswordShelfView: View {
                         .font(.system(size: 20))
                         .bold()
                         .foregroundColor(.black)
-                    Text("กรุณาล็อกอินเข้าสู่ระบบใหม่อีกครั้ง")
+                    if  isLogin  {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .background(Color.white)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(10)
+                            .padding()
+                        
+                    }
+                    Text("กรุณากลับสู่หน้าการตั้งค่าใหม่อีกครั้ง")
                         .foregroundColor(.black)
                     Button(action: {
                         if resetPasswordViewModel.shouldDismiss{
-                            self.presentationMode.wrappedValue.dismiss()
+                            var user = LoginModel()
+                            user.email = loginViewModel.email
+                            user.password = newPassword
+                            
+                            isLogin = true
+                            self.loginViewModel.loginUser(user: user) {
+                                isLogin = false
+                            }
+                            
                             self.presentationMode.wrappedValue.dismiss()
                             resetPasswordViewModel.setShowAlertResetPassword()
-                            loginViewModel.logoutUser()
+                        
                         }
                         
                     }) {
-                        Text("กลับสู่หน้าล็อกอิน")
+                        Text("กลับสู่การตั้งค่า")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .padding(.vertical, 10)

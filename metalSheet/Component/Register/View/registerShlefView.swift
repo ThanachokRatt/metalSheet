@@ -22,81 +22,112 @@ struct registerShlefView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var registerViewModel:RegisterViewModel
     @State private var isRegister = false
+    @State private var showAlert = false
     
-    
-    
+    @State private var isEmailValid = true
+    @State private var showEmailError = false
+    @EnvironmentObject var otpViewModel: OtpViewModel
+
     var body: some View {
-        
-        ZStack {
-            BackgroundView()
-            VStack{
-                
-                textfieldView(email: $email,
-                              password: $password,
-                              confirmPassword: $confirmPassword,
-                              name: $name,
-                              phone: $phone,
-                              passwordsMatch: $passwordsMatch,
-                              isPasswordHidden: $isPasswordHidden,
-                              isConfirmHidden: $isConfirmHidden)
-                .overlay(
-                                ZStack {
-                                    if registerViewModel.shouldShow{
-                                        CustomAlertViewSuccess()
-                                            .padding(.top,70)
-                                    }
-                                })
-                
-                checkboxView(role: $role)
-                
-                Text(registerViewModel.errorRegisterMessage)
-                    .foregroundColor(Color.red)
-                    .font(.subheadline)
-                if isRegister {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .background(Color.white)
-                        .foregroundColor(Color.white)
-                        .cornerRadius(10)
-                        .padding()
+        NavigationView{
+            
+            
+            ZStack {
+                BackgroundView()
+                VStack{
+                    textfieldView(email: $email,
+                                  password: $password,
+                                  confirmPassword: $confirmPassword,
+                                  name: $name,
+                                  phone: $phone,
+                                  passwordsMatch: $passwordsMatch,
+                                  isPasswordHidden: $isPasswordHidden,
+                                  isConfirmHidden: $isConfirmHidden,
+                                  isEmailValid: $isEmailValid,
+                                  showEmailError: $showEmailError)
+                    /*  .overlay(
+                     ZStack {
+                     if registerViewModel.shouldShow{
+                     CustomAlertViewSuccess()
+                     .padding(.top,70)
+                     }
+                     })*/
                     
-                }
-                
-                Button(action: {
+                    checkboxView(role: $role).padding()
                     
-                    var user = RegisterModel()
-                    user.email = email
-                    user.password = password
-                    user.name = name
-                    user.phone = phone
-                    user.role = role
-                    isRegister = true
-                    self.registerViewModel.registerUser(user: user){
-                        isRegister = false
+                    Text(otpViewModel.errorMessage)
+                        .foregroundColor(Color.red)
+                        .font(.subheadline)
+                    
+                    if isRegister {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .background(Color.white)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(10)
+                            .padding()
+                        
                     }
                     
-                }){
-                    registerButtonView()
-                }
-              /*  .alert(isPresented: $registerViewModel.showAlert) {
+                    Text("\(showAlert ? "กรุณากรอกข้อมูลให้ครบทุกช่อง" : "")")
+                        .foregroundColor(Color.red)
+                        .font(.subheadline)
                     
-                    Alert(title: Text("Status"),
-                          message: Text(registerViewModel.alertMessage),
-                          dismissButton: .default(Text("OK")){
-                        if registerViewModel.shouldDismiss {
-                            self.presentationMode.wrappedValue.dismiss()
+                    
+                    
+                    
+                    Button(action: {
+                        if email.isEmpty || password.isEmpty || confirmPassword.isEmpty || name.isEmpty || phone.isEmpty {
+                            showAlert = true
+                            
+                            
+                            
+                        }else if !passwordsMatch || showEmailError {
+                            print("error")
+                            showAlert = false
+                        } else {
+                            /* var user = RegisterModel()
+                             user.email = email
+                             user.password = password
+                             user.name = name
+                             user.phone = phone
+                             user.role = role
+                             isRegister = true
+                             showAlert = false*/
+                            
+                            otpViewModel.email = "\(email)"
+                            otpViewModel.password = "\(password)"
+                            otpViewModel.name = "\(name)"
+                            otpViewModel.phone = "\(phone)"
+                            otpViewModel.role = "\(role)"
+                            
+                            var user = RegisterModel()
+                            user.email = email
+                            isRegister = true
+                            showAlert = false
+                            self.otpViewModel.sendOtp(user: user){
+                                isRegister = false
+                            }
+                            otpViewModel.setErrorMessage()
+                            
+                            
+                            
+                            // self.registerViewModel.registerUser(user: user){
+                            //   isRegister = false
+                            //}
                         }
+                    }) {
+                        registerButtonView()
                     }
-                    )
-                }*/
-                
-                
-                
-                
+                }
             }
+            .background(
+                // Use NavigationLink to navigate to OtpView when redirectToOtpView is true
+                NavigationLink("", destination: OtpView(), isActive: $otpViewModel.redirectToOtpView)
+            )
         }
-        
     }
+    
     struct CustomAlertViewSuccess: View {
         @Environment(\.presentationMode) var presentationMode
    
@@ -178,3 +209,9 @@ struct BackgroundView: View {
     }
 }
 
+struct registerShlefView_Previews: PreviewProvider {
+    static var previews: some View {
+        registerShlefView().environmentObject(RegisterViewModel())
+            .environmentObject(OtpViewModel())
+    }
+}

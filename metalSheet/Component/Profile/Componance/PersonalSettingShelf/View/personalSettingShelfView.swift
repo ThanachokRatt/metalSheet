@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct personalSettingShelfView: View {
-    @State private var name = ""
-    @State private var phone = ""
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    @State private var name: String = ""
+    @State private var phone: String = ""
     @State private var isEditingEnabled = false
     @State private var errorMessage: String = ""
+    
+  
     var body: some View {
         
         VStack(spacing: 15) {
@@ -25,7 +28,11 @@ struct personalSettingShelfView: View {
                                 .padding(.top)
                         }
             
-            PersonalButton(isEditingEnabled: $isEditingEnabled, name: $name, phone: $phone, errorMessage: $errorMessage)
+            PersonalButton(isEditingEnabled: $isEditingEnabled, name: $name, phone: $phone, errorMessage: $errorMessage) .onAppear {
+                
+                name = loginViewModel.name
+                phone = loginViewModel.phone
+            }
        
             
             Spacer()

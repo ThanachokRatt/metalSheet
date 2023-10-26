@@ -24,7 +24,10 @@ struct CartModel: Identifiable, Codable, Mappable {
     var selectedQty: String = ""
     var compositeKey: String = "" // Unique identifier for each product
     var calculatedPrice: Int {
-      return currentPrice * (Int(selectedLong) ?? 1) * (Int(selectedQty) ?? 1)
+        let floatSelectedLong = Float(selectedLong) ?? 1
+        let intSelectedQty = Int(selectedQty) ?? 1
+        
+        return Int(Float(currentPrice) * floatSelectedLong * Float(intSelectedQty))
     }
     var colorCategories2: [String] = ["อลูซิงค์"]
     mutating func updateColorCategories(newCategories: [String]) {

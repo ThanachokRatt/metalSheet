@@ -11,6 +11,7 @@ import NukeUI
 struct ProductHistoryRowView: View {
     @EnvironmentObject var addProductHistoryModel: AddProductViewModel
     var viewModel: CartModel
+    @Binding var isAddProducthistoryView: Bool
 
     var body: some View {
         HStack(spacing: 30) {
@@ -40,16 +41,19 @@ struct ProductHistoryRowView: View {
                 }.font(.system(size: 14))
                     .foregroundColor(Color(.black).opacity(0.6))
                 Text("฿ \(viewModel.calculatedPrice)")
-                    .font(.subheadline)
-                        .foregroundColor(Color(.black).opacity(0.8))
+                    .font(.subheadline.bold())
+                        .foregroundColor(Color(.black).opacity(1))
                 
             }
             Spacer()
-            Image(systemName: "trash")
-                .foregroundColor(Color(.red).opacity(0.8))
-                .onTapGesture {
-                    addProductHistoryModel.removeFromCart(product: viewModel)
-                }
+            
+            if isAddProducthistoryView{
+                Image(systemName: "trash")
+                    .foregroundColor(Color(.red).opacity(0.8))
+                    .onTapGesture {
+                        addProductHistoryModel.removeFromCart(product: viewModel)
+                    }
+            }
         }
         .padding(.horizontal)
         .frame(width: .infinity, alignment: .leading)
