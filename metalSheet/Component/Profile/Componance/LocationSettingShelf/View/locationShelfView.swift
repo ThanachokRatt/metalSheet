@@ -11,7 +11,7 @@ import SwiftUI
 
 struct locationShelfView: View {
     @EnvironmentObject var locationViewModel: LocationViewModel
-
+    @State private var navigationToLocationView : Bool = false
     
     var body: some View {
         ZStack {
@@ -19,7 +19,7 @@ struct locationShelfView: View {
                 headerLocationView().background(.white)
                 List {
                     ForEach(locationViewModel.items) { index in
-                        ListRowView(item: index).onTapGesture {
+                        ListRowView(item: index, navigationtoLocationView: $navigationToLocationView).onTapGesture {
                             withAnimation(.linear){
                                 
                                 locationViewModel.updateItem(item: index)

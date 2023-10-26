@@ -22,8 +22,10 @@ struct registerShlefView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var registerViewModel:RegisterViewModel
     @State private var isRegister = false
+    @State private var showAlert = false
     
-    
+    @State private var isEmailValid = true
+    @State private var showEmailError = false
     
     var body: some View {
         
@@ -38,16 +40,18 @@ struct registerShlefView: View {
                               phone: $phone,
                               passwordsMatch: $passwordsMatch,
                               isPasswordHidden: $isPasswordHidden,
-                              isConfirmHidden: $isConfirmHidden)
+                              isConfirmHidden: $isConfirmHidden,
+                              isEmailValid: $isEmailValid,
+                              showEmailError: $showEmailError)
                 .overlay(
-                                ZStack {
-                                    if registerViewModel.shouldShow{
-                                        CustomAlertViewSuccess()
-                                            .padding(.top,70)
-                                    }
-                                })
+                    ZStack {
+                        if registerViewModel.shouldShow{
+                            CustomAlertViewSuccess()
+                                .padding(.top,70)
+                        }
+                    })
                 
-                checkboxView(role: $role)
+                checkboxView(role: $role).padding()
                 
                 Text(registerViewModel.errorRegisterMessage)
                     .foregroundColor(Color.red)
@@ -62,40 +66,43 @@ struct registerShlefView: View {
                     
                 }
                 
+                Text("\(showAlert ? "กรุณากรอกข้อมูลให้ครบทุกช่อง" : "")")
+                    .foregroundColor(Color.red)
+                    .font(.subheadline)
+                
+              
+               
+                
                 Button(action: {
-                    
-                    var user = RegisterModel()
-                    user.email = email
-                    user.password = password
-                    user.name = name
-                    user.phone = phone
-                    user.role = role
-                    isRegister = true
-                    self.registerViewModel.registerUser(user: user){
-                        isRegister = false
-                    }
-                    
-                }){
-                    registerButtonView()
-                }
-              /*  .alert(isPresented: $registerViewModel.showAlert) {
-                    
-                    Alert(title: Text("Status"),
-                          message: Text(registerViewModel.alertMessage),
-                          dismissButton: .default(Text("OK")){
-                        if registerViewModel.shouldDismiss {
-                            self.presentationMode.wrappedValue.dismiss()
+                    if email.isEmpty || password.isEmpty || confirmPassword.isEmpty || name.isEmpty || phone.isEmpty {
+                        showAlert = true
+                       
+            
+                       
+                    }else if !passwordsMatch || showEmailError {
+                       print("error")
+                        showAlert = false
+                    } else {
+                        var user = RegisterModel()
+                        user.email = email
+                        user.password = password
+                        user.name = name
+                        user.phone = phone
+                        user.role = role
+                        isRegister = true
+                        showAlert = false
+                        
+                        self.registerViewModel.registerUser(user: user){
+                            isRegister = false
                         }
                     }
-                    )
-                }*/
-                
-                
-                
+                }) {
+                    registerButtonView()
+                }
+            
                 
             }
         }
-        
     }
     struct CustomAlertViewSuccess: View {
         @Environment(\.presentationMode) var presentationMode
@@ -178,3 +185,8 @@ struct BackgroundView: View {
     }
 }
 
+struct registerShlefView_Previews: PreviewProvider {
+    static var previews: some View {
+        registerShlefView().environmentObject(RegisterViewModel())
+    }
+}

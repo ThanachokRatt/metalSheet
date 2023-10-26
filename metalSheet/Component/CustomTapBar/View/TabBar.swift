@@ -14,7 +14,7 @@ struct TabBar: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack(spacing: 90){
+            HStack(spacing: 55){
                 ForEach(tabItems) { item in
                     TabBarButton(item: item, isSelected: selectedTab == item.tab) {
                         selectedTab = item.tab
@@ -25,7 +25,7 @@ struct TabBar: View {
              
             }
             
-            .padding(EdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30))
+            .padding(EdgeInsets(top: 19, leading: 30, bottom: 10, trailing: 30))
             .background(Color("green123")).opacity(0.8)
             .background(.ultraThinMaterial)
             .mask(RoundedRectangle(cornerRadius: 24, style: .continuous))
@@ -51,19 +51,26 @@ struct TabBarButton: View {
     var action: () -> Void
 
     var body: some View {
+        
         Button(action: action) {
-            Image(systemName: item.icon)
-                .resizable()
-                .frame(width: 23,height: 23)
-                .foregroundColor(Color.white)
-               
-                
+            VStack{
+                Image(systemName: item.icon)
+                    .resizable()
+                    .frame(width: 23,height: 23)
+                    .foregroundColor(Color.white)
+                   
+                Text(item.iconText)
+                  .font(.caption)
+                  .foregroundColor(Color.white)
+                 
+            }
+           
                 .opacity(isSelected ? 1 : 0.5)
                 .background(
                     VStack {
                         RoundedRectangle(cornerRadius: 2)
-                            .fill(.red).opacity(0.9)
-                            .frame(width: isSelected ? 25 : 0, height: 5)
+                            .fill(.yellow).opacity(0.9)
+                            .frame(width: isSelected ? 30 : 0, height: 5)
                             .offset(y: -9)
                             .opacity(isSelected ? 1 : 0)
                         Spacer()

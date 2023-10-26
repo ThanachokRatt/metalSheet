@@ -19,7 +19,9 @@ struct ColorCategoryView: View {
                 addProductHistoryModel.updateSelectedColorCategory(color)
                 print("Selected Color: \(color)") // Print the selected color
             }
-            .opacity(selectedColor == color ? 1 : 0.4)
+            .opacity(selectedColor == color ? 1 : 0.7)
+            .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  selectedColor == color ? 4 : 1))
+           
     }
 }
 
@@ -56,7 +58,7 @@ struct ColorDotCategoryView: View {
                     ColorCategoryView(selectedColor: $selectedColor, color: color)
                         .disabled(!isCategoryEnabled)
                     
-                } .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  1))
+                }
             }
         }
     }
