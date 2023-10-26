@@ -47,7 +47,7 @@ struct registerShlefView: View {
                                     }
                                 })
                 
-                checkboxView(role: $role)
+                checkboxView(role: $role).padding()
                 
                 Text(registerViewModel.errorRegisterMessage)
                     .foregroundColor(Color.red)
@@ -178,3 +178,8 @@ struct BackgroundView: View {
     }
 }
 
+struct registerShlefView_Previews: PreviewProvider {
+    static var previews: some View {
+        registerShlefView().environmentObject(RegisterViewModel())
+    }
+}

@@ -30,7 +30,7 @@ struct textfieldView: View {
         
         VStack(spacing: 15) {
             VStack {
-                Text("Create \nAccount")
+                Text("Create Account")
                     .foregroundColor(.black).opacity(0.8)
                     .font(.system(size:45))
                     .fontWeight(.bold)

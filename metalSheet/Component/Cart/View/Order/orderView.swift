@@ -25,7 +25,11 @@ struct orderView: View {
                 if locationViewModel.items.contains(where: { $0.isSelected }) {
                     ForEach(locationViewModel.items.filter { $0.isSelected }) { selectedLocation in
                         NavigationLink(destination: locationShelfView()) {
-                            ListRowView(item: selectedLocation)
+                            VStack {
+                               
+                                ListRowView(item: selectedLocation)
+                            }
+                           
                         }
                     }
                 } else {

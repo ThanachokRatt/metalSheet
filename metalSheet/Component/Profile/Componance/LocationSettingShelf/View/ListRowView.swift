@@ -39,12 +39,19 @@ struct ListRowView:View{
                                     .frame(maxWidth: .infinity,alignment: .leading)
                                 Text(item.adressTwo)
                                     .frame(maxWidth: .infinity,alignment: .leading)
-                                Text(item.postCode)
-                                    .frame(maxWidth: .infinity,alignment: .leading)
+                                HStack {
+                                    Text(item.postCode)
+                                        .frame(maxWidth: .infinity,alignment: .leading)
+                                 /*   Spacer()
+                                    Image(systemName: item.isSelected ? "chevron.forward.circle" : "")
+                                        .resizable()
+                                        .frame(width: 20,height: 20)*/
+                                }
                                 Text(item.addressType)
                                     .padding(.all,4)
                                     .background(RoundedRectangle(cornerRadius: 5, style: .continuous)
                                         .stroke(Color.gray.opacity(0.8), lineWidth: 1))
+                                 
                                     .frame(maxWidth: .infinity,alignment: .leading)
                                 Text(item.isSelected ? "(ค่าเริ่มต้น)" : "")
                                     .frame(maxWidth: .infinity,alignment: .leading)
@@ -68,8 +75,6 @@ struct ListRowView:View{
                             .foregroundColor(.red).opacity(0.8)
                         .frame(width: 20,height: 20)
                     }*/
-                    
-                    
                   
                     Spacer()
                 }.padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
