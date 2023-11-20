@@ -17,6 +17,7 @@ struct metalSheetApp: App {
     @StateObject var  orderViewModel = OrderViewModel()
     @StateObject var  resetPasswordViewModel = ResetPasswordViewModel()
     @StateObject var  register = RegisterViewModel()
+    @StateObject var otp = OtpViewModel()
 
     
     var body: some Scene {
@@ -29,7 +30,7 @@ struct metalSheetApp: App {
                 .environmentObject(orderViewModel)
                 .environmentObject(resetPasswordViewModel)
                 .environmentObject(register)
-             
+                .environmentObject(otp)
                 .environment(\.colorScheme, .light)
               
         }

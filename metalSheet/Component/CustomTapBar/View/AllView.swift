@@ -50,6 +50,7 @@ struct AllView: View {
               locationViewModel.itemsKey = "Location_List_\(loginViewModel.id)"
               addProductViewModel.itemsCartKey = "Cart_Key_\(loginViewModel.id)"
               addProductViewModel.totalKey = "Total_Key_\(loginViewModel.id)"
+            
 
               addProductViewModel.getTotal() // Load the total price in the cart
               addProductViewModel.getItems() // Get items in the cart

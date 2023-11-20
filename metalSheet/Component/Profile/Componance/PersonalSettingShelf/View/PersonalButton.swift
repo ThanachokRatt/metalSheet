@@ -18,6 +18,7 @@ struct PersonalButton: View {
     @EnvironmentObject var personalViewModel: PersonalViewModel
     @State private var isRegister = false
     
+    
     var body: some View {
         VStack {
             if isRegister {
@@ -78,7 +79,7 @@ struct PersonalButton: View {
         var alertMessage: String
         @EnvironmentObject var loginViewModel: LoginViewModel
     
-     
+        @State private var isLoginAgain = false
 
         var body: some View {
             ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
@@ -91,18 +92,36 @@ struct PersonalButton: View {
                         .font(.system(size: 22))
                         .bold()
                         .foregroundColor(.black)
-                    Text("กรุณาเข้าสู่ระบบใหม่อีกครั้งเพื่อดูข้อมูลที่บันทึก")
+                    Text("กรุณากลับสู่หน้าการตั้งค่าเพื่อดูข้อมูลที่บันทึก")
                         .foregroundColor(.black)
+                    if isLoginAgain {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .background(Color.white)
+                            .foregroundColor(Color.white)
+                            .cornerRadius(10)
+                            .padding()
+                        
+                    }
                     Button(action: {
                         if personalViewModel.shouldDismiss{
-                            loginViewModel.logoutUser()
+                         
                             personalViewModel.setShowAlert()
-                            self.presentationMode.wrappedValue.dismiss()
+                            
+                           var user = LoginModel()
+                            user.email = loginViewModel.email
+                            user.password = loginViewModel.passWord
+                            isLoginAgain = true
+                            
+                            self.loginViewModel.loginUser(user: user){
+                                isLoginAgain = false
+                            }
+                            
                             self.presentationMode.wrappedValue.dismiss()
                            
                                             }
                     }) {
-                        Text("กลับสู่หน้าล็อกอิน")
+                        Text("กลับสู่หน้าการตั้งค่า")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .padding(.vertical, 10)

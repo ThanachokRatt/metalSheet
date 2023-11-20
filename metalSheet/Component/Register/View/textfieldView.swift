@@ -17,7 +17,10 @@ struct textfieldView: View {
     @Binding var passwordsMatch: Bool
     @Binding var isPasswordHidden: Bool
     @Binding var isConfirmHidden: Bool
-    @State private var isEmailValid = true
+    @Binding var isEmailValid : Bool
+    @Binding var showEmailError : Bool
+  
+
     @ObservedObject private var registerViewModel = RegisterViewModel()
     
     func isValidEmail(_ email: String) -> Bool {
@@ -30,7 +33,7 @@ struct textfieldView: View {
         
         VStack(spacing: 15) {
             VStack {
-                Text("Create Account")
+                Text("สมัครสมาชิก")
                     .foregroundColor(.black).opacity(0.8)
                     .font(.system(size:45))
                     .fontWeight(.bold)
@@ -46,22 +49,29 @@ struct textfieldView: View {
                     HStack (spacing: 5){
                         Image(systemName: "envelope")
                             .foregroundColor(Color(.black))
-                        Text("Email")
+                        Text("อีเมล")
                         
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
-                    TextField("Email",text:  $email,onEditingChanged: {_ in
-                        isEmailValid = isValidEmail(email)
+                    
+                    TextField("อีเมล", text: $email, onEditingChanged: { isEditing in
+                        if !isEditing {
+                            isEmailValid = isValidEmail(email)
+                            showEmailError = !isEmailValid
+                        }
                     })
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .autocapitalization(.none)
-                    if !isEmailValid{
-                        Text("Please enter a correct email format.")
+
+                    if showEmailError {
+                        
+                        Text("กรุณากรอกรูปแบบอีเมลที่ถูกต้อง")
                             .font(.subheadline)
                             .foregroundColor(.red)
                             .padding(.leading, 5)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
+
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 
                 
@@ -78,12 +88,12 @@ struct textfieldView: View {
                                 isPasswordHidden.toggle()
                                 
                             }
-                        Text("Password")
+                        Text("รหัสผ่าน")
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     if isPasswordHidden {
-                        SecureField("Password", text: self.$password)
+                        SecureField("รหัสผ่าน", text: self.$password)
                     }else{
-                        TextField("Password", text: self.$password)
+                        TextField("รหัสผ่าน", text: self.$password)
                     }
                 }
                 
@@ -99,12 +109,12 @@ struct textfieldView: View {
                                 isConfirmHidden.toggle()
                                 
                             }
-                        Text("Confirm Password")
+                        Text("ยืนยันรหัสผ่าน")
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     if isConfirmHidden {
-                        SecureField("Confirm Password", text: self.$confirmPassword)
+                        SecureField("ยืนยันรหัสผ่าน", text: self.$confirmPassword)
                     }else{
-                        TextField("Password", text: self.$confirmPassword)
+                        TextField("ยืนยันรหัสผ่าน", text: self.$confirmPassword)
                     }
                 }
                 
@@ -113,8 +123,8 @@ struct textfieldView: View {
                     passwordsMatch = newValue == password
                 }
             if !passwordsMatch{
-                Text("Please enter a matching password.")
-                    .font(.caption)
+                Text("โปรดกรอกข้อมูลให้ตรงกับรหัสผ่าน")
+                    .font(.subheadline)
                     .foregroundColor(.red)
                     .padding(.leading, 5)
                     .frame(maxWidth: .infinity,alignment: .leading)
@@ -127,11 +137,11 @@ struct textfieldView: View {
                     HStack (spacing: 5){
                         Image(systemName: "person.text.rectangle")
                             .foregroundColor(Color(.black))
-                        Text("Full-Name")
+                        Text("ชื่อจริง-นามสกุล")
                         
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
-                    TextField("Full-Name",text:  $name)
+                    TextField("ชื่อจริง-นามสกุล",text:  $name)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 
@@ -144,11 +154,11 @@ struct textfieldView: View {
                     HStack (spacing: 5){
                         Image(systemName: "phone")
                             .foregroundColor(Color(.black))
-                        Text("Phone")
+                        Text("เบอร์มือถือ")
                         
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
-                    TextField("Phone",text:  $phone)
+                    TextField("เบอร์มือถือ",text:  $phone)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
           

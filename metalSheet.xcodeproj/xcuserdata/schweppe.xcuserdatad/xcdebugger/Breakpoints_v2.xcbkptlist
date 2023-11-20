@@ -55,17 +55,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C6E7E542-CEE6-4F23-A36D-9B9038424BAD"
+            uuid = "D87C371B-DEB3-4C48-9C62-CC7B1BC5CFF2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "metalSheet/Component/Cart/ViewModel/OrderViewModel.swift"
+            filePath = "metalSheet/Component/Profile/Componance/LocationSettingShelf/View/addLocationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "saveOrder(user:completion:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "Save()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D87C371B-DEB3-4C48-9C62-CC7B1BC5CFF2 - 967c70ee45033f11"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.addLocationView.Save() -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Profile/Componance/LocationSettingShelf/View/addLocationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "2351">
+               </Location>
+               <Location
+                  uuid = "D87C371B-DEB3-4C48-9C62-CC7B1BC5CFF2 - 967c70ee45033f11"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.addLocationView.Save() -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Profile/Componance/LocationSettingShelf/View/addLocationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "3048">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

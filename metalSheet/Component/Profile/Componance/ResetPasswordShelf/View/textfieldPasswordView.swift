@@ -31,12 +31,12 @@ struct textfieldPasswordView: View {
                                 isPasswordHidden.toggle()
                                 
                             }
-                        Text("Current Password")
+                        Text("รหัสผ่านปัจจุบัน")
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     if isPasswordHidden {
-                        SecureField("Current Password", text: self.$password)
+                        SecureField("รหัสผ่านปัจจุบัน", text: self.$password)
                     }else{
-                        TextField("Current Password", text: self.$password)
+                        TextField("รหัสผ่านปัจจุบัน", text: self.$password)
                     }
                 }
                 
@@ -52,12 +52,12 @@ struct textfieldPasswordView: View {
                                 isnewPasswordHidden.toggle()
                                 
                             }
-                        Text("New Password")
+                        Text("รหัสผ่านใหม่")
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     if isnewPasswordHidden {
-                        SecureField("New Password", text: self.$newPassword)
+                        SecureField("รหัสผ่านใหม่", text: self.$newPassword)
                     }else{
-                        TextField("New Password", text: self.$newPassword)
+                        TextField("รหัสผ่านใหม่", text: self.$newPassword)
                     }
                 }
                 
@@ -74,12 +74,12 @@ struct textfieldPasswordView: View {
                                 isConfirmHidden.toggle()
                                 
                             }
-                        Text("Confirm Password")
+                        Text("ยืนยันรหัสผ่านใหม่")
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     if isConfirmHidden {
-                        SecureField("Confirm Password", text: self.$confirmPassword)
+                        SecureField("ยืนยันรหัสผ่านใหม่", text: self.$confirmPassword)
                     }else{
-                        TextField("Confirm Password", text: self.$confirmPassword)
+                        TextField("ยืนยันรหัสผ่านใหม่", text: self.$confirmPassword)
                     }
                 }
                 
@@ -88,7 +88,7 @@ struct textfieldPasswordView: View {
                     newValue in resetpasswordsMatch = newValue == newPassword
                 }
             if !resetpasswordsMatch{
-                Text("Please enter a matching password.")
+                Text("โปรดกรอกข้อมูลให้ตรงกับรหัสผ่านใหม่")
                     .font(.caption)
                     .foregroundColor(.red)
                     .padding(.leading, 5)

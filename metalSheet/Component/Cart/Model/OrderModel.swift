@@ -32,6 +32,7 @@ struct OrderModel:Mappable{
 
 struct OrderItem: Mappable{
     var itemId: Int = 0
+    var name: String = ""
     var bmt: String = ""
     var length: String = ""
     var color: String = ""
@@ -42,6 +43,7 @@ struct OrderItem: Mappable{
     init?(map: Map){}
     mutating func mapping(map: Map) {
         itemId <- map["item_id"]
+        name <- map["name"]
         bmt <- map["bmt"]
         length <- map["length"]
         color <- map["color"]

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct AddProductHistoryView: View {
     @EnvironmentObject  var addProductHistoryModel: AddProductViewModel
+    @State private var isaddProductHistoryView = true
     var viewModel: CartModel
     var body: some View {
     
@@ -17,7 +18,7 @@ struct AddProductHistoryView: View {
                 if addProductHistoryModel.items.count > 0 {
                     ForEach(addProductHistoryModel.items, id: \.id){
                         item in
-                        ProductHistoryRowView(viewModel: item).onTapGesture {
+                        ProductHistoryRowView(viewModel: item, isAddProducthistoryView: $isaddProductHistoryView).onTapGesture {
                             withAnimation(.linear){
                                 addProductHistoryModel.updateItems(item: item)
                             }

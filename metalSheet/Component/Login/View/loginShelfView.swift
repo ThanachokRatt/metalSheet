@@ -23,7 +23,7 @@ struct loginShelfView: View {
     let green: String = "green123"
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ZStack {
                 Color(green)
                     .ignoresSafeArea()
@@ -63,9 +63,6 @@ struct loginShelfView: View {
                             if loginViewModel.loginSuccess == true{
                                 email = ""
                                 password = ""
-                              
-                                
-                              
                             }
                             
                         }

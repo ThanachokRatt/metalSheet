@@ -44,8 +44,8 @@ struct profileSettingShelfView: View {
                 }
                 .background(Color.white)
                 .safeAreaInset(edge: .bottom) {
-                    Color.clear.frame(height: 80)
-            }
+                    Color.clear.frame(height: 120)
+                }.ignoresSafeArea()
             }.background(Color(.white))
       
         }

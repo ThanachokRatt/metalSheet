@@ -35,26 +35,47 @@ class LocationViewModel: ObservableObject {
     }
     func  addItem(name:String,phone:String,addressOne:String,addressTwo:String,postCode:String,addressType:String,isSelected:Bool){
         let newItem = LocationItemModel(name: name, phone: phone, addressOne: addressOne, adressTwo: addressTwo, postCode: postCode, addressType: addressType,isSelected: isSelected)
+        
+        
         items.append(newItem)
     }
-    func updateItem(item: LocationItemModel){
-        if let index = items.firstIndex(where: {$0.id == item.id}){
-            items[index] = item.updateCompletion()
-            
-            
-            for i in 0..<items.count{
-                if i != index{
-                    items[i].isSelected = false
+    
+    func updateItem(item: LocationItemModel) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            if items[index].isSelected == false {
+                // Only update if the current state is false
+                items[index] = item.updateCompletion()
+                
+                for i in 0..<items.count {
+                    if i != index {
+                        items[i].isSelected = false
+                    }
                 }
             }
         }
-        
     }
+
     
     func saveItems(){
         if let encodedData = try? JSONEncoder().encode(items){
             UserDefaults.standard.set(encodedData, forKey: itemsKey)
         } 
     }
+    func updateItemAtIndex(index: Int, name: String, phone: String, addressOne: String, addressTwo: String, postCode: String, addressType: String, isSelected: Bool) {
+        if index < items.count {
+            items[index] = LocationItemModel(
+                id: items[index].id,
+                name: name,
+                phone: phone,
+                addressOne: addressOne,
+                adressTwo: addressTwo,
+                postCode: postCode,
+                addressType: addressType,
+                isSelected: items[index].isSelected
+            )
+        }
+    }
+
+
     
 }

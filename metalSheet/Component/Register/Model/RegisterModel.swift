@@ -14,6 +14,7 @@ struct RegisterModel: Mappable{
     var name: String = ""
     var phone: String = ""
     var role: String = ""
+    var code: String = ""
     init() {}
     init?(map: Map) {}
     mutating func mapping(map: Map) {
@@ -22,5 +23,6 @@ struct RegisterModel: Mappable{
         name <- map["name"]
         phone <- map["phone"]
         role <- map["role"]
+        code <- map["code"]
     }
 }

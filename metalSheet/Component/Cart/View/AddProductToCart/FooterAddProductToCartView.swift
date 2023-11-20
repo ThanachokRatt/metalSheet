@@ -11,7 +11,7 @@ struct FooterAddProductToCartView: View {
 
     var viewModel: CartModel
     
-    @Binding var stepperLong: Int // Binding to stepperLong
+    @Binding var stepperLong: Float // Binding to stepperLong
     @Binding var stepperQty: Int
     
     var body: some View {
@@ -24,7 +24,7 @@ struct FooterAddProductToCartView: View {
                 addProductHistoryModel.addToCart(product: viewModel)
                 addProductHistoryModel.updateCurrentPrice(product: viewModel)
                 
-                stepperLong = 1
+                stepperLong = 1.00
                 stepperQty = 1
             }, label: {
                 VStack (spacing: 5){

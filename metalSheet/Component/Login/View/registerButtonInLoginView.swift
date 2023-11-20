@@ -29,4 +29,4 @@ struct registerButtonInLoginView: View {
         
     }
 }
-
+//OtpView().navigationBarTitleDisplayMode(.inline).navigationBarHidden(false)

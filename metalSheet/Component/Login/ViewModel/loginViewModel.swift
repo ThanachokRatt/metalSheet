@@ -15,12 +15,13 @@ class LoginViewModel: ObservableObject {
     
     @Published var email = ""
     @Published var token = ""
-    
     @Published var name: String = ""
     @Published var phone: String = ""
     @Published var id = 0
     @Published var isLoggedIn: Bool = false
     @Published var loginSuccess = false
+    @Published var passWord: String = ""
+    
     
     init() {
         // Load isLoggedIn value from UserDefaults when the ViewModel is initialized
@@ -29,6 +30,7 @@ class LoginViewModel: ObservableObject {
         loadUserName()
         loadUserPhone()
         loadUserEmail()
+        loadUserPassword()
     }
 
     // Function to set isLoggedIn and save it to UserDefaults
@@ -86,6 +88,18 @@ class LoginViewModel: ObservableObject {
             }
     }
     
+    func setUserPassword(_ value: String){
+       passWord = value
+        UserDefaults.standard.set(value,forKey: "userPassword")
+        
+    }
+    func loadUserPassword(){
+        if let userPassword = UserDefaults.standard.string(forKey: "userPassword") {
+                passWord = userPassword
+            }
+    }
+  
+    
    
     
     
@@ -111,6 +125,7 @@ class LoginViewModel: ObservableObject {
                         self.token = data["token"] as? String ?? ""
                         self.name = data["name"] as? String ?? ""
                         self.phone = data["phone"] as? String ?? ""
+                        self.passWord = data["pwd"] as? String ?? ""
                         
                         if let userId = data["id"] as? Int {
                             self.setUserId(userId)
@@ -126,12 +141,21 @@ class LoginViewModel: ObservableObject {
                         if let userEmail = data["email"] as? String{
                             self.setUserEmail(userEmail)
                         }
+                        
+                        if let userPassword = data["pwd"] as? String {
+                            self.setUserPassword(userPassword)
+                        }
+                        
+                        
+                        
+                      
 
                         print("ID = :  \(self.id)")
                         print("Email:  \(self.email)")
                         print("Token: \(self.token)")
                         print("Full-Name:  \(self.name)")
                         print("Phone Number:  \(self.phone)")
+                        print("User Password \(self.passWord)")
                     
                        
                     }
