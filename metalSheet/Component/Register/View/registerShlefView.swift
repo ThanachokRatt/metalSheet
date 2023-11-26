@@ -29,7 +29,7 @@ struct registerShlefView: View {
     @EnvironmentObject var otpViewModel: OtpViewModel
 
     var body: some View {
-        NavigationView{
+        NavigationStack{
             
             
             ZStack {
@@ -182,6 +182,7 @@ struct registerShlefView: View {
 
 }
 struct BackgroundView: View {
+    let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
         
         
@@ -189,7 +190,7 @@ struct BackgroundView: View {
             Circle()
                 .fill(Color("red1").opacity(0.4))
             
-                .scaleEffect(2)
+                .scaleEffect(isiPad ? 1.2 : 2)
             
                 .offset(y: -geometry.size.height*0.6)
             
@@ -199,7 +200,7 @@ struct BackgroundView: View {
             Circle()
                 .fill(Color("slgreen").opacity(0.3))
             
-                .scaleEffect(2)
+                .scaleEffect(isiPad ? 1.2 : 2)
             
                 .offset(x: -geometry.size.height*0.4)
             

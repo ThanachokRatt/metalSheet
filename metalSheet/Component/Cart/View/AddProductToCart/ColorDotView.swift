@@ -29,8 +29,9 @@ struct ColorDotView: View {
     let color: Color
 
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         color
-            .frame(width: 24, height: 24)
+            .frame(width: isiPad ? 34: 24, height: isiPad ? 34: 24)
             .clipShape(Circle())
     }
 }
@@ -48,9 +49,11 @@ struct ColorDotCategoryView: View {
     }
 
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack (alignment: .leading) {
             Text("สี: \(isCategoryEnabled ? selectedColor ?? "อลูซิงค์" : "อลูซิงค์")")
-                .fontWeight(.semibold)
+                .font(.system(size: isiPad ? 24 : 16))
+                .bold()
               
             HStack {
                 ForEach(colorCategories, id: \.self) { color in

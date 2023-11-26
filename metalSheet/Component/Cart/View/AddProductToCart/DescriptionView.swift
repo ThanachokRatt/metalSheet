@@ -26,6 +26,7 @@ struct DescriptionView: View {
     
 
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         ZStack {
             Color("Bgp")
                 .edgesIgnoringSafeArea(.all)
@@ -44,26 +45,28 @@ struct DescriptionView: View {
                 
                 VStack (alignment: .leading,spacing: 10){
                     Text(viewmodel.productName)
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(.system(size: isiPad ? 34 : 24))
+                        .bold()
                     HStack {
                         Text("฿\(isCategoryEnabled ? viewmodel.priceColor : viewmodel.priceNocolor) ")
-                            .font(.title)
+                           
                         
                         Text("(ราคาต่อเมตร)")
-                            .font(.subheadline)
+                            .font(.system(size: isiPad ? 24 : 14))
                             .padding(.bottom,-5)
-                    }
+                    } .font(.system(size: isiPad ? 34 : 24))
+                     
                        
                        
                     Text("(สามารถเลือกสีได้เฉพาะความหนา 0.35มิลลิเมตร)")
                         .foregroundColor(.red)
                         .opacity(0.8)
-                        .font(.system(size: 15))
+                        .font(.system(size: isiPad ? 25 : 15))
                     
                     Text("รายละเอียด")
                         .fontWeight(.medium)
-                        
+                        .font(.system(size: isiPad ? 26 : 16))
+
                         .padding(.vertical, 8)
                     
                     Text(viewmodel.description)
@@ -111,6 +114,8 @@ struct DescriptionView: View {
                     HStack(alignment: .bottom) {
                         LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22,longPressInterval: 0.04)
                             .padding(.top, 10)
+                            .font(.system(size:isiPad ? 20 : 16))
+                            .bold()
                     }
                     .onChange(of: stepperLong) { newValue in
                         var formattedValue = String(format: "%.2f", newValue)
@@ -123,6 +128,8 @@ struct DescriptionView: View {
                         LabeledStepper("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.06)
                         
                             .padding(.top,10)
+                            .font(.system(size:isiPad ? 20 : 16))
+                            .bold()
                     }.onChange(of: stepperQty) { newValue in
                         // Print the updated value when the stepper value changes
                         var stepperQty = ""
@@ -135,11 +142,13 @@ struct DescriptionView: View {
                         Text("(แตะค้างเพื่อเพิ่มจำนวนอย่างรวดเร็ว)")
                             .foregroundColor(.red)
                             .opacity(0.8)
-                            .font(.system(size: 15))
+                            .font(.system(size: isiPad ? 24 : 15))
                     }
                     
                  
                 }
+                .font(.system(size: isiPad ? 24 : 16))
+             
                 .padding()
                 .background(Color("Bgp"))
             .cornerRadius(15.0)

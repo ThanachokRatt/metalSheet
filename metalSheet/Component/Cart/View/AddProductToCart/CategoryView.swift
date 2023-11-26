@@ -11,9 +11,10 @@ struct CategoryView: View {
     let isActive: Bool
     let text: String
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack (alignment: .leading,spacing: 0) {
             Text(text)
-                .font(.system(size:13))
+                .font(.system(size: isiPad ? 24 : 16))
                 .fontWeight(.medium)
                 .foregroundColor(isActive ? Color.black : Color.black.opacity(0.5))
             if(isActive){

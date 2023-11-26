@@ -12,6 +12,8 @@ struct productSingleView: View {
     var viewmodel: CartModel
  
     var body: some View {
+    
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         HStack {
             VStack(){
                 LazyImage(source: viewmodel.productImage) { state in
@@ -32,7 +34,7 @@ struct productSingleView: View {
                     }
                 }
                     .scaledToFit()
-                    .frame(width: 176, height: 178)
+                    .frame(width: isiPad ? 276 : 176, height: isiPad ? 278 : 178)
                     .cornerRadius(15)
                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
                 Text(viewmodel.productName)
@@ -42,7 +44,7 @@ struct productSingleView: View {
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity,alignment: .leading)
                 
-                        .font(.system(size:18))
+                        .font(.system(size: isiPad ? 27 : 18))
                    
                 }
                         

@@ -15,7 +15,7 @@ struct ListRowView:View{
     
     
     var body : some View{
-        
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack(alignment: .leading, spacing: 0) {
             HStack{
                 
@@ -42,7 +42,7 @@ struct ListRowView:View{
                         
                         Spacer()
                         
-                    }.font(.system(size: 15))
+                    }.font(.system(size:isiPad ? 25 : 15))
                     
                     HStack{
                         VStack (spacing: 5){
@@ -61,7 +61,7 @@ struct ListRowView:View{
                                 if navigationtoLocationView {
                                     Image(systemName: "chevron.right")
                                         .resizable()
-                                        .frame(width: 10,height: 15)
+                                        .frame(width:isiPad ? 20 : 10,height:isiPad ? 25 : 15 )
                                         .foregroundColor(Color.gray.opacity(0.8))
                                         .padding(.top,-10)
                                 } else {
@@ -86,19 +86,19 @@ struct ListRowView:View{
                                     Image("pin")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 16, height: 26)
+                                        .frame(width:isiPad ? 26 : 16, height:isiPad ? 36 : 26)
                                         .padding(EdgeInsets(top: -10, leading: 0, bottom: 0, trailing: 0))
                                 } else {
                                     Image("pin")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 16, height: 26)
+                                        .frame(width:isiPad ? 26 : 16, height:isiPad ? 36 : 26)
                                         .padding(EdgeInsets(top: -10, leading: 0, bottom: 0, trailing: 0))
                                 }
                                 
                             }
                             
-                        }.font(.system(size: 12))
+                        }.font(.system(size:isiPad ? 22 : 12))
                         
                         
                         

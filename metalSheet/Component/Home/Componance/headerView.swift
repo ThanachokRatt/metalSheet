@@ -9,15 +9,16 @@ import SwiftUI
 
 struct headerView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
+    
     var body: some View {
-        
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         HStack {
             Image(systemName: "person")
                 .resizable()
-                .frame(width: 30 , height: 30)
+                .frame(width: isiPad ? 35 : 30 , height: isiPad ? 35 : 30)
                 .padding(EdgeInsets(top: 0, leading: 35, bottom: 20, trailing: 0))
             Text("\(loginViewModel.name)")
-                .font(.headline).bold()
+                .font(.system(size: isiPad ? 24 : 18, weight: .bold))
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 6, trailing: 0))
            
             Spacer()

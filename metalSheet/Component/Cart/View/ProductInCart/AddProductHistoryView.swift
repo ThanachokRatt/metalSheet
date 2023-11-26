@@ -13,7 +13,7 @@ struct AddProductHistoryView: View {
     @State private var isaddProductHistoryView = true
     var viewModel: CartModel
     var body: some View {
-    
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
             ScrollView {
                 if addProductHistoryModel.items.count > 0 {
                     ForEach(addProductHistoryModel.items, id: \.id){
@@ -26,12 +26,14 @@ struct AddProductHistoryView: View {
                     }
                     HStack{
                         Text("ราคาสินค้าทั้งหมด")
-                            .bold()
+                      
                         Spacer()
                         Text("฿\(addProductHistoryModel.total).00")
                         
-                            .bold()
+                        
                     }
+                    .font(.system(size: isiPad ? 27 : 17))
+                    .bold()
                     .padding()
                     HStack{
                         NavigationLink(destination: orderView(viewModel: viewModel)) {
