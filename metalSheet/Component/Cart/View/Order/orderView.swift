@@ -24,6 +24,7 @@ struct orderView: View {
     @State private var isEditing = false
     @State private var isaddProductHistoryView = false
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         ScrollView {
             VStack {
                 
@@ -70,15 +71,17 @@ struct orderView: View {
                     ProductHistoryRowView(viewModel: item, isAddProducthistoryView: $isaddProductHistoryView)
                 }
                 HStack{
-                    Text("ราคาสินค้าทั้งหมด").bold()
+                    Text("ราคาสินค้าทั้งหมด")
                     
                     Spacer()
                     Text("฿\(addProductHistoryModel.total).00")
-                        .bold()
-                }.padding(EdgeInsets(top: 18, leading: 18, bottom: 1, trailing: 18))
+                        
+                }.font(.system(size: isiPad ? 27 : 17))
+                    .bold()
+                    .padding(EdgeInsets(top: 18, leading: 18, bottom: 1, trailing: 18))
                 HStack{
                     Text("(ไม่รวมค่าจัดส่ง,ค่ามัดจำ,สกรู)")
-                        .font(.system(size: 13))
+                        .font(.system(size: isiPad ? 23 : 13))
                         .foregroundColor(.red)
                     
                     Spacer()
@@ -149,7 +152,7 @@ struct orderView: View {
                             user.name = ("\(selectedLocation.name)")
                             user.phone = ("\(selectedLocation.phone)")
                             user.address = ("ที่อยู่: \(selectedLocation.addressOne) \(selectedLocation.adressTwo) รหัสไปรษณีย์: \(selectedLocation.postCode) ประเภทที่อยู่: \(selectedLocation.addressType)")
-                            user.detail = ("ยอดรวมคำสั่งซื้อ: \(addProductHistoryModel.total).00 บาท")
+                            user.detail = ("\(addProductHistoryModel.total).00 บาท")
                             
                             
                         }
@@ -158,7 +161,7 @@ struct orderView: View {
                             var orderItem = OrderItem()
                             orderItem.itemId = id + 1
                             orderItem.name = ("\(item.productName)")
-                            orderItem.bmt =  ("ความหนา: \(item.selectedCategory)มม.")
+                            orderItem.bmt =  ("ความหนา: \(item.selectedCategory) มม.")
                             orderItem.length = ("ความยาว: \(item.selectedLong) ม.")
                             orderItem.color = ("สี: \(item.selectedColorCategory)")
                             orderItem.qty = Int(item.selectedQty) ?? 0
@@ -278,16 +281,3 @@ struct orderView: View {
     
 }
 
-/*  .overlay(
- ZStack {
- if locationViewModel.items.contains(where: { $0.isSelected }) {
- if orderViewModel.showAlert2 {
- CustomAlertViewSuccess()
- .padding(.bottom, 270)
- }
- } else if isAlertFailVisible { // Show the CustomAlertViewFail
- CustomAlertViewFail(isAlertFailVisible: $isAlertFailVisible)
- .padding(.bottom, 270)
- }
- }
- )*/

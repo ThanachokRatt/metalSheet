@@ -19,6 +19,7 @@ struct MapCard: View {
                     .cornerRadius(20)
                     .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  1))
                     
+                    
             })
             .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }.shadow(radius: 2)

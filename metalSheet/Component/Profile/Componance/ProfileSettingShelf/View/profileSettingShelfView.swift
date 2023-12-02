@@ -10,7 +10,7 @@ struct profileSettingShelfView: View {
     @State private var confirmationAction: ConfirmationAction? = nil
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var loginViewModel: LoginViewModel
-
+    @State private var isLogoutAlertPresented = false
     var body: some View {
         NavigationView {
             ScrollView {
@@ -21,40 +21,33 @@ struct profileSettingShelfView: View {
                     forLoopSettingBtnView()
                     
                     Button {
-                        confirmationAction = .logout
-                        isPresented = true
-                    } label: {
-                        signOutBtnView()
-                    }.confirmationDialog("ต้องการออกจากระบบ?", isPresented: $isPresented, titleVisibility: .visible, actions: {
-                        Button("ยืนยัน", role: .destructive) {
-                            if confirmationAction == .logout { // Only dismiss if the user confirms
-                                 loginViewModel.logoutUser() // Call a function to handle user logout
-                              presentationMode.wrappedValue.dismiss()
-                            }// Set the user as logged out
-                        }
-                        Button("ยกเลิก", role: .cancel) {
-                        
-                            confirmationAction = nil
-                            isPresented = false
-                        }
-                    })
+                                    isLogoutAlertPresented = true
+                                } label: {
+                                    signOutBtnView()
+                                }
+                                .alert("ต้องการออกจากระบบหรือไม่?", isPresented: $isLogoutAlertPresented) {
+                                    Button("ยืนยัน") {
+                                        loginViewModel.logoutUser()
+                                        presentationMode.wrappedValue.dismiss()
+                                    }
+                                    Button("ยกเลิก", role: .cancel) {
+                                        isLogoutAlertPresented = false
+                                    }
+                                }
 
-                    
-                    Spacer()
+                                Spacer()
+                            }
+                            .background(Color.white)
+                            .safeAreaInset(edge: .bottom) {
+                                Color.clear.frame(height: 120)
+                            }
+                            .ignoresSafeArea()
+                        }
+                        .background(Color(.white))
+                    }
+                    .accentColor(Color.black)
                 }
-                .background(Color.white)
-                .safeAreaInset(edge: .bottom) {
-                    Color.clear.frame(height: 120)
-                }.ignoresSafeArea()
-            }.background(Color(.white))
-      
-        }
-        .accentColor(Color.black)
-      
-    
-    }
-
-}
+            }
 
 enum ConfirmationAction {
     case logout

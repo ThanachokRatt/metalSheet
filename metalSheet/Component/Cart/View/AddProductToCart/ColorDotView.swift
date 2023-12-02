@@ -19,8 +19,8 @@ struct ColorCategoryView: View {
                 addProductHistoryModel.updateSelectedColorCategory(color)
                 print("Selected Color: \(color)") // Print the selected color
             }
-            .opacity(selectedColor == color ? 1 : 0.7)
-            .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  selectedColor == color ? 4 : 1))
+            
+            .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color(selectedColor == color ? "green123" : "ดำเงา" ),lineWidth:  selectedColor == color ? 4 : 1))
            
     }
 }
@@ -29,8 +29,9 @@ struct ColorDotView: View {
     let color: Color
 
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         color
-            .frame(width: 24, height: 24)
+            .frame(width: isiPad ? 36: 28, height: isiPad ? 36: 28)
             .clipShape(Circle())
     }
 }
@@ -41,6 +42,8 @@ struct ColorDotCategoryView: View {
     let colorCategories: [String]
     let isCategoryEnabled: Bool
   
+    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 8)
+    
     init(colorCategories: [String], isCategoryEnabled: Bool) {
         self.colorCategories = colorCategories
         self.isCategoryEnabled = isCategoryEnabled
@@ -48,20 +51,25 @@ struct ColorDotCategoryView: View {
     }
 
     var body: some View {
-        VStack (alignment: .leading) {
-            Text("สี: \(isCategoryEnabled ? selectedColor ?? "อลูซิงค์" : "อลูซิงค์")")
-                .fontWeight(.semibold)
-              
-            HStack {
-                ForEach(colorCategories, id: \.self) { color in
-                    
-                    ColorCategoryView(selectedColor: $selectedColor, color: color)
-                        .disabled(!isCategoryEnabled)
-                    
-                }
-            }
-        }
-    }
-}
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+
+         VStack(alignment: .leading) {
+             Text("สี: \(isCategoryEnabled ? selectedColor ?? "อลูซิงค์" : "อลูซิงค์")")
+                 .font(.system(size: isiPad ? 26 : 18))
+                 .bold()
+
+             LazyVGrid(columns: columns, spacing: 5) {
+                 ForEach(colorCategories, id: \.self) { color in
+                     ColorCategoryView(selectedColor: $selectedColor, color: color)
+                         .disabled(!isCategoryEnabled)
+                 }
+                 
+             }
+            
+         }
+      
+     }
+ }
+
 
 

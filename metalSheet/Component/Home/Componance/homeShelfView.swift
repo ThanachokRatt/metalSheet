@@ -60,21 +60,24 @@ struct homePageView_Previews: PreviewProvider {
 
 struct homeCaptionView: View {
     let infoData: [InfoDataModel]
-
+    let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
         if let firstInfoData = infoData.first {
             Text(" \(firstInfoData.descriptionHome)")
                 .padding()
                 .foregroundColor(.black)
                 .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
-                .font(.system(.subheadline))
+                .font(.system(size: isiPad ? 23 : 15, weight: .regular))
+                .frame(maxWidth:.infinity)
+            
                 .overlay(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .stroke(Color.black, lineWidth: 1)
                         .padding(5)
                         .shadow(radius: 2)
                 )
-                .padding(EdgeInsets(top: 0, leading: 14, bottom: -10, trailing: 14))
+             
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: -10, trailing:15))
                 
         }
     }

@@ -12,9 +12,11 @@ struct TabBar: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     
     var body: some View {
+        let iPadWidth: CGFloat = 130
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack {
             Spacer()
-            HStack(spacing: 55){
+            HStack(spacing: isiPad ? iPadWidth: 55){
                 ForEach(tabItems) { item in
                     TabBarButton(item: item, isSelected: selectedTab == item.tab) {
                         selectedTab = item.tab
@@ -35,7 +37,7 @@ struct TabBar: View {
                     .stroke(.linearGradient(colors: [.white.opacity(0.5), .white.opacity(0)], startPoint: .topLeading, endPoint: .bottomLeading))
             )
             
-        }.padding(.bottom,-10)
+        }.padding(.bottom,isiPad ? 7 : -10)
     }
 }
 

@@ -10,16 +10,17 @@ import SwiftUI
 struct LineButton: View {
     let urlLine: String = "https://line.me/ti/p/q_4GqY44yw"
     var body: some View {
-      
+        let iPadWidth: CGFloat = 185
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
             Link(destination: URL(string: urlLine)!,
                  label: {
                 Image("lineButtonImage")
                 
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 110)
+                    .frame(width: isiPad ? iPadWidth : 110)
                 
-                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color("green123"),lineWidth:  1))
+                    
                     .shadow(radius: 5)
                     
                     .padding(.horizontal,20)

@@ -22,7 +22,7 @@ struct checkboxView: View {
                 role = (options[selectedOption])
               
             }) {
-                Image(systemName: selectedOption == 0 ? "checkmark.circle.fill" : "checkmark.circle")
+                Image(systemName: selectedOption == 0 ? "checkmark.circle.fill" : "circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .foregroundColor(Color(.black))
@@ -36,7 +36,7 @@ struct checkboxView: View {
                 role = (options[selectedOption])
                 print(role)
             }) {
-                Image(systemName: selectedOption == 1 ? "checkmark.circle.fill" : "checkmark.circle")
+                Image(systemName: selectedOption == 1 ? "checkmark.circle.fill" : "circle")
                     .resizable()
                     .frame(width: 18, height: 18)
                     .foregroundColor(Color(.black))

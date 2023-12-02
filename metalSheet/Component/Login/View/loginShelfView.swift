@@ -21,7 +21,7 @@ struct loginShelfView: View {
     @EnvironmentObject var orderViewModel: OrderViewModel
     
     let green: String = "green123"
-    
+    let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
         NavigationStack{
             ZStack {
@@ -29,10 +29,10 @@ struct loginShelfView: View {
                     .ignoresSafeArea()
                     .opacity(0.8)
                 Circle()
-                    .scale(1.7)
+                    .scaleEffect(isiPad ? 1.4 : 1.7)
                     .foregroundColor(.white.opacity(0.3))
                 Circle()
-                    .scale(1.4)
+                    .scaleEffect(isiPad ? 1.1 : 1.4)
                     .foregroundColor(.white)
                 
                 VStack {

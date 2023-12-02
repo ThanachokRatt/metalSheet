@@ -14,6 +14,7 @@ struct ProductHistoryRowView: View {
     @Binding var isAddProducthistoryView: Bool
 
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         HStack(spacing: 30) {
             LazyImage(source: viewModel.productImage) { state in
                 if let image = state.image{
@@ -23,12 +24,14 @@ struct ProductHistoryRowView: View {
                 }
             }
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 130)
+                .frame(width: isiPad ? 230 : 130)
                 .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  1))
                 .cornerRadius(20)
             
             VStack(alignment: .leading,spacing: 2) {
-                Text(viewModel.productName).bold()
+                Text(viewModel.productName)
+                    .font(.system(size: isiPad ? 24 : 14))
+                    .bold()
                 
                 VStack( alignment: .leading){
                     Text("ความหนา: \(viewModel.selectedCategory) มม.")
@@ -38,10 +41,10 @@ struct ProductHistoryRowView: View {
                    
               
                        
-                }.font(.system(size: 14))
+                }.font(.system(size: isiPad ? 24 : 14))
                     .foregroundColor(Color(.black).opacity(0.6))
                 Text("฿ \(viewModel.calculatedPrice)")
-                    .font(.subheadline.bold())
+                    .font(.system(size: isiPad ? 24 : 14)).bold()
                         .foregroundColor(Color(.black).opacity(1))
                 
             }
@@ -49,6 +52,8 @@ struct ProductHistoryRowView: View {
             
             if isAddProducthistoryView{
                 Image(systemName: "trash")
+                    .resizable()
+                    .frame(width: isiPad ? 28 : 18,height: isiPad ? 28 : 18)
                     .foregroundColor(Color(.red).opacity(0.8))
                     .onTapGesture {
                         addProductHistoryModel.removeFromCart(product: viewModel)

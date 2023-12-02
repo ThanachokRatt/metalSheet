@@ -88,7 +88,7 @@ class AddProductViewModel: ObservableObject {
            
 
             // Create a new instance with a unique ID
-            let newItem = CartModel(id: UUID().hashValue, productImage: product.productImage, productName: product.productName, description: product.description, categories: product.categories, priceNocolor: product.priceNocolor, priceColor: product.priceColor, colorCategories: product.colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
+            let newItem = CartModel(id: UUID().hashValue, productImage: product.productImage, productName: product.productName, description: product.description, categories: product.categories, priceNocolor: product.priceNocolor, priceColor: product.priceColor, colorCategories: product.colorCategories, currentPrice: existingProduct.currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
 
             // Append the new item to the cart
             items.append(newItem)

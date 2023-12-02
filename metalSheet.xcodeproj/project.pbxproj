@@ -16,11 +16,10 @@
 		F8313C172B06979B00618CD7 /* LongStepperFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8313C162B06979B00618CD7 /* LongStepperFloat.swift */; };
 		F838E8F12AF78C6700A21513 /* OtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F838E8F02AF78C6700A21513 /* OtpView.swift */; };
 		F83EC3472AFE258200AC5A5B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F83EC3462AFE258200AC5A5B /* Alamofire */; };
-		F83EC3492AFE258D00AC5A5B /* LabeledStepper in Frameworks */ = {isa = PBXBuildFile; productRef = F83EC3482AFE258D00AC5A5B /* LabeledStepper */; };
+		F8414D832B182517005F0608 /* LabelStepperInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8414D822B182517005F0608 /* LabelStepperInt.swift */; };
 		F857B7E82AF92FDA00C64660 /* CooldwonOtp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */; };
 		F86563632AF88C15004633FD /* otpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86563622AF88C15004633FD /* otpViewModel.swift */; };
 		F88A2FAC2AC41A4C0025F5DC /* NavigationStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */; };
-		F892B7842AEA03AD000CF7C7 /* LabeledStepper in Frameworks */ = {isa = PBXBuildFile; productRef = F892B7832AEA03AD000CF7C7 /* LabeledStepper */; };
 		F895817B2A9EFECD00973837 /* BasketShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895817A2A9EFECD00973837 /* BasketShelfView.swift */; };
 		F89581892A9F2B5300973837 /* backgroundHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89581882A9F2B5300973837 /* backgroundHomeView.swift */; };
 		F896592D2AE5213A007BA11B /* infoImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F896592C2AE5213A007BA11B /* infoImageModel.swift */; };
@@ -104,6 +103,7 @@
 		F8206B8E2A92FD88006B728B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F8313C162B06979B00618CD7 /* LongStepperFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongStepperFloat.swift; sourceTree = "<group>"; };
 		F838E8F02AF78C6700A21513 /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
+		F8414D822B182517005F0608 /* LabelStepperInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStepperInt.swift; sourceTree = "<group>"; };
 		F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooldwonOtp.swift; sourceTree = "<group>"; };
 		F86563622AF88C15004633FD /* otpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpViewModel.swift; sourceTree = "<group>"; };
 		F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackController.swift; sourceTree = "<group>"; };
@@ -182,11 +182,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F83EC3492AFE258D00AC5A5B /* LabeledStepper in Frameworks */,
 				F83EC3472AFE258200AC5A5B /* Alamofire in Frameworks */,
 				F8FF7C502AC95C9F00B27D3D /* Alamofire in Frameworks */,
 				F8FF7C4D2AC95C7200B27D3D /* ObjectMapper in Frameworks */,
-				F892B7842AEA03AD000CF7C7 /* LabeledStepper in Frameworks */,
 				F897E0062AD18AE90061A92A /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +378,7 @@
 				F89938AB2AB240CC00A4AA2C /* CategoryView.swift */,
 				F89938A72AB234F500A4AA2C /* FooterAddProductToCartView.swift */,
 				F8313C162B06979B00618CD7 /* LongStepperFloat.swift */,
+				F8414D822B182517005F0608 /* LabelStepperInt.swift */,
 			);
 			path = AddProductToCart;
 			sourceTree = "<group>";
@@ -764,9 +763,7 @@
 				F8FF7C4C2AC95C7200B27D3D /* ObjectMapper */,
 				F8FF7C4F2AC95C9F00B27D3D /* Alamofire */,
 				F897E0052AD18AE90061A92A /* NukeUI */,
-				F892B7832AEA03AD000CF7C7 /* LabeledStepper */,
 				F83EC3462AFE258200AC5A5B /* Alamofire */,
-				F83EC3482AFE258D00AC5A5B /* LabeledStepper */,
 			);
 			productName = metalSheet;
 			productReference = F8206B842A92FD88006B728B /* metalSheet.app */;
@@ -800,7 +797,6 @@
 				F8FF7C4B2AC95C7200B27D3D /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 				F8FF7C4E2AC95C9F00B27D3D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F897E0042AD18AE90061A92A /* XCRemoteSwiftPackageReference "NukeUI" */,
-				F892B7822AEA03AD000CF7C7 /* XCRemoteSwiftPackageReference "LabeledStepper" */,
 			);
 			productRefGroup = F8206B852A92FD88006B728B /* Products */;
 			projectDirPath = "";
@@ -836,6 +832,7 @@
 				F8A909612ACB1B0700BD1021 /* loginModel.swift in Sources */,
 				F89B40A22AA795E40020EFD7 /* MapCardViewModel.swift in Sources */,
 				F89B80092A984B5A000FE241 /* registerShlefView.swift in Sources */,
+				F8414D832B182517005F0608 /* LabelStepperInt.swift in Sources */,
 				F8A8E9C92ABF61F700476FBB /* ListRowView.swift in Sources */,
 				F8A425542AAD9DC800D4CE99 /* SplashScreenView.swift in Sources */,
 				F8B1BAAF2AA9B6D10072037E /* btnView.swift in Sources */,
@@ -1033,7 +1030,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
-				DEVELOPMENT_TEAM = CF5C5AM9GU;
+				DEVELOPMENT_TEAM = 3799YSC9W3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Saprachan;
@@ -1048,7 +1045,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sqwewebr.metsdqweb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saprachan.metalsheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1064,7 +1061,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
-				DEVELOPMENT_TEAM = CF5C5AM9GU;
+				DEVELOPMENT_TEAM = 3799YSC9W3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Saprachan;
@@ -1079,7 +1076,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sqwewebr.metsdqweb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saprachan.metalsheet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1111,14 +1108,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F892B7822AEA03AD000CF7C7 /* XCRemoteSwiftPackageReference "LabeledStepper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MojtabaHs/LabeledStepper.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		F897E0042AD18AE90061A92A /* XCRemoteSwiftPackageReference "NukeUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/NukeUI.git";
@@ -1150,16 +1139,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F8FF7C4E2AC95C9F00B27D3D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		F83EC3482AFE258D00AC5A5B /* LabeledStepper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F892B7822AEA03AD000CF7C7 /* XCRemoteSwiftPackageReference "LabeledStepper" */;
-			productName = LabeledStepper;
-		};
-		F892B7832AEA03AD000CF7C7 /* LabeledStepper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F892B7822AEA03AD000CF7C7 /* XCRemoteSwiftPackageReference "LabeledStepper" */;
-			productName = LabeledStepper;
 		};
 		F897E0052AD18AE90061A92A /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;

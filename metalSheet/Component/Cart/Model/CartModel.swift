@@ -15,8 +15,8 @@ struct CartModel: Identifiable, Codable, Mappable {
     var description: String = ""
     var priceNocolor: Int = 0
     var priceColor: Int = 0
-    var colorCategories: [String] = ["ดำ", "น้ำเงิน", "ขาว", "น้ำตาล", "ชมพู", "แดง", "เหลือง"]
-    var categories: [String] = ["0.20", "0.23", "0.35", "0.40", "0.47"]
+    var colorCategories: [String] = [""]//["เทาด้าน", "เทาเงา", "ดำด้าน", "ดำเงา", "น้ำตาล", "ลายไม้เข้ม", "ลายไม้อ่อน","ขาว","แดงเม็ดมะขาม","แดงอิฐ","แดงสด","ส้มอิฐ","ส้มสด","ชมพู","ครีม","เหลือง","ม่วง","น้ำเงิน","ฟ้า","เขียวเข้ม","เขียวบางจาก","เขียวร็อกเก็จ","เขียวหยก"]
+    var categories: [String] = [""]//["0.20", "0.23", "0.35", "0.40", "0.47"]
     var currentPrice: Int = 0
     var selectedCategory: String = ""
     var selectedColorCategory: String = ""
@@ -61,6 +61,8 @@ struct CartModel: Identifiable, Codable, Mappable {
         description <- map["details"]
         priceNocolor <- map["min_price"]
         priceColor <- map["max_price"]
+        colorCategories <- map["color"]
+        categories <- map["bmt"]
     }
     func updateCart() -> CartModel {
         return CartModel(id: id, productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)

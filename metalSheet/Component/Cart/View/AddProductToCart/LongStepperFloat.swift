@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 public struct LabeledStepper2: View {
 
@@ -27,7 +28,7 @@ public struct LabeledStepper2: View {
     }
 
     @Binding public var value: Float // Change the type to Float
-
+   
     public var title: String = ""
     public var description: String = ""
     public var range = 0...Float.infinity // Change the type to Float
@@ -61,9 +62,16 @@ public struct LabeledStepper2: View {
             block: action
         )
     }
-
+    enum FocusField{
+        case dec
+        case int
+        
+    }
+    @FocusState private var focusField: FocusField?
+    
 
     public var body: some View {
+        
 
         HStack {
             Text(title)
@@ -92,9 +100,31 @@ public struct LabeledStepper2: View {
                 Divider()
                     .padding([.top, .bottom], 8)
 
-                Text(String(format: "%.2f", value)) // Display value with two decimal places
-                                   .foregroundColor(style.valueColor)
-                                   .frame(width: style.labelWidth, height: style.height)
+                TextField("1.00", text: Binding(
+                    get: {
+                        if focusField != nil{
+                            return value.truncatingRemainder(dividingBy: 1) == 0 ? "\(Int(value))" : String(value)
+                            
+                        }else{
+                            return String(format: "%.2f", value)
+                        }
+                    },
+                    set: {
+                        if let newValue = Float($0) {
+                            value = min(max(range.lowerBound, newValue), range.upperBound)
+                        }
+                    }
+                ))
+                .focused($focusField,equals: .dec)
+                               .keyboardType(.decimalPad)
+                               
+                               .foregroundColor(style.valueColor)
+                               .frame(width: style.labelWidth, height: style.height)
+                               .textFieldStyle(RoundedBorderTextFieldStyle())
+                               .multilineTextAlignment(.center)
+                               
+                            
+                
 
                 Divider()
                     .padding([.top, .bottom], 8)
@@ -116,8 +146,26 @@ public struct LabeledStepper2: View {
             .background(style.backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .frame(height: style.height)
+           
         }
         .lineLimit(1)
+      /*  .toolbar{
+            ToolbarItem(placement: .keyboard) {
+             Spacer()
+
+            }
+            
+            ToolbarItem(placement: .keyboard) {
+                Button{
+                    focusField = nil
+                } label: {
+                    Text("เสร็จสิ้น")
+                        .foregroundColor(.blue)
+                }
+                .opacity(focusField != nil ? 1.0 : 0.0)
+                          .disabled(focusField == nil)
+            }
+        }*/
     }
 }
 
@@ -140,9 +188,9 @@ public struct Style {
 
     public init(
         height: Double = 34.0,
-        labelWidth: Double = 48.0,
-        buttonWidth: Double = 48.0,
-        buttonPadding: Double = 12.0,
+        labelWidth: Double = 68.0,
+        buttonWidth: Double = 68.0,
+        buttonPadding: Double = 16.0,
         backgroundColor: Color = Color(.quaternarySystemFill),
         activeButtonColor: Color = Color(.label),
         inactiveButtonColor: Color = Color(.tertiaryLabel),
