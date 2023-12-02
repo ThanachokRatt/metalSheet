@@ -20,8 +20,11 @@ struct ProductCartView: View {
                     HStack {
                       
                         buttonCartView(numberOfProduct: addProductHistoryModel.items.count)
+                        
                             .padding(.trailing,35)
+                
                             .frame(maxWidth: .infinity, alignment: .trailing)
+                            
                         
                     }
                     

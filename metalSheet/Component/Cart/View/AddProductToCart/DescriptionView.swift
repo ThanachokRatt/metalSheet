@@ -122,7 +122,7 @@ struct DescriptionView: View {
                     
                     
                     HStack(alignment: .bottom) {
-                        LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22,longPressInterval: 0.04)
+                        LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22,longPressInterval: 0.09)
                             .padding(.top, 10)
                             .font(.system(size:isiPad ? 22 : 18))
                             .bold()
@@ -136,7 +136,7 @@ struct DescriptionView: View {
           
                     
                     HStack(alignment: .bottom){
-                        LabelStepperInt("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.06)
+                        LabelStepperInt("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.09)
                         
                             .padding(.top,10)
                             .font(.system(size:isiPad ? 22 : 18))

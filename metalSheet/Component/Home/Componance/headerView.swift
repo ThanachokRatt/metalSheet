@@ -18,7 +18,7 @@ struct headerView: View {
                 .frame(width: isiPad ? 35 : 30 , height: isiPad ? 35 : 30)
                 .padding(EdgeInsets(top: 0, leading: 35, bottom: 20, trailing: 0))
             Text("\(loginViewModel.name)")
-                .font(.system(size: isiPad ? 24 : 18, weight: .bold))
+                .font(.system(size: isiPad ? 24 : 16, weight: .bold))
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 6, trailing: 0))
            
             Spacer()
