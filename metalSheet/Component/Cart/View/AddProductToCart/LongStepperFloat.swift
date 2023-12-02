@@ -102,10 +102,8 @@ public struct LabeledStepper2: View {
 
                 TextField("1.00", text: Binding(
                     get: {
-                      
                         if focusField != nil{
-                            let formattedValue = String(format: "%.2f", value)
-                            return formattedValue.hasSuffix(".00") ? String(format: "%.0f", value) : formattedValue
+                            return value.truncatingRemainder(dividingBy: 1) == 0 ? "\(Int(value))" : String(value)
                             
                         }else{
                             return String(format: "%.2f", value)

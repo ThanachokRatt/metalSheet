@@ -45,13 +45,7 @@ struct registerShlefView: View {
                                   isConfirmHidden: $isConfirmHidden,
                                   isEmailValid: $isEmailValid,
                                   showEmailError: $showEmailError)
-                    /*  .overlay(
-                     ZStack {
-                     if registerViewModel.shouldShow{
-                     CustomAlertViewSuccess()
-                     .padding(.top,70)
-                     }
-                     })*/
+                 
                     
                     checkboxView(role: $role).padding()
                     

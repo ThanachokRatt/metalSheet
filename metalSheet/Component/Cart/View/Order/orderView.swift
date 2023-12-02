@@ -281,16 +281,3 @@ struct orderView: View {
     
 }
 
-/*  .overlay(
- ZStack {
- if locationViewModel.items.contains(where: { $0.isSelected }) {
- if orderViewModel.showAlert2 {
- CustomAlertViewSuccess()
- .padding(.bottom, 270)
- }
- } else if isAlertFailVisible { // Show the CustomAlertViewFail
- CustomAlertViewFail(isAlertFailVisible: $isAlertFailVisible)
- .padding(.bottom, 270)
- }
- }
- )*/
