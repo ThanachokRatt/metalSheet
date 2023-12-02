@@ -7,7 +7,8 @@
 
 import SwiftUI
 import NukeUI
-import LabeledStepper
+import Combine
+
 struct DescriptionView: View {
     
     
@@ -27,6 +28,7 @@ struct DescriptionView: View {
 
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+
         ZStack {
             Color("Bgp")
                 .edgesIgnoringSafeArea(.all)
@@ -36,7 +38,15 @@ struct DescriptionView: View {
                     if let image = state.image{
                         image
                     }else {
-                        Text("กำลังโหลด...")
+                        VStack{
+                            Image("removeTextLogo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                            Text("กำลังโหลด...")
+                                .foregroundColor(Color.black.opacity(0.5))
+                                .font(.subheadline)
+                            
+                        }
                     }
                 }
                 .aspectRatio(contentMode: .fit)
@@ -65,9 +75,9 @@ struct DescriptionView: View {
                     
                     Text("รายละเอียด")
                         .fontWeight(.medium)
-                        .font(.system(size: isiPad ? 26 : 16))
-
-                        .padding(.vertical, 8)
+                        .font(.system(size: isiPad ? 26 : 18))
+                        .fontWeight(.semibold)
+                        .padding(.vertical, 4)
                     
                     Text(viewmodel.description)
                         .lineSpacing(8.0)
@@ -114,8 +124,9 @@ struct DescriptionView: View {
                     HStack(alignment: .bottom) {
                         LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22,longPressInterval: 0.04)
                             .padding(.top, 10)
-                            .font(.system(size:isiPad ? 20 : 16))
+                            .font(.system(size:isiPad ? 22 : 18))
                             .bold()
+                            
                     }
                     .onChange(of: stepperLong) { newValue in
                         var formattedValue = String(format: "%.2f", newValue)
@@ -125,11 +136,12 @@ struct DescriptionView: View {
           
                     
                     HStack(alignment: .bottom){
-                        LabeledStepper("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.06)
+                        LabelStepperInt("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.06)
                         
                             .padding(.top,10)
-                            .font(.system(size:isiPad ? 20 : 16))
+                            .font(.system(size:isiPad ? 22 : 18))
                             .bold()
+                        
                     }.onChange(of: stepperQty) { newValue in
                         // Print the updated value when the stepper value changes
                         var stepperQty = ""
@@ -139,7 +151,7 @@ struct DescriptionView: View {
                     }
                     HStack{
                         Spacer()
-                        Text("(แตะค้างเพื่อเพิ่มจำนวนอย่างรวดเร็ว)")
+                        Text("(แตะค้างหรือคลิกเพื่อพิมพ์เพื่อเพิ่มจำนวนอย่างรวดเร็ว)")
                             .foregroundColor(.red)
                             .opacity(0.8)
                             .font(.system(size: isiPad ? 24 : 15))
@@ -147,24 +159,63 @@ struct DescriptionView: View {
                     
                  
                 }
-                .font(.system(size: isiPad ? 24 : 16))
+                .font(.system(size: isiPad ? 24 : 18))
              
                 .padding()
                 .background(Color("Bgp"))
             .cornerRadius(15.0)
             }
+           
             .safeAreaInset(edge: .bottom) {
-                Color.clear.frame(height: 120)
+                Color.clear.frame(height: 80)
+                    .modifier(KeyboardAwareModifier())
             }.edgesIgnoringSafeArea(.top)
-            
+                .onTapGesture {
+                    // Hide the keyboard
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+          
             FooterAddProductToCartView(viewModel: viewmodel,stepperLong: $stepperLong,stepperQty: $stepperQty)
         }
         .edgesIgnoringSafeArea(.bottom)
+       
         
         .toolbar{
             buttonCartView(numberOfProduct: addProductHistoryModel.items.count)
         }
         
+    }
+}
+//MARK: - Adjust Keyboard
+struct KeyboardAwareModifier: ViewModifier {
+    @State private var keyboardHeight: CGFloat = 0
+
+    func body(content: Content) -> some View {
+        content
+            .padding(.bottom, keyboardHeight)
+          
+            .onReceive(Publishers.keyboardHeight) {
+                self.keyboardHeight = $0
+            }
+    }
+}
+
+
+extension Publishers {
+    static var keyboardHeight: AnyPublisher<CGFloat, Never> {
+        Publishers.Merge(
+            NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
+                .map { $0.keyboardHeight },
+            NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)
+                .map { _ in CGFloat(0) }
+        )
+        .eraseToAnyPublisher()
+    }
+}
+
+extension Notification {
+    var keyboardHeight: CGFloat {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
     }
 }
 

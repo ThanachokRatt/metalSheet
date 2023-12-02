@@ -1,23 +1,22 @@
 //
-//  LongStepperFloat.swift
+//  LabelStepperInt.swift
 //  metalSheet
 //
-//  Created by Schweppe on 17/11/2566 BE.
+//  Created by Schweppe on 30/11/2566 BE.
 //
 
 import SwiftUI
-import UIKit
 
-public struct LabeledStepper2: View {
+public struct LabelStepperInt: View {
 
     public init(
         _ title: String,
         description: String = "",
-        value: Binding<Float>, // Change the type to Float
-        in range: ClosedRange<Float> = 0...Float.infinity, // Change the type to Float
+        value: Binding<Int>,
+        in range: ClosedRange<Int> = 0...Int.max,
         longPressInterval: Double = 0.3,
         repeatOnLongPress: Bool = true,
-        style: Style = .init()
+        style: StyleInt = .init()
     ) {
         self.title = title
         self.description = description
@@ -27,11 +26,11 @@ public struct LabeledStepper2: View {
         self.repeatOnLongPress = repeatOnLongPress
     }
 
-    @Binding public var value: Float // Change the type to Float
-   
+    @Binding public var value: Int
+
     public var title: String = ""
     public var description: String = ""
-    public var range = 0...Float.infinity // Change the type to Float
+    public var range = 0...Int.max
     public var longPressInterval = 0.3
     public var repeatOnLongPress = true
 
@@ -42,16 +41,15 @@ public struct LabeledStepper2: View {
     private var isMinusButtonDisabled: Bool { value <= range.lowerBound }
 
     /// Perform the math operation passed into the function on the `value` and `1` each time the internal timer runs
-    private func onPress(_ isPressing: Bool, operation: @escaping (inout Float, Float) -> ()) {
+    private func onPress(_ isPressing: Bool, operation: @escaping (inout Int, Int) -> ()) {
+
         guard isPressing else { timer?.invalidate(); return }
 
         func action(_ timer: Timer?) {
-            // Use a dynamic step size based on precision
-            let step: Float = pow(10, -2.0) // Change the exponent based on precision
-            operation(&value, step)
+            operation(&value, 1)
         }
 
-        // Instant action call for short press action
+        /// Instant action call for short press action
         action(timer)
 
         guard repeatOnLongPress else { return }
@@ -62,16 +60,13 @@ public struct LabeledStepper2: View {
             block: action
         )
     }
-    enum FocusField{
-        case dec
+    enum FocusFieldInt{
         case int
         
     }
-    @FocusState private var focusField: FocusField?
-    
+    @FocusState private var focusField: FocusFieldInt?
 
     public var body: some View {
-        
 
         HStack {
             Text(title)
@@ -100,33 +95,28 @@ public struct LabeledStepper2: View {
                 Divider()
                     .padding([.top, .bottom], 8)
 
-                TextField("1.00", text: Binding(
+                TextField("1", text: Binding(
                     get: {
-                      
                         if focusField != nil{
-                            let formattedValue = String(format: "%.2f", value)
-                            return formattedValue.hasSuffix(".00") ? String(format: "%.0f", value) : formattedValue
-                            
+                            return "\(value)"
                         }else{
-                            return String(format: "%.2f", value)
+                           return "\(value)"
                         }
+                        
                     },
-                    set: {
-                        if let newValue = Float($0) {
-                            value = min(max(range.lowerBound, newValue), range.upperBound)
-                        }
-                    }
-                ))
-                .focused($focusField,equals: .dec)
-                               .keyboardType(.decimalPad)
-                               
-                               .foregroundColor(style.valueColor)
-                               .frame(width: style.labelWidth, height: style.height)
-                               .textFieldStyle(RoundedBorderTextFieldStyle())
-                               .multilineTextAlignment(.center)
-                               
-                            
-                
+                                set: {
+                                    if let newValue = Int($0) {
+                                        value = min(max(range.lowerBound, newValue), range.upperBound)
+                                    }
+                                }
+                            ))
+                .focused($focusField,equals: .int)
+                      .keyboardType(.numberPad)
+                            .foregroundColor(style.valueColor)
+                            .frame(width: style.labelWidth, height: style.height)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .multilineTextAlignment(.center)
+
 
                 Divider()
                     .padding([.top, .bottom], 8)
@@ -148,50 +138,35 @@ public struct LabeledStepper2: View {
             .background(style.backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
             .frame(height: style.height)
-           
         }
         .lineLimit(1)
-      /*  .toolbar{
-            ToolbarItem(placement: .keyboard) {
-             Spacer()
-
-            }
-            
-            ToolbarItem(placement: .keyboard) {
-                Button{
-                    focusField = nil
-                } label: {
-                    Text("เสร็จสิ้น")
-                        .foregroundColor(.blue)
-                }
-                .opacity(focusField != nil ? 1.0 : 0.0)
-                          .disabled(focusField == nil)
-            }
-        }*/
+       
     }
 }
 
+
 // MARK: - Preview
 
-struct LabeledStepper_Previews: PreviewProvider {
+struct LabelStepperInt_Previews: PreviewProvider {
 
     static var previews: some View {
-        LabeledStepper2(
+        LabelStepperInt(
             "Title",
             description: "description",
-            value: .constant(5.0) // Change the initial value to Float
+            value: .constant(5)
         )
             .previewLayout(.sizeThatFits)
             .padding()
     }
 }
 
-public struct Style {
+
+public struct StyleInt {
 
     public init(
         height: Double = 34.0,
-        labelWidth: Double = 68.0,
-        buttonWidth: Double = 68.0,
+        labelWidth: Double = 58.0,
+        buttonWidth: Double = 58.0,
         buttonPadding: Double = 16.0,
         backgroundColor: Color = Color(.quaternarySystemFill),
         activeButtonColor: Color = Color(.label),

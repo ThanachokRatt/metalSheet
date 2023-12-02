@@ -19,15 +19,6 @@
       }
     },
     {
-      "identity" : "labeledstepper",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MojtabaHs/LabeledStepper.git",
-      "state" : {
-        "revision" : "121ce0ea9505c6d934093b9c5a613a290032952c",
-        "version" : "1.1.1"
-      }
-    },
-    {
       "identity" : "nuke",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Nuke.git",
