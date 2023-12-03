@@ -19,7 +19,7 @@ struct CategoryView: View {
                 .foregroundColor(isActive ? Color.black : Color.black.opacity(0.5))
             if(isActive){
                 Color("lipstick")
-                    .frame(width: 25,height: 2)
+                    .frame(width: isiPad ? 48: 34,height: 3)
                 
             }
             

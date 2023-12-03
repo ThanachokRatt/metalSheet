@@ -20,7 +20,7 @@ struct ColorCategoryView: View {
                 print("Selected Color: \(color)") // Print the selected color
             }
             
-            .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color(selectedColor == color ? "green123" : "ดำเงา" ),lineWidth:  selectedColor == color ? 4 : 1))
+            .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color(selectedColor == color ? "lipstick" : "ดำเงา" ),lineWidth:  selectedColor == color ? 4 : 1))
            
     }
 }
