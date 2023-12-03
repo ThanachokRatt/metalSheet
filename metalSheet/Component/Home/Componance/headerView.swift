@@ -25,17 +25,23 @@ struct headerView: View {
             LineButton()
                 .padding(.bottom,5)
         }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .foregroundColor(Color.white).background(Color("green123").opacity(0.7)
-                .frame(width: .infinity)
-                .ignoresSafeArea())
+            .foregroundColor(Color.white)
+            .background(
+                Color("green123")
+                    .opacity(0.7)
+                    
+                    .frame(maxWidth: .infinity)
+                    .ignoresSafeArea()
+            )
+           
     }
 }
 
-struct headerVie_Previews: PreviewProvider {
+/*struct headerVie_Previews: PreviewProvider {
     static var previews: some View {
         headerView()
             .environmentObject(LoginViewModel())
             
     }
-}
+}*/
 

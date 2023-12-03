@@ -29,8 +29,8 @@ struct btnView: View {
     
 }
 
-struct btnView_Previews: PreviewProvider {
+/*struct btnView_Previews: PreviewProvider {
     static var previews: some View {
         btnView(image: "busLogo", name: "จัดการข้อมูลส่วนตัว")
     }
-}
+}*/

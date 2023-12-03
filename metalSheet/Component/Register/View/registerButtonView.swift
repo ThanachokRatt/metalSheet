@@ -25,8 +25,8 @@ struct registerButtonView: View {
         }
     }
 }
-struct registerButtonView_Previews: PreviewProvider {
+/*struct registerButtonView_Previews: PreviewProvider {
     static var previews: some View {
         registerButtonView()
     }
-}
+}*/

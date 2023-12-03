@@ -76,13 +76,13 @@ struct OtpView: View {
             
             Button{
                 otpViewModel.userOtp = "\(otpText)"
-                print(otpViewModel.userOtp )
+              /*  print(otpViewModel.userOtp )
                 print(otpViewModel.email)
                 print(otpViewModel.name)
                 print(otpViewModel.password)
                 print(otpViewModel.role)
                 print(otpViewModel.phone)
-                print(otpViewModel.verifyOtp)
+                print(otpViewModel.verifyOtp)*/
                 
                 var user = RegisterModel()
                 user.email = otpViewModel.email

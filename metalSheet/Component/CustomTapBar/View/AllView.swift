@@ -61,7 +61,7 @@ struct AllView: View {
     }
 }
 
-struct AllView_Previews: PreviewProvider {
+/*struct AllView_Previews: PreviewProvider {
     static var previews: some View {
         AllView()
             .environmentObject(LoginViewModel())
@@ -70,4 +70,4 @@ struct AllView_Previews: PreviewProvider {
             .environmentObject(PersonalViewModel())
             .environmentObject(AddProductViewModel())
     }
-}
+}*/

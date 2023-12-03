@@ -114,7 +114,7 @@ class LoginViewModel: ObservableObject {
                 if let json = value as? [String: Any] {
                     if let successMessage = json["msg"] as? String {
                         self.successMessageLogin = successMessage
-                        print(self.successMessageLogin)
+                     //   print(self.successMessageLogin)
                         self.loginSuccess = true
                         self.setLoggedIn(true)
                       
@@ -150,19 +150,19 @@ class LoginViewModel: ObservableObject {
                         
                       
 
-                        print("ID = :  \(self.id)")
-                        print("Email:  \(self.email)")
-                        print("Token: \(self.token)")
-                        print("Full-Name:  \(self.name)")
-                        print("Phone Number:  \(self.phone)")
-                        print("User Password \(self.passWord)")
+                     //   print("ID = :  \(self.id)")
+                       // print("Email:  \(self.email)")
+                        //print("Token: \(self.token)")
+                        //print("Full-Name:  \(self.name)")
+                        //print("Phone Number:  \(self.phone)")
+                        //print("User Password \(self.passWord)")
                     
                        
                     }
 
                     if let errorMessage = json["err"] as? String {
                         self.errorMessageLogin = errorMessage
-                        print(self.errorMessageLogin)
+                      //  print(self.errorMessageLogin)
                     }
 
                     // After successfully logging in, set isLoggedIn to true and save it

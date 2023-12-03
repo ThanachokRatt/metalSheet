@@ -19,7 +19,7 @@ struct searchProductView: View {
             HStack {
                 Button(action: {
                     // Handle search here using the searchText
-                    print("Search: \(searchText)")
+                 //   print("Search: \(searchText)")
                 }) {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(Color.black)

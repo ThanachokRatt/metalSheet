@@ -17,7 +17,7 @@ struct ColorCategoryView: View {
             .onTapGesture {
                 selectedColor = color
                 addProductHistoryModel.updateSelectedColorCategory(color)
-                print("Selected Color: \(color)") // Print the selected color
+             //   print("Selected Color: \(color)") // Print the selected color
             }
             
             .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color(selectedColor == color ? "lipstick" : "ดำเงา" ),lineWidth:  selectedColor == color ? 4 : 1))

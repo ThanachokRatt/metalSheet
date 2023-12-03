@@ -36,8 +36,8 @@ class OtpViewModel: ObservableObject{
                                let code = codeArray.first {
                                 self.alertMessage = successMessage
                                 self.verifyOtp = code
-                                print("alert: \(self.alertMessage)")
-                                print("otp: \(self.verifyOtp)")
+                              //  print("alert: \(self.alertMessage)")
+                                //print("otp: \(self.verifyOtp)")
                         self.redirectToOtpView = true
                         
                     }
@@ -46,7 +46,7 @@ class OtpViewModel: ObservableObject{
                          let Message = jsonDict["err"] as? String {
                          self.errorMessage = Message
                          self.redirectToOtpView = false
-                         print(self.errorMessage)
+                        // print(self.errorMessage)
                 }
                 completion()
             case .failure(let error):

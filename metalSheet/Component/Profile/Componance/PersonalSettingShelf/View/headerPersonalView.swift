@@ -29,8 +29,8 @@ struct headerPersonalView: View {
     }
 }
 
-struct headerPersonalView_Previews: PreviewProvider {
+/*struct headerPersonalView_Previews: PreviewProvider {
     static var previews: some View {
         headerPersonalView()
     }
-}
+}*/

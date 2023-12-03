@@ -38,8 +38,8 @@ struct AddListRowView: View {
     
  }
 
-struct addLocationButtonView_Previews: PreviewProvider {
+/*struct addLocationButtonView_Previews: PreviewProvider {
     static var previews: some View {
         AddListRowView()
     }
-}
+}*/

@@ -57,7 +57,6 @@
 		F8A1BDF32AA84203005FA5AE /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1BDF22AA84203005FA5AE /* TabBarModel.swift */; };
 		F8A2682D2AAC399900F5E97A /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A2682C2AAC399900F5E97A /* CartModel.swift */; };
 		F8A2682F2AAC39A900F5E97A /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A2682E2AAC39A900F5E97A /* CartViewModel.swift */; };
-		F8A268372AAC4E5300F5E97A /* searchProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A268362AAC4E5300F5E97A /* searchProductView.swift */; };
 		F8A425542AAD9DC800D4CE99 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A425532AAD9DC800D4CE99 /* SplashScreenView.swift */; };
 		F8A425572AADAF0800D4CE99 /* profileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A425562AADAF0800D4CE99 /* profileModel.swift */; };
 		F8A425592AADAF2100D4CE99 /* profileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A425582AADAF2100D4CE99 /* profileViewModel.swift */; };
@@ -143,7 +142,6 @@
 		F8A1BDF22AA84203005FA5AE /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		F8A2682C2AAC399900F5E97A /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		F8A2682E2AAC39A900F5E97A /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
-		F8A268362AAC4E5300F5E97A /* searchProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchProductView.swift; sourceTree = "<group>"; };
 		F8A425532AAD9DC800D4CE99 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		F8A425562AADAF0800D4CE99 /* profileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileModel.swift; sourceTree = "<group>"; };
 		F8A425582AADAF2100D4CE99 /* profileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewModel.swift; sourceTree = "<group>"; };
@@ -707,7 +705,6 @@
 			children = (
 				F81B88F82AB1C04400850B88 /* ProductCartView.swift */,
 				F8BF912F2AAABB4F0071F2F3 /* productSingleView.swift */,
-				F8A268362AAC4E5300F5E97A /* searchProductView.swift */,
 				F8A19C632AB9718B0007E4AE /* buttonCartView.swift */,
 			);
 			path = ProductShelf;
@@ -894,7 +891,6 @@
 				F8AA49CC2AD7DF0B00B840F5 /* PersonalButton.swift in Sources */,
 				F89819512AB0CFF00069EDCE /* headerPasswordView.swift in Sources */,
 				F89819472AB0CDC30069EDCE /* headerPersonalView.swift in Sources */,
-				F8A268372AAC4E5300F5E97A /* searchProductView.swift in Sources */,
 				F8A2682D2AAC399900F5E97A /* CartModel.swift in Sources */,
 				F89819572AB0D35B0069EDCE /* headerLocationView.swift in Sources */,
 				F8B4A8912AA18AED00C76587 /* infoImageView2.swift in Sources */,
@@ -1034,6 +1030,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Saprachan;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1066,6 +1063,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Saprachan;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1130,8 +1128,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = exactVersion;
+				version = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

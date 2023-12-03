@@ -24,8 +24,8 @@ struct saveInfoPasswordView: View {
     }
 }
 
-struct saveInfoPasswordView_Previews: PreviewProvider {
+/*struct saveInfoPasswordView_Previews: PreviewProvider {
     static var previews: some View {
         saveInfoPasswordView()
     }
-}
+}*/

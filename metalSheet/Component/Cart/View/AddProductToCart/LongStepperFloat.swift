@@ -180,7 +180,7 @@ public struct LabeledStepper2: View {
 
 // MARK: - Preview
 
-struct LabeledStepper_Previews: PreviewProvider {
+/*struct LabeledStepper_Previews: PreviewProvider {
 
     static var previews: some View {
         LabeledStepper2(
@@ -191,7 +191,7 @@ struct LabeledStepper_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .padding()
     }
-}
+}*/
 
 public struct Style {
 

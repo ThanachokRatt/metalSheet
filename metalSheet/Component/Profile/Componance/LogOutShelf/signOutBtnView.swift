@@ -20,8 +20,8 @@ struct signOutBtnView: View {
 }
 
 
-struct signOutBtnView_Previews: PreviewProvider {
+/*struct signOutBtnView_Previews: PreviewProvider {
     static var previews: some View {
         signOutBtnView()
     }
-}
+}*/

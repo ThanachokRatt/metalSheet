@@ -38,8 +38,8 @@ struct forLoopSettingBtnView: View {
     }
 }
 
-struct forLoopSettingBtnView_Previews: PreviewProvider {
+/*struct forLoopSettingBtnView_Previews: PreviewProvider {
     static var previews: some View {
         forLoopSettingBtnView()
     }
-}
+}*/

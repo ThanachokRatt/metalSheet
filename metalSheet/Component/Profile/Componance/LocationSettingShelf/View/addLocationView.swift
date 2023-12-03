@@ -64,7 +64,7 @@ struct addLocationView: View {
                                     isHomeSelected = true
                                     isWorkSelected = false
                                     addressType = "บ้าน"
-                                    print(addressType)
+                                  //  print(addressType)
                                 }
                                 .contentShape(Rectangle()) // Make the button tappable
                             
@@ -78,7 +78,7 @@ struct addLocationView: View {
                                     isHomeSelected = false
                                     isWorkSelected = true
                                     addressType = "ที่ทำงาน"
-                                    print(addressType)
+                                  //  print(addressType)
                                     
                                 }
                                 .contentShape(Rectangle()) // Make the button tappable

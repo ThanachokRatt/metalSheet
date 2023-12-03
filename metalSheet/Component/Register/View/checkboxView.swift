@@ -34,7 +34,7 @@ struct checkboxView: View {
             Button(action: {
                 selectedOption = 1
                 role = (options[selectedOption])
-                print(role)
+              //  print(role)
             }) {
                 Image(systemName: selectedOption == 1 ? "checkmark.circle.fill" : "circle")
                     .resizable()
