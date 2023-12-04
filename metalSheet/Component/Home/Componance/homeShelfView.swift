@@ -51,12 +51,12 @@ struct homeShelfView: View {
     }
 }
 
-struct homePageView_Previews: PreviewProvider {
+/*struct homePageView_Previews: PreviewProvider {
     static var previews: some View {
         homeShelfView()
             .environmentObject(LoginViewModel())
     }
-}
+}*/
 
 struct homeCaptionView: View {
     let infoData: [InfoDataModel]

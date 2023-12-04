@@ -28,8 +28,8 @@ struct settingView: View {
     }
 }
 
-struct headerView_Previews: PreviewProvider {
+/*struct headerView_Previews: PreviewProvider {
     static var previews: some View {
         settingView()
     }
-}
+}*/

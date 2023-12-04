@@ -89,7 +89,7 @@ struct loginShelfView: View {
     }
 }
 
-struct loginVie_Previews: PreviewProvider {
+/*struct loginVie_Previews: PreviewProvider {
     static var previews: some View {
         loginShelfView()
             .environmentObject(LoginViewModel())
@@ -97,4 +97,4 @@ struct loginVie_Previews: PreviewProvider {
             .environmentObject(AddProductViewModel())
             .environmentObject(PersonalViewModel())
     }
-}
+}*/

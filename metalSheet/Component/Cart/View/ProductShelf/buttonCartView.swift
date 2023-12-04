@@ -49,8 +49,8 @@ struct buttonCartView: View {
     }
 }
 
-struct buttonCartView_Previews: PreviewProvider {
+/*struct buttonCartView_Previews: PreviewProvider {
     static var previews: some View {
         buttonCartView(numberOfProduct: 1)
     }
-}
+}*/

@@ -36,11 +36,11 @@ struct LineButton: View {
     }
 }
 
-struct LineButton_Previews: PreviewProvider {
+/*struct LineButton_Previews: PreviewProvider {
     static var previews: some View {
         LineButton()
     }
-}
+}*/
 /*Link(destination: URL(string: urlLine)!,
      label: {
     Image("lineButtonImage")

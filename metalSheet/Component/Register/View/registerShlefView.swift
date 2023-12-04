@@ -204,9 +204,9 @@ struct BackgroundView: View {
     }
 }
 
-struct registerShlefView_Previews: PreviewProvider {
+/*struct registerShlefView_Previews: PreviewProvider {
     static var previews: some View {
         registerShlefView().environmentObject(RegisterViewModel())
             .environmentObject(OtpViewModel())
     }
-}
+}*/

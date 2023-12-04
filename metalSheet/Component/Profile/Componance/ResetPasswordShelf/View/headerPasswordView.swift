@@ -28,8 +28,8 @@ struct headerPasswordView: View {
     }
 }
 
-struct headerPasswordView_Previews: PreviewProvider {
+/*struct headerPasswordView_Previews: PreviewProvider {
     static var previews: some View {
         headerPasswordView()
     }
-}
+}*/

@@ -40,7 +40,7 @@ struct infoImageView2: View {
              
                     .scaledToFit()
                     .cornerRadius(20)
-                    .frame(width: .infinity, height: isiPad ? iPadHeight : 400)
+                    .frame(width: UIScreen.main.bounds.width, height: isiPad ? iPadHeight : 400)
                   
                 }
                 .cornerRadius(20)
@@ -53,7 +53,9 @@ struct infoImageView2: View {
         }
         
         .cornerRadius(20)
-        .frame(width: .infinity, height: isiPad ? iPadHeight : 400)
+        
+        .frame(width: UIScreen.main.bounds.width, height: isiPad ? iPadHeight : 400)
+
         .tabViewStyle(PageTabViewStyle())
         .padding(EdgeInsets(top: 5, leading: 12, bottom: 5, trailing: 12))
         

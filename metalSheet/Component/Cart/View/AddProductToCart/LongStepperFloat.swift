@@ -49,6 +49,8 @@ public struct LabeledStepper2: View {
             // Use a dynamic step size based on precision
             let step: Float = pow(10, -2.0) // Change the exponent based on precision
             operation(&value, step)
+            formatValue()
+            
         }
 
         // Instant action call for short press action
@@ -61,6 +63,11 @@ public struct LabeledStepper2: View {
             repeats: true,
             block: action
         )
+    }
+    private func formatValue() {
+        if focusField != nil {
+            value = Float(String(format: "%.2f", value)) ?? 0.0
+        } 
     }
     enum FocusField{
         case dec
@@ -167,11 +174,13 @@ public struct LabeledStepper2: View {
             }
         }*/
     }
+    
 }
+
 
 // MARK: - Preview
 
-struct LabeledStepper_Previews: PreviewProvider {
+/*struct LabeledStepper_Previews: PreviewProvider {
 
     static var previews: some View {
         LabeledStepper2(
@@ -182,7 +191,7 @@ struct LabeledStepper_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .padding()
     }
-}
+}*/
 
 public struct Style {
 

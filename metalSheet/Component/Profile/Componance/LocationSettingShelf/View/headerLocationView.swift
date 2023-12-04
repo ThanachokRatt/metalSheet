@@ -29,8 +29,8 @@ struct headerLocationView: View {
     }
 }
 
-struct headerLocationView_Previews: PreviewProvider {
+/*struct headerLocationView_Previews: PreviewProvider {
     static var previews: some View {
         headerLocationView()
     }
-}
+}*/

@@ -86,10 +86,10 @@ struct ProductCartView: View {
     }
 }
 
-struct ProductCartView_Previews: PreviewProvider {
+/*struct ProductCartView_Previews: PreviewProvider {
     static var previews: some View {
         ProductCartView()
             .environmentObject(AddProductViewModel())
         
     }
-}
+}*/

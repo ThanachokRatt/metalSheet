@@ -23,8 +23,8 @@ struct BasketShelfView: View {
     }
 }
 
-struct orderHistoryView_Previews: PreviewProvider {
+/*struct orderHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         BasketShelfView()
     }
-}
+}*/

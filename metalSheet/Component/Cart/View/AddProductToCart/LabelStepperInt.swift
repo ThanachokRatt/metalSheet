@@ -147,7 +147,7 @@ public struct LabelStepperInt: View {
 
 // MARK: - Preview
 
-struct LabelStepperInt_Previews: PreviewProvider {
+/*struct LabelStepperInt_Previews: PreviewProvider {
 
     static var previews: some View {
         LabelStepperInt(
@@ -158,7 +158,7 @@ struct LabelStepperInt_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .padding()
     }
-}
+}*/
 
 
 public struct StyleInt {

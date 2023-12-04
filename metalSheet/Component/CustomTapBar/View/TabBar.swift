@@ -41,11 +41,11 @@ struct TabBar: View {
     }
 }
 
-struct tabBarView3_Previews: PreviewProvider {
+/*struct tabBarView3_Previews: PreviewProvider {
     static var previews: some View {
         TabBar()
     }
-}
+}*/
 
 struct TabBarButton: View {
     var item: TabItem

@@ -27,8 +27,8 @@ struct MapCard: View {
     }
 }
 
-struct MapCard_Previews: PreviewProvider {
+/*struct MapCard_Previews: PreviewProvider {
     static var previews: some View {
         MapCard(mapCard: mapCardViewModel[0])
     }
-}
+}*/
