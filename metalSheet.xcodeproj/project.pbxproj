@@ -18,6 +18,7 @@
 		F83EC3472AFE258200AC5A5B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F83EC3462AFE258200AC5A5B /* Alamofire */; };
 		F8414D832B182517005F0608 /* LabelStepperInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8414D822B182517005F0608 /* LabelStepperInt.swift */; };
 		F857B7E82AF92FDA00C64660 /* CooldwonOtp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */; };
+		F85EC6512B1F7A6B00F61000 /* DeleteUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EC6502B1F7A6B00F61000 /* DeleteUserViewModel.swift */; };
 		F86563632AF88C15004633FD /* otpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86563622AF88C15004633FD /* otpViewModel.swift */; };
 		F88A2FAC2AC41A4C0025F5DC /* NavigationStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */; };
 		F895817B2A9EFECD00973837 /* BasketShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895817A2A9EFECD00973837 /* BasketShelfView.swift */; };
@@ -104,6 +105,7 @@
 		F838E8F02AF78C6700A21513 /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
 		F8414D822B182517005F0608 /* LabelStepperInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStepperInt.swift; sourceTree = "<group>"; };
 		F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooldwonOtp.swift; sourceTree = "<group>"; };
+		F85EC6502B1F7A6B00F61000 /* DeleteUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewModel.swift; sourceTree = "<group>"; };
 		F86563622AF88C15004633FD /* otpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpViewModel.swift; sourceTree = "<group>"; };
 		F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackController.swift; sourceTree = "<group>"; };
 		F895817A2A9EFECD00973837 /* BasketShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketShelfView.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A425582AADAF2100D4CE99 /* profileViewModel.swift */,
+				F85EC6502B1F7A6B00F61000 /* DeleteUserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				F8A1BDF32AA84203005FA5AE /* TabBarModel.swift in Sources */,
 				F89819552AB0D0230069EDCE /* saveInfoPasswordView.swift in Sources */,
 				F8206B8A2A92FD88006B728B /* loginShelfView.swift in Sources */,
+				F85EC6512B1F7A6B00F61000 /* DeleteUserViewModel.swift in Sources */,
 				F8FF7C522AC95CB800B27D3D /* RegisterModel.swift in Sources */,
 				F8BAFA442AD95AC00045131D /* OrderModel.swift in Sources */,
 				F8ACD0082A99CCA10050A7BE /* checkboxView.swift in Sources */,

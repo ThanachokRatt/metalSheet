@@ -42,6 +42,23 @@ class PersonalViewModel: ObservableObject{
             }
         }
     }
+    func deteleUser(){
+        let apiUrl = "https://domhee-api.onrender.com/api/admin/delUser/\(id)"
+        AF.request(apiUrl,method: .delete,encoding: JSONEncoding.default).responseJSON{
+            response in
+            switch response.result{
+            case .success(let value):
+                if let jsonDict = value as? [String:Any],
+                   let successMessage = jsonDict["msg"] as?
+                    String{
+                    self.alertMessage = successMessage
+                    print(self.alertMessage)
+                }
+            case .failure(let error):
+                self.alertMessage = "\(error)"
+            }
+        }
+    }
     func setShowAlert(){
         shouldShow = false
     }
