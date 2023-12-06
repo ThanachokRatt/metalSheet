@@ -16,6 +16,7 @@ struct AllView: View {
         @EnvironmentObject var addProductViewModel: AddProductViewModel
         @EnvironmentObject var personalViewModel: PersonalViewModel
         @EnvironmentObject var orderViewModel: OrderViewModel
+    @State private var isLoginSheetPresented = false
 
   //  @StateObject var navigationStackController = NavigationStackController()
    
@@ -32,7 +33,13 @@ struct AllView: View {
                     
              
                 case .signout:
-                    profileSettingShelfView()
+                    if loginViewModel.isLoggedIn{
+                        profileSettingShelfView()
+                    }else{
+                        singInAndRegisterBtnView()
+                            }
+                    
+                   
                     
                 }
                 TabBar()

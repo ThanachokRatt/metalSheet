@@ -18,8 +18,8 @@
 		F83EC3472AFE258200AC5A5B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F83EC3462AFE258200AC5A5B /* Alamofire */; };
 		F8414D832B182517005F0608 /* LabelStepperInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8414D822B182517005F0608 /* LabelStepperInt.swift */; };
 		F857B7E82AF92FDA00C64660 /* CooldwonOtp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */; };
-		F85EC6512B1F7A6B00F61000 /* DeleteUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85EC6502B1F7A6B00F61000 /* DeleteUserViewModel.swift */; };
 		F86563632AF88C15004633FD /* otpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86563622AF88C15004633FD /* otpViewModel.swift */; };
+		F88722642B20D8BD003B78E9 /* singInAndRegisterBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88722632B20D8BD003B78E9 /* singInAndRegisterBtnView.swift */; };
 		F88A2FAC2AC41A4C0025F5DC /* NavigationStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */; };
 		F895817B2A9EFECD00973837 /* BasketShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895817A2A9EFECD00973837 /* BasketShelfView.swift */; };
 		F89581892A9F2B5300973837 /* backgroundHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89581882A9F2B5300973837 /* backgroundHomeView.swift */; };
@@ -105,8 +105,8 @@
 		F838E8F02AF78C6700A21513 /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
 		F8414D822B182517005F0608 /* LabelStepperInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelStepperInt.swift; sourceTree = "<group>"; };
 		F857B7E72AF92FDA00C64660 /* CooldwonOtp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooldwonOtp.swift; sourceTree = "<group>"; };
-		F85EC6502B1F7A6B00F61000 /* DeleteUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewModel.swift; sourceTree = "<group>"; };
 		F86563622AF88C15004633FD /* otpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpViewModel.swift; sourceTree = "<group>"; };
+		F88722632B20D8BD003B78E9 /* singInAndRegisterBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = singInAndRegisterBtnView.swift; sourceTree = "<group>"; };
 		F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackController.swift; sourceTree = "<group>"; };
 		F895817A2A9EFECD00973837 /* BasketShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketShelfView.swift; sourceTree = "<group>"; };
 		F89581882A9F2B5300973837 /* backgroundHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backgroundHomeView.swift; sourceTree = "<group>"; };
@@ -557,7 +557,6 @@
 			isa = PBXGroup;
 			children = (
 				F8A425582AADAF2100D4CE99 /* profileViewModel.swift */,
-				F85EC6502B1F7A6B00F61000 /* DeleteUserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -620,6 +619,7 @@
 				F89819462AB0CDC30069EDCE /* headerPersonalView.swift */,
 				F89819482AB0CDEB0069EDCE /* textfieldPersonalView.swift */,
 				F8AA49CB2AD7DF0B00B840F5 /* PersonalButton.swift */,
+				F88722632B20D8BD003B78E9 /* singInAndRegisterBtnView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -842,7 +842,6 @@
 				F8A1BDF32AA84203005FA5AE /* TabBarModel.swift in Sources */,
 				F89819552AB0D0230069EDCE /* saveInfoPasswordView.swift in Sources */,
 				F8206B8A2A92FD88006B728B /* loginShelfView.swift in Sources */,
-				F85EC6512B1F7A6B00F61000 /* DeleteUserViewModel.swift in Sources */,
 				F8FF7C522AC95CB800B27D3D /* RegisterModel.swift in Sources */,
 				F8BAFA442AD95AC00045131D /* OrderModel.swift in Sources */,
 				F8ACD0082A99CCA10050A7BE /* checkboxView.swift in Sources */,
@@ -899,6 +898,7 @@
 				F89819572AB0D35B0069EDCE /* headerLocationView.swift in Sources */,
 				F8B4A8912AA18AED00C76587 /* infoImageView2.swift in Sources */,
 				F8206B882A92FD88006B728B /* metalSheetApp.swift in Sources */,
+				F88722642B20D8BD003B78E9 /* singInAndRegisterBtnView.swift in Sources */,
 				F89938A42AB233B700A4AA2C /* DescriptionView.swift in Sources */,
 				F898883C2A9B331E008ED3FB /* homeShelfView.swift in Sources */,
 				F895817B2A9EFECD00973837 /* BasketShelfView.swift in Sources */,
@@ -1028,7 +1028,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
 				DEVELOPMENT_TEAM = 3799YSC9W3;
 				ENABLE_PREVIEWS = YES;
@@ -1061,7 +1061,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
 				DEVELOPMENT_TEAM = 3799YSC9W3;
 				ENABLE_PREVIEWS = YES;

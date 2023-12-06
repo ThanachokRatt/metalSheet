@@ -20,14 +20,14 @@ struct loginShelfView: View {
     @EnvironmentObject var personalViewModel: PersonalViewModel
     @EnvironmentObject var orderViewModel: OrderViewModel
     
-    let green: String = "green123"
+    let green: String = "greenlogin"
     let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
         NavigationStack{
             ZStack {
                 Color(green)
                     .ignoresSafeArea()
-                    .opacity(0.8)
+                    
                 Circle()
                     .scaleEffect(isiPad ? 1.4 : 1.7)
                     .foregroundColor(.white.opacity(0.3))
@@ -83,7 +83,9 @@ struct loginShelfView: View {
                 
             }
             .accentColor(Color(.black))
+            .preferredColorScheme(.light)
             .navigationViewStyle(StackNavigationViewStyle())
+            
             
         }
     }

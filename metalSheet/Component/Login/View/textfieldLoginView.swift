@@ -19,18 +19,27 @@ struct textfieldLoginView: View {
             
             TextField("Email", text: $email)
                 .padding()
+              
                 .frame(width: 300,height: 50)
-                .background(Color.black.opacity(0.05))
+               
                 .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius:  10).stroke(Color.black,lineWidth: 1))
+               
+               
             
                
             
             SecureField("Password", text: $password)
                 .padding()
+            
                 .frame(width: 300,height: 50)
-                .background(Color.black.opacity(0.05))
+              
                 .cornerRadius(10)
+                .overlay(RoundedRectangle(cornerRadius:  10).stroke(Color.black,lineWidth: 1))
+              
+                
         }
+        
     }
 }
 

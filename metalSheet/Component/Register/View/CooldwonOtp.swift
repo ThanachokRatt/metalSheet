@@ -62,7 +62,7 @@ struct CooldwonOtp: View {
 }
 
 
-#Preview {
+/*#Preview {
     CooldwonOtp()
         .environmentObject(OtpViewModel())
-}
+}*/

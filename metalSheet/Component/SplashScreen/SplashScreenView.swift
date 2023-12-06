@@ -27,7 +27,8 @@ struct SplashScreenView: View {
                 if loginViewModel.isLoggedIn {
                     AllView()
                 } else {
-                    loginShelfView()
+                   // loginShelfView()
+                    AllView()
                 }
             }
         }

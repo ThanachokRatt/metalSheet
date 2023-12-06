@@ -115,6 +115,7 @@ struct registerShlefView: View {
                     }
                 }
             }
+            .preferredColorScheme(.light)
             .background(
                 // Use NavigationLink to navigate to OtpView when redirectToOtpView is true
                 NavigationLink("", destination: OtpView(), isActive: $otpViewModel.redirectToOtpView)

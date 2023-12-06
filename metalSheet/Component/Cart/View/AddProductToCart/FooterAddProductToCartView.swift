@@ -8,11 +8,12 @@ import SwiftUI
 
 struct FooterAddProductToCartView: View {
     @EnvironmentObject var addProductHistoryModel : AddProductViewModel
-
+    @EnvironmentObject var loginViewModel : LoginViewModel
     var viewModel: CartModel
     
     @Binding var stepperLong: Float // Binding to stepperLong
     @Binding var stepperQty: Int
+    @State private var isLoginSheetPresented = false
     
     var body: some View {
         VStack{
@@ -20,12 +21,18 @@ struct FooterAddProductToCartView: View {
             Spacer()
             
             Button(action: {
-            
-                addProductHistoryModel.addToCart(product: viewModel)
-                addProductHistoryModel.updateCurrentPrice(product: viewModel)
+                if loginViewModel.isLoggedIn{
+                    addProductHistoryModel.addToCart(product: viewModel)
+                    addProductHistoryModel.updateCurrentPrice(product: viewModel)
+                    
+                    stepperLong = 1.00
+                    stepperQty = 1
+                }else{
+                    isLoginSheetPresented.toggle()
+                }
                 
-                stepperLong = 1.00
-                stepperQty = 1
+                
+               
             }, label: {
                 VStack (spacing: 5){
                     Image(systemName: "basket")
@@ -51,6 +58,9 @@ struct FooterAddProductToCartView: View {
                 .cornerRadius(10)
               
             })
+            .sheet(isPresented: $isLoginSheetPresented){
+                loginShelfView()
+            }
          
             
         
