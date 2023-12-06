@@ -26,13 +26,6 @@ struct LineButton: View {
                     .padding(.horizontal,20)
             })
          
-        
-    
-      
-        
-            
- 
-            
     }
 }
 
