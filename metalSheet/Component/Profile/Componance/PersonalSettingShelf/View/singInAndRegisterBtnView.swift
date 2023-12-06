@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import WebKit
 struct singInAndRegisterBtnView: View {
     @State private var isLoginSheetPresented = false
     let isiPad = UIDevice.current.userInterfaceIdiom == .pad
@@ -73,6 +73,9 @@ struct PolicyButtonView: View {
     }
 }
 
+
+
+
 struct WebView: View {
     let url: URL
 
@@ -85,32 +88,31 @@ struct WebView: View {
 struct WebViewContainer: UIViewRepresentable {
     let url: URL
 
-    func makeUIView(context: Context) -> WebViewUI {
-        return WebViewUI(url: url)
+    func makeUIView(context: Context) -> WKWebView {
+        let webView = WKWebView()
+        webView.navigationDelegate = context.coordinator
+        webView.load(URLRequest(url: url))
+        return webView
     }
 
-    func updateUIView(_ uiView: WebViewUI, context: Context) {
-        // Update the view
-    }
-}
-
-class WebViewUI: UIView {
-    let webView = UIWebView()
-
-    init(url: URL) {
-        super.init(frame: .zero)
-        webView.loadRequest(URLRequest(url: url))
-        addSubview(webView)
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        // Update the view if needed
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        webView.frame = bounds
+    class Coordinator: NSObject, WKNavigationDelegate {
+        var parent: WebViewContainer
+
+        init(_ parent: WebViewContainer) {
+            self.parent = parent
+        }
+
+        // Implement WKNavigationDelegate methods if needed
     }
 }
+
 
 
