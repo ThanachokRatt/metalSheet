@@ -16,7 +16,9 @@ struct AllView: View {
         @EnvironmentObject var addProductViewModel: AddProductViewModel
         @EnvironmentObject var personalViewModel: PersonalViewModel
         @EnvironmentObject var orderViewModel: OrderViewModel
+    @EnvironmentObject var orderHistoryViewModel : OrderHistoryViewModel
     @State private var isLoginSheetPresented = false
+    
 
   //  @StateObject var navigationStackController = NavigationStackController()
    
@@ -33,8 +35,11 @@ struct AllView: View {
                     
              
                 case .signout:
+                   
                     if loginViewModel.isLoggedIn{
+                      
                         profileSettingShelfView()
+                        
                     }else{
                         singInAndRegisterBtnView()
                             }
@@ -54,6 +59,7 @@ struct AllView: View {
              selectedTab = .home
               personalViewModel.id = "\(loginViewModel.id)"
               orderViewModel.id = "\(loginViewModel.id)"
+              orderHistoryViewModel.id = "\(loginViewModel.id)"
               locationViewModel.itemsKey = "Location_List_\(loginViewModel.id)"
               addProductViewModel.itemsCartKey = "Cart_Key_\(loginViewModel.id)"
               addProductViewModel.totalKey = "Total_Key_\(loginViewModel.id)"

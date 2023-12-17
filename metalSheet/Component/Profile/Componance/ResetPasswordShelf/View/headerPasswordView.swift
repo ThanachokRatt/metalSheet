@@ -9,6 +9,7 @@ import SwiftUI
 
 struct headerPasswordView: View {
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack (spacing: 35){
             Image("passwordLogo")
                 .resizable()
@@ -18,7 +19,7 @@ struct headerPasswordView: View {
             
             Text("เปลี่ยนรหัสผ่าน")
                 .foregroundColor(.black).opacity(0.5)
-                .font(.system(size:30))
+                .font(Font.custom("Pridi-Regular",size: isiPad ? 40 : 30))
                 .fontWeight(.bold)
                
                 .frame(maxWidth: .infinity,alignment: .leading)

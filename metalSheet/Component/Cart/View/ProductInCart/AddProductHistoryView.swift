@@ -29,10 +29,10 @@ struct AddProductHistoryView: View {
                       
                         Spacer()
                         Text("฿\(addProductHistoryModel.total).00")
-                        
+                            .font(.system(size: isiPad ? 27 : 17))
                         
                     }
-                    .font(.system(size: isiPad ? 27 : 17))
+                    .font(Font.custom("Pridi-Regular",size: isiPad ? 29 : 19))
                     .bold()
                     .padding()
                     HStack{
@@ -55,7 +55,7 @@ struct AddProductHistoryView: View {
                     Text("ตะกร้าสินค้าว่างเปล่า")
                         .foregroundColor(.black.opacity(0.6))
                         .bold()
-                        .font(.system(size: 25))
+                        .font(Font.custom("Pridi-Light",size: isiPad ? 37 : 27))
                 }
             }
             .navigationTitle(Text("ตะกร้า"))

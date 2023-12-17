@@ -39,13 +39,13 @@ struct productSingleView: View {
                    .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
                 Text(viewmodel.productName)
                        
-                        .fontWeight(.bold)
-                        .opacity(0.7)
+                       
+                        
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity,alignment: .leading)
                 
-                        .font(.system(size: isiPad ? 27 : 18))
-                   
+                        .font(Font.custom("Pridi-Light",size: isiPad ? 26 : 18))
+                        .padding(.top,-3)
                 }
                         
             }

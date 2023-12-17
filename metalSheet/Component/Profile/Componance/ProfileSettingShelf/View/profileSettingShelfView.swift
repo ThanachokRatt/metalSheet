@@ -14,6 +14,7 @@ struct profileSettingShelfView: View {
     @State private var isLogoutAlertPresented = false
     @State private var isDeleteUserAlertPresented = false
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         NavigationView {
             ScrollView {
                 VStack {
@@ -26,6 +27,7 @@ struct profileSettingShelfView: View {
                         isDeleteUserAlertPresented = true
                     } label: {
                         btnView(image: "deleteLogo", name: "ลบบัญชีผู้ใช้งาน")
+                            .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 18))
                     }
                     .alert("ต้องการลบบัญชีผู้ใช้งานและออกจากระบบหรือไม่?", isPresented: $isDeleteUserAlertPresented ) {
                         Button("ยืนยัน") {

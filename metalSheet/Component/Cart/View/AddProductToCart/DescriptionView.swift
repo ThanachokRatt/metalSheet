@@ -55,14 +55,14 @@ struct DescriptionView: View {
                 
                 VStack (alignment: .leading,spacing: 10){
                     Text(viewmodel.productName)
-                        .font(.system(size: isiPad ? 34 : 24))
+                        .font(Font.custom("Pridi-Regular",size: isiPad ? 36 : 26))
                         .bold()
                     HStack {
                         Text("฿\(isCategoryEnabled ? viewmodel.priceColor : viewmodel.priceNocolor) ")
                            
                         
                         Text("(ราคาต่อเมตร)")
-                            .font(.system(size: isiPad ? 24 : 14))
+                            .font(Font.custom("Pridi-Light",size: isiPad ? 26 : 16))
                             .padding(.bottom,-5)
                     } .font(.system(size: isiPad ? 34 : 24))
                      
@@ -71,23 +71,25 @@ struct DescriptionView: View {
                     Text("(สามารถเลือกสีได้เฉพาะความหนา 0.35มิลลิเมตร)")
                         .foregroundColor(.red)
                         .opacity(0.8)
-                        .font(.system(size: isiPad ? 25 : 15))
+                        .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 17))
                     
                     Text("รายละเอียด")
-                        .fontWeight(.medium)
-                        .font(.system(size: isiPad ? 26 : 18))
+                        
+                        .font(Font.custom("Pridi-Regular",size: isiPad ? 28 : 20))
                         .fontWeight(.semibold)
                         .padding(.vertical, 4)
                     
-                    Text(viewmodel.description)
+                    Text(" \(viewmodel.description)")
                         .lineSpacing(8.0)
                         .opacity(0.6)
+                        .font(Font.custom("Pridi-Light",size: isiPad ? 28 : 20))
                    
                     HStack (alignment: .top){
                         VStack(alignment: .leading) {
                             Text("ความหนา(มิลลิเมตร)")
                             
                                 .fontWeight(.semibold)
+                                .font(Font.custom("Pridi-Regular",size: isiPad ? 28 : 20))
                                 .padding(.bottom,4)
                             
                             HStack{
@@ -124,7 +126,7 @@ struct DescriptionView: View {
                     HStack(alignment: .bottom) {
                         LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22,longPressInterval: 0.09)
                             .padding(.top, 10)
-                            .font(.system(size:isiPad ? 22 : 18))
+                            .font(Font.custom("Pridi-Regular",size: isiPad ? 24 : 20))
                             .bold()
                             
                     }
@@ -139,7 +141,7 @@ struct DescriptionView: View {
                         LabelStepperInt("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.09)
                         
                             .padding(.top,10)
-                            .font(.system(size:isiPad ? 22 : 18))
+                            .font(Font.custom("Pridi-Regular",size: isiPad ? 24 : 20))
                             .bold()
                         
                     }.onChange(of: stepperQty) { newValue in
@@ -154,7 +156,7 @@ struct DescriptionView: View {
                         Text("(แตะค้างหรือคลิกเพื่อพิมพ์เพื่อเพิ่มจำนวนอย่างรวดเร็ว)")
                             .foregroundColor(.red)
                             .opacity(0.8)
-                            .font(.system(size: isiPad ? 24 : 15))
+                            .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 17))
                     }
                     
                  

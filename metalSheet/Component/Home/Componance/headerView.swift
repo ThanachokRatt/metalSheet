@@ -14,12 +14,12 @@ struct headerView: View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         HStack {
             if loginViewModel.isLoggedIn{
-                Image(systemName: "person")
+                Image(systemName: "person.circle")
                     .resizable()
                     .frame(width: isiPad ? 35 : 30 , height: isiPad ? 35 : 30)
-                    .padding(EdgeInsets(top: 0, leading: 35, bottom: 20, trailing: 0))
+                    .padding(EdgeInsets(top: -15, leading: 35, bottom: 0, trailing: 0))
                 Text("\(loginViewModel.name)")
-                    .font(.system(size: isiPad ? 24 : 16, weight: .bold))
+                    .font(Font.custom("Pridi-Regular",size: isiPad ? 25 : 17))
                     .padding(EdgeInsets(top: 0, leading: 5, bottom: 6, trailing: 0))
             }else{
                 Image(systemName: "")
@@ -32,8 +32,13 @@ struct headerView: View {
             }
            
             Spacer()
-            LineButton()
-                .padding(.bottom,5)
+            HStack{
+                FaceBookButton()
+                LineButton()
+            }
+           
+                .padding(.bottom,15)
+                .padding(.trailing,15)
         }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         
         

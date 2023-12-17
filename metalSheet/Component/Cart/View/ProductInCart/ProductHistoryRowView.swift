@@ -30,10 +30,13 @@ struct ProductHistoryRowView: View {
             
             VStack(alignment: .leading,spacing: 2) {
                 Text(viewModel.productName)
-                    .font(.system(size: isiPad ? 24 : 14))
+                    .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                     .bold()
+                    .foregroundColor(.black)
+                    .padding(.bottom,-6)
                 
-                VStack( alignment: .leading){
+                VStack( alignment: .leading,spacing: 0){
+                   
                     Text("ความหนา: \(viewModel.selectedCategory) มม.")
                     Text("ความยาว: \(viewModel.selectedLong) ม.")
                     Text("สี: \(viewModel.selectedColorCategory)")
@@ -41,10 +44,11 @@ struct ProductHistoryRowView: View {
                    
               
                        
-                }.font(.system(size: isiPad ? 24 : 14))
+                }.font(Font.custom("Pridi-Light",size: isiPad ? 24 : 14))
                     .foregroundColor(Color(.black).opacity(0.6))
+                
                 Text("฿ \(viewModel.calculatedPrice)")
-                    .font(.system(size: isiPad ? 24 : 14)).bold()
+                    .font(.system(size: isiPad ? 25 : 15)).bold()
                         .foregroundColor(Color(.black).opacity(1))
                 
             }
@@ -61,6 +65,7 @@ struct ProductHistoryRowView: View {
             }
         }
         .padding(.horizontal)
+        .padding(.vertical,4)
         .frame(width: .infinity, alignment: .leading)
     }
 }

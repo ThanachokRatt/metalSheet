@@ -22,6 +22,7 @@ struct homeShelfView: View {
                                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 7, trailing: 0))
                     
                             homeCaptionView(infoData: homeViewModel.homeModel)
+                            
                             VStack(spacing: 20) {
                                 ForEach(mapCardViewModel) { i in
                                     MapCard(mapCard: i)
@@ -67,7 +68,7 @@ struct homeCaptionView: View {
                 .padding()
                 .foregroundColor(.black)
                 .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
-                .font(.system(size: isiPad ? 23 : 15, weight: .regular))
+                .font(Font.custom("Pridi-Light",size: isiPad ? 25 : 16))
                 .frame(maxWidth:.infinity)
             
                 .overlay(

@@ -14,7 +14,7 @@ struct ProductCartView: View {
     let itemsPerRow = 2 // จำนวนรายการต่อแถว
     
     var body: some View {
-    
+           let isiPad = UIDevice.current.userInterfaceIdiom == .pad
             ZStack {
                 VStack {
                     HStack {
@@ -30,8 +30,8 @@ struct ProductCartView: View {
                     
                     ScrollView {
                         Text("รายการสินค้า")
-                            .foregroundColor(.black).opacity(0.6)
-                            .font(.system(size: 30))
+                            
+                            .font(Font.custom("Pridi-Regular",size: isiPad ? 40 : 30))
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(15)

@@ -9,6 +9,8 @@ import Foundation
 enum settingTab: String{
     case userSetting
     case addressSetting
+    case orderHistory
     case chagePassword
+    
       
 }

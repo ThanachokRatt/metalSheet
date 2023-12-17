@@ -42,7 +42,7 @@ struct ListRowView:View{
                         
                         Spacer()
                         
-                    }.font(.system(size:isiPad ? 25 : 15))
+                    }.font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                     
                     HStack{
                         VStack (spacing: 5){
@@ -83,22 +83,26 @@ struct ListRowView:View{
                                 
                                     .foregroundColor(Color.gray.opacity(0.8))
                                 if navigationtoLocationView {
-                                    Image("pin")
+                                    Image(systemName: "house.fill")
+                                    
                                         .resizable()
+                                        .foregroundColor(.red)
                                         .scaledToFit()
-                                        .frame(width:isiPad ? 26 : 16, height:isiPad ? 36 : 26)
-                                        .padding(EdgeInsets(top: -10, leading: 0, bottom: 0, trailing: 0))
+                                        .frame(width:isiPad ? 32 : 22, height:isiPad ? 32 : 22)
+                                        .padding(EdgeInsets(top: -5, leading: 0, bottom: 0, trailing: 0))
                                 } else {
-                                    Image("pin")
+                                    Image(systemName: "house.fill")
+                                    
                                         .resizable()
+                                        .foregroundColor(.red)
                                         .scaledToFit()
-                                        .frame(width:isiPad ? 26 : 16, height:isiPad ? 36 : 26)
-                                        .padding(EdgeInsets(top: -10, leading: 0, bottom: 0, trailing: 0))
+                                        .frame(width:isiPad ? 32 : 22, height:isiPad ? 32 : 22)
+                                        .padding(EdgeInsets(top: -5, leading: 0, bottom: 0, trailing: 0))
                                 }
                                 
                             }
                             
-                        }.font(.system(size:isiPad ? 22 : 12))
+                        }.font(Font.custom("Pridi-Light",size: isiPad ? 25 : 15))
                         
                         
                         

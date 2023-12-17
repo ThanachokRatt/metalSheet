@@ -54,8 +54,8 @@ struct ColorDotCategoryView: View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
 
          VStack(alignment: .leading) {
-             Text("สี: \(isCategoryEnabled ? selectedColor ?? "อลูซิงค์" : "อลูซิงค์")")
-                 .font(.system(size: isiPad ? 26 : 18))
+             Text("สี : \(isCategoryEnabled ? selectedColor ?? "อลูซิงค์" : "อลูซิงค์")")
+                 .font(Font.custom("Pridi-Regular",size: isiPad ? 28 : 20))
                  .bold()
 
              LazyVGrid(columns: columns, spacing: 5) {

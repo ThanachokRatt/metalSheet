@@ -34,30 +34,34 @@ struct addLocationView: View {
         }
     
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack (spacing: 0) {
             Form {
                 
-                Section(header: Text("ช่องทางการติดต่อ").font(.body)) {
+                Section(header: Text("ช่องทางการติดต่อ").font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))) {
                         TextField("ชื่อจริง-นามสกุล", text: $name)
                         TextField("เบอร์มือถือ", text: $phoneNumber)
                         
-                    }
-                    Section(header: Text("ที่อยู่").font(.body)) {
+                    }.font(Font.custom("Pridi-Light",size: isiPad ? 26 : 16))
+                    Section(header: Text("ที่อยู่").font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))) {
                         TextField("จังหวัดม เขต/อำเภอ,แขวง/ตำบล", text: $address1)
                         TextField("บ้านเลขที่,ซอย,หมู่,ถนน", text: $address2)
                         TextField("รหัสไปรษณีย์", text: $postCode)
-                    }
-                    Section(header: Text("ประเภทที่อยู่").font(.body)) {
+                        
+                    }.font(Font.custom("Pridi-Light",size: isiPad ? 26 : 16))
+                    Section(header: Text("ประเภทที่อยู่").font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))) {
                         
                         
                         HStack {
                             Text("เลือกประเภทที่อยู่")
+                                .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                             Spacer()
                             
                             Text("บ้าน")
                                 .padding(.all,8)
                                 .background(isHomeSelected ? Color("green123").opacity(0.7) : Color.gray.opacity(0.4))
                                 .foregroundColor(isHomeSelected ? .white : .black)
+                                .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                                 .cornerRadius(10)
                                 .onTapGesture {
                                     selectedAddressType = .home
@@ -72,6 +76,7 @@ struct addLocationView: View {
                                 .padding(.all,8)
                                 .background(isWorkSelected ? Color("green123").opacity(0.7) : Color.gray.opacity(0.4))
                                 .foregroundColor(isWorkSelected ? .white : .black)
+                                .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                                 .cornerRadius(10)
                                 .onTapGesture {
                                     selectedAddressType = .work

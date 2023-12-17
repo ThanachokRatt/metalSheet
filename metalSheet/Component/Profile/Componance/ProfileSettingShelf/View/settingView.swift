@@ -9,6 +9,7 @@ import SwiftUI
 
 struct settingView: View {
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack (spacing: 15){
             Image("removeTextLogo")
                 .resizable()
@@ -16,8 +17,8 @@ struct settingView: View {
                 .scaledToFit()
                 .frame(width: 180,height: 180)
             Text("การตั้งค่า")
-                .foregroundColor(.black).opacity(0.5)
-                .font(.system(size:30))
+                .foregroundColor(.black)
+                .font(Font.custom("Pridi-Light",size: isiPad ? 40 : 30))
                 .fontWeight(.bold)
                
                 .frame(maxWidth: .infinity,alignment: .leading)
