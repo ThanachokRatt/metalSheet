@@ -33,6 +33,7 @@ struct MapCardModel: Identifiable, Codable, Mappable {
 		image <- map["img_name"]
 		url <- map["img_url"]
 	}
+	
 }
 
 /*var mapCardViewModel = [
