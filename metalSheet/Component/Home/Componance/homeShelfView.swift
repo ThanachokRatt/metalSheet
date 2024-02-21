@@ -9,7 +9,7 @@ import SwiftUI
 
 struct homeShelfView: View {
     @StateObject var homeViewModel = HomeViewModel()
-    
+	@StateObject var mapCardViewModel = MapCardViewModel()
     var body: some View {
         NavigationView {
             ZStack {
@@ -22,13 +22,14 @@ struct homeShelfView: View {
                                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 7, trailing: 0))
                     
                             homeCaptionView(infoData: homeViewModel.homeModel)
-                            
-                            VStack(spacing: 20) {
-                                ForEach(mapCardViewModel) { i in
-                                    MapCard(mapCard: i)
-                                }
-                            }
-                            .padding()
+							LazyVStack(spacing: 10){
+								ForEach(0..<mapCardViewModel.mapCardModel.count, id: \.self){
+									index in
+									MapCardView(viewmodel: mapCardViewModel.mapCardModel[index])
+								}
+								
+							}
+							.padding(.top,10)
                         }else{
 
                                 ProgressView()

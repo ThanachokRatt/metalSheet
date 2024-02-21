@@ -10,7 +10,7 @@ import SwiftUI
 struct LineButton: View {
     let urlLine: String = "https://line.me/ti/p/gxyce5rV3r"
     var body: some View {
-        let iPadWidth: CGFloat = 45
+        let iPadWidth: CGFloat = 50
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
             Link(destination: URL(string: urlLine)!,
                  label: {

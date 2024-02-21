@@ -5,30 +5,46 @@
 //  Created by Schweppe on 5/9/2566 BE.
 //
 
+
 import SwiftUI
+import NukeUI
 
-struct MapCard: View {
-    var mapCard: MapCardModel
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0){
-            Link(destination: URL(string: mapCard.url)!,
-            label: {
-                Image(mapCard.image)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(20)
-                    .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  1))
-                    
-                    
-            })
-            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
-        }.shadow(radius: 2)
-   
-    }
+struct MapCardView: View {
+	var viewmodel: MapCardModel// Use ObservedObject to observe changes
+	
+	var body: some View {
+		let isiPad = UIDevice.current.userInterfaceIdiom == .pad
+		
+		VStack(alignment: .leading, spacing: 15) {
+			Link(destination: URL(string: viewmodel.url)!, label: {
+				LazyImage(source: viewmodel.image) { state in
+					if let image = state.image {
+						image
+					} else {
+						ZStack {
+							
+							Image("loadingMap")
+								
+								.resizable()
+								.scaledToFit()
+								.cornerRadius(15)
+								
+							ProgressView()
+						}
+					}
+				}
+				.overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.black, lineWidth: 2))
+				.frame(width: UIScreen.main.bounds.width - 15, height: isiPad ? 220 : 120)
+				.cornerRadius(15)
+				
+			})
+			.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+			
+			
+			
+		}
+	}
 }
-
-/*struct MapCard_Previews: PreviewProvider {
-    static var previews: some View {
-        MapCard(mapCard: mapCardViewModel[0])
-    }
+/*#Preview {
+	MapCardView(viewmodel: MapCardModel(image: "https://res.cloudinary.com/dgfkdk5nu/image/upload/v1708500673/Map%E0%B8%A1%E0%B8%B5%E0%B8%99%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5%E0%B9%81%E0%B8%81%E0%B9%89.png", title: "123", url: "123"))
 }*/
