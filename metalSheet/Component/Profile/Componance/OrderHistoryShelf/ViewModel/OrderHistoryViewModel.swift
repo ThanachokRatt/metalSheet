@@ -17,8 +17,8 @@ class OrderHistoryViewModel:ObservableObject{
     
     
     func getOrder(){
-        let apiUrl = "https://domhee-api.onrender.com/api/admin/order/\(id)"
-        
+       // let apiUrl = "https://domhee-api.onrender.com/api/admin/order/\(id)"
+		let apiUrl =  "https://saprachanapi.onrender.com/order?uid=\(id)"
         AF.request(apiUrl,method: .get).responseJSON { [weak self] response in
             switch response.result {
             case .success(let jsonData):

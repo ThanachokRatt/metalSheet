@@ -90,7 +90,7 @@ struct OtpView: View {
                 user.name = otpViewModel.name
                 user.phone = otpViewModel.phone
                 user.role = otpViewModel.role
-                user.code = otpViewModel.userOtp
+                user.code = otpViewModel.userOtp 
                 isRegister = true
                 
                 self.registerViewModel.registerUser(user: user) {

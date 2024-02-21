@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LineButton: View {
-    let urlLine: String = "https://line.me/ti/p/q_4GqY44yw"
+    let urlLine: String = "https://line.me/ti/p/gxyce5rV3r"
     var body: some View {
         let iPadWidth: CGFloat = 45
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad

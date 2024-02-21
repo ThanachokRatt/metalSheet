@@ -15,7 +15,7 @@ struct ProductHistoryRowView: View {
 
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
-        HStack(spacing: 30) {
+        HStack(spacing: 20) {
             LazyImage(source: viewModel.productImage) { state in
                 if let image = state.image{
                     image
@@ -37,10 +37,22 @@ struct ProductHistoryRowView: View {
                 
                 VStack( alignment: .leading,spacing: 0){
                    
-                    Text("ความหนา: \(viewModel.selectedCategory) มม.")
-                    Text("ความยาว: \(viewModel.selectedLong) ม.")
-                    Text("สี: \(viewModel.selectedColorCategory)")
-                    Text("จำนวน: \(viewModel.selectedQty) ชิ้น")
+					
+					if !viewModel.selectedCategory.isEmpty {
+						Text("ความหนา : \(viewModel.selectedCategory) มม.")
+						  }
+					if !viewModel.selectedCategory.isEmpty{
+						Text("ความยาว : \(viewModel.selectedLong) ม.")
+					}
+					
+                    Text("สี : \(viewModel.selectedColorCategory)")
+			
+					
+					Text("ราคา : \(viewModel.currentPrice)  จำนวน : \(viewModel.selectedQty) ชิ้น").lineLimit(1).truncationMode(.tail)
+					
+				
+				
+					
                    
               
                        

@@ -33,7 +33,7 @@ struct headerView: View {
            
             Spacer()
             HStack{
-                FaceBookButton()
+				FaceBookButton()
                 LineButton()
             }
            

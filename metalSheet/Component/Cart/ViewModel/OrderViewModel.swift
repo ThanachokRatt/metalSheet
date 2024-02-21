@@ -24,14 +24,16 @@ class OrderViewModel: ObservableObject{
     
     func saveOrder(user: OrderModel,completion: @escaping () -> Void){
         let userJson = user.toJSON()
-        let apiUrl = "https://domhee-api.onrender.com/api/user/\(id)/order"
+        let apiUrl = "https://saprachanapi.onrender.com/order/?uid=\(id)"
         
         AF.request(apiUrl, method: .post, parameters: userJson, encoding: JSONEncoding.default).responseJSON{
             response in
             switch response.result{
             case .success(let value):
-                if let jsonDict = value as? [String: Any],
-                   let successMessage = jsonDict["msg"] as?
+				self.shouldDismiss = true
+				self.showAlert2 = true
+               /* if let jsonDict = value as? [String: Any],
+                   let successMessage = jsonDict["succesfully"] as?
                     String{
                     self.showAlert(message: successMessage)
                     self.shouldDismiss = true
@@ -42,11 +44,12 @@ class OrderViewModel: ObservableObject{
                             String{
                     self.showAlert(message: err)
                     self.shouldDismiss = false
-                }
+                }*/
                 completion()
             case .failure(let error):
                 self.showAlert(message: "Update failed with error:\(error)")
                 self.shouldDismiss = false
+				print("Update failed with error:\(error.localizedDescription)")
                 completion()
             }
         }

@@ -32,14 +32,14 @@ struct AllView: View {
                         .environmentObject(loginViewModel)
                 case .cart:
                     ProductCartView()
-                    
+                
              
                 case .signout:
                    
                     if loginViewModel.isLoggedIn{
                       
                         profileSettingShelfView()
-                        
+                       
                     }else{
                         singInAndRegisterBtnView()
                             }

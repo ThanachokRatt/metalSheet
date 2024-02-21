@@ -26,10 +26,10 @@ struct OrderHistoryModel: Mappable, Hashable  {
     init(){}
     init?(map: Map){}
     mutating func mapping(map: Map) {
-        orderNumber <- map["order_no"]
+        orderNumber <- map["orderNo"]
         orderStatus <- map["status"]
-        sumTotal <- map["grand_totol"]
-        orderLists <- map["items"]
+        sumTotal <- map["grand_total"]
+        orderLists <- map["order_list"]
     }
     
     

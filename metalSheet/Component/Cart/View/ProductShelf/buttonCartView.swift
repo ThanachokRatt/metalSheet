@@ -11,13 +11,14 @@ struct buttonCartView: View {
     
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
-        NavigationLink (destination: AddProductHistoryView(viewModel: CartModel(id: 1, productImage: "product1", productName: "ลอคสแน๊ปลอค", description: "เมทัลชีท 5 สันลอนรูปแบบทันสมัย สามารถติดตั้งแบบซ่อนสกรูได้ทำให้งานเนียนไม่รำคาญตา สามารถรีดความยาวได้ตามความต้องการ ", categories: ["0.20" ,"0.23","0.35","0.40","0.47"], priceNocolor: 56, priceColor: 63, colorCategories: ["ดำ","น้ำเงิน","ขาว","น้ำตาล","ชมพู","แดง","เหลือง"],currentPrice: 0,selectedCategory: "",selectedColorCategory: "",selectedLong: "", selectedQty: "")), label: {
+        NavigationLink (destination: AddProductHistoryView(viewModel: CartModel(id: "", productImage: "product1", productName: "ลอคสแน๊ปลอค", description: "เมทัลชีท 5 สันลอนรูปแบบทันสมัย สามารถติดตั้งแบบซ่อนสกรูได้ทำให้งานเนียนไม่รำคาญตา สามารถรีดความยาวได้ตามความต้องการ ", categories: ["0.20" ,"0.23","0.35","0.40","0.47"], priceNocolor: 56, priceColor: 63, colorCategories: ["ดำ","น้ำเงิน","ขาว","น้ำตาล","ชมพู","แดง","เหลือง"],currentPrice: 0,selectedCategory: "",selectedColorCategory: "",selectedLong: "", selectedQty: "")), label: {
             
             ZStack(alignment: .topTrailing) {
                 Circle()
                               .foregroundColor(Color("lipstick"))
                               .frame(width: isiPad ? 45 : 35, height: isiPad ? 45 : 35)
                               .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -6))
+							  .shadow(radius: 4)
                 
                 Image(systemName: "basket")
                     .resizable()
@@ -40,7 +41,7 @@ struct buttonCartView: View {
                 }
                 
 
-            }
+			}
          
                
                
@@ -49,8 +50,8 @@ struct buttonCartView: View {
     }
 }
 
-/*struct buttonCartView_Previews: PreviewProvider {
+struct buttonCartView_Previews: PreviewProvider {
     static var previews: some View {
         buttonCartView(numberOfProduct: 1)
     }
-}*/
+}

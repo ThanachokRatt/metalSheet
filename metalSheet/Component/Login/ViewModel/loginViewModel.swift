@@ -17,7 +17,7 @@ class LoginViewModel: ObservableObject {
     @Published var token = ""
     @Published var name: String = ""
     @Published var phone: String = ""
-    @Published var id = 0
+	@Published var id: String = ""
     @Published var isLoggedIn: Bool = false
     @Published var loginSuccess = false
     @Published var passWord: String = ""
@@ -44,7 +44,7 @@ class LoginViewModel: ObservableObject {
         isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
     
-    func setUserId(_ value: Int) {
+    func setUserId(_ value: String) {
         id = value
         UserDefaults.standard.set(value, forKey: "userId")
         UserDefaults.standard.synchronize()
@@ -52,7 +52,7 @@ class LoginViewModel: ObservableObject {
     
     func loadUserId() {
         
-            id = UserDefaults.standard.integer(forKey: "userId")
+		id = UserDefaults.standard.string(forKey: "userId") ?? ""
         }
     
     func setUserName(_ value: String){
@@ -106,8 +106,8 @@ class LoginViewModel: ObservableObject {
 
     func loginUser(user: LoginModel, completion: @escaping () -> Void) {
         let userJson = user.toJSON()
-        let apiUrl = "https://domhee-api.onrender.com/api/login"
-
+       // let apiUrl = "https://domhee-api.onrender.com/api/login"
+		let apiUrl = "https://saprachanapi.onrender.com/auth/v1/login"
         AF.request(apiUrl, method: .post, parameters: userJson, encoding: JSONEncoding.default).responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -120,14 +120,14 @@ class LoginViewModel: ObservableObject {
                       
                     }
                     if let data = json["data"] as? [String: Any] {
-                        self.id = data["id"] as? Int ?? 0
+                        self.id = data["id"] as? String ?? ""
                         self.email = data["email"] as? String ?? ""
                         self.token = data["token"] as? String ?? ""
                         self.name = data["name"] as? String ?? ""
                         self.phone = data["phone"] as? String ?? ""
                         self.passWord = data["pwd"] as? String ?? ""
                         
-                        if let userId = data["id"] as? Int {
+                        if let userId = data["id"] as? String {
                             self.setUserId(userId)
                         }
                         if let userName = data["name"] as? String {
@@ -189,7 +189,7 @@ class LoginViewModel: ObservableObject {
         setUserEmail("")
         setUserPhone("")
         setUserName("")
-        setUserId(0)
+        setUserId("")
         setLoggedIn(false)
     }
 }

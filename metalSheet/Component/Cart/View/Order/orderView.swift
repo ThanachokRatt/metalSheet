@@ -26,7 +26,7 @@ struct orderView: View {
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         ScrollView {
-            VStack {
+            LazyVStack {
                 
                 if locationViewModel.items.contains(where: { $0.isSelected }) {
                     ForEach(locationViewModel.items.filter { $0.isSelected }) { selectedLocation in
@@ -34,7 +34,7 @@ struct orderView: View {
                             VStack {
                                 
                                 ListRowView(item: selectedLocation, navigationtoLocationView: $navigationToLocationView)
-                                    .overlay(RoundedRectangle(cornerRadius: 10,style: .continuous).stroke(Color.black,lineWidth:  1))
+                                    .overlay(RoundedRectangle(cornerRadius: 10,style: .continuous).stroke(Color.black,lineWidth:  1).padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)))
                                     .padding(.horizontal,8)
                                     .padding(.vertical,8)
                             }
@@ -74,7 +74,7 @@ struct orderView: View {
                     Text("ราคาสินค้าทั้งหมด")
                     
                     Spacer()
-                    Text("฿\(addProductHistoryModel.total).00")
+                    Text("฿ \(addProductHistoryModel.total).00")
                         
                 }.font(.system(size: isiPad ? 27 : 17))
                     .bold()
@@ -149,10 +149,19 @@ struct orderView: View {
                         var orderItems = [OrderItem]()
                         
                         if let selectedLocation = locationViewModel.items.first(where: { $0.isSelected }) {
-                            user.name = ("\(selectedLocation.name)")
-                            user.phone = ("\(selectedLocation.phone)")
-                            user.address = ("ที่อยู่: \(selectedLocation.addressOne) \(selectedLocation.adressTwo) รหัสไปรษณีย์: \(selectedLocation.postCode) ประเภทที่อยู่: \(selectedLocation.addressType)")
-                            user.detail = ("\(addProductHistoryModel.total).00 บาท")
+							user.name = ("\(selectedLocation.name)")
+							user.phone = ("\(selectedLocation.phone)")
+							
+							user.address = ("\(selectedLocation.addressOne) \(selectedLocation.adressTwo)")
+							
+							user.postcode = "\(selectedLocation.postCode)"
+							user.type = ("\(selectedLocation.addressType)")
+							
+							
+							user.grandTotal = ("\(addProductHistoryModel.total).00")
+							
+							user.locationUrl = ("\(selectedLocation.locationLink)")
+							
                             
                             
                         }
@@ -161,9 +170,13 @@ struct orderView: View {
                             var orderItem = OrderItem()
                             orderItem.itemId = id + 1
                             orderItem.name = ("\(item.productName)")
-                            orderItem.bmt =  ("ความหนา: \(item.selectedCategory) มม.")
-                            orderItem.length = ("ความยาว: \(item.selectedLong) ม.")
-                            orderItem.color = ("สี: \(item.selectedColorCategory)")
+							
+							if !item.selectedCategory.isEmpty{
+								orderItem.bmt =  ("ความหนา : \(item.selectedCategory) มม.")
+								orderItem.length = ("ความยาว : \(item.selectedLong) ม.")
+							}
+
+                            orderItem.color = ("สี : \(item.selectedColorCategory)")
                             orderItem.qty = Int(item.selectedQty) ?? 0
                             orderItem.price = item.calculatedPrice
                             orderItems.append(orderItem)
@@ -243,7 +256,7 @@ struct orderView: View {
                         .bold()
                         .font(.system(size: 27))
                         .foregroundColor(.black)
-                    Text(" กรุณาตรวจสอบอีเมลของท่าน")
+                    Text(" กรุณารอทางทีมงานติดต่อกลับ")
                         .foregroundColor(.black)
                         .font(.system(size: 18))
                     Text("ทางทีมงานจะติดต่อกลับภายในเร็วๆนี้")

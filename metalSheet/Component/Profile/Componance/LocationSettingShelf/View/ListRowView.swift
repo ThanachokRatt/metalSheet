@@ -74,6 +74,13 @@ struct ListRowView:View{
                                     .stroke(Color.gray.opacity(0.8), lineWidth: 1))
                             
                                 .frame(maxWidth: .infinity,alignment: .leading)
+							
+							if !item.locationLink.isEmpty {
+								Text(item.locationLink)
+									.frame(maxWidth: .infinity,alignment: .leading)
+									.lineLimit(1)
+							}
+							
                             HStack{
                                 Text(item.isSelected ? "(ค่าเริ่มต้น)" : " ")
                                 

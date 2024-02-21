@@ -19,9 +19,10 @@ class PersonalViewModel: ObservableObject{
     
     func updateUser(user: PersonalModel,completion: @escaping () -> Void){
         let userJson = user.toJSON()
-        let apiUrl = "https://domhee-api.onrender.com/api/user/\(id)"
+       // let apiUrl = "https://domhee-api.onrender.com/api/user/\(id)"
+		let apiUrl = "https://saprachanapi.onrender.com/user/?uid=\(id)"
         
-        AF.request(apiUrl, method: .put, parameters: userJson, encoding: JSONEncoding.default).responseJSON{
+		AF.request(apiUrl, method: .patch, parameters: userJson, encoding: JSONEncoding.default).responseJSON{
             response in
             switch response.result{
             case .success(let value):

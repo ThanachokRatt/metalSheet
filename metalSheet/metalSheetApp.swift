@@ -19,8 +19,8 @@ struct metalSheetApp: App {
     @StateObject var  resetPasswordViewModel = ResetPasswordViewModel()
     @StateObject var  register = RegisterViewModel()
     @StateObject var otp = OtpViewModel()
-
-    
+    @StateObject var description = DescriptionViewModel()
+	
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
@@ -33,6 +33,8 @@ struct metalSheetApp: App {
                 .environmentObject(resetPasswordViewModel)
                 .environmentObject(register)
                 .environmentObject(otp)
+                .environmentObject(description)
+			
                 .environment(\.colorScheme, .light)
               
         }

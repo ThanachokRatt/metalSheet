@@ -73,7 +73,7 @@ struct textfieldPersonalView: View {
                         Image(systemName: "phone")
                             .foregroundColor(Color(.black))
                         Text("เบอร์มือถือ")
-                           
+                            
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     
@@ -82,6 +82,7 @@ struct textfieldPersonalView: View {
                         .foregroundColor(isEditingEnabled ? Color.black : Color.gray)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(!isEditingEnabled)
+                        .keyboardType(.numberPad)
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                
                

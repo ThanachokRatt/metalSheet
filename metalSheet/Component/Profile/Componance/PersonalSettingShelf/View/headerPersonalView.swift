@@ -18,14 +18,14 @@ struct headerPersonalView: View {
                 .frame(width: 80,height: 80)
             
             Text("ข้อมูลส่วนตัว")
-                .foregroundColor(.black).opacity(0.5)
+                .foregroundColor(.black)
                 .font(Font.custom("Pridi-Regular",size: isiPad ? 40 : 30))
                 .fontWeight(.bold)
                
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.leading, -5)
         
-        }.padding(EdgeInsets(top: 30, leading: 5, bottom: 30, trailing: 5))
+        }.padding(EdgeInsets(top: 30, leading: 5, bottom: 25, trailing: 5))
             
     }
 }

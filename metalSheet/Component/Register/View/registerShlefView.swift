@@ -90,7 +90,7 @@ struct registerShlefView: View {
                              showAlert = false*/
                             
                             otpViewModel.email = "\(email)"
-                            otpViewModel.password = "\(password)"
+							otpViewModel.password = "\(password)"
                             otpViewModel.name = "\(name)"
                             otpViewModel.phone = "\(phone)"
                             otpViewModel.role = "\(role)"

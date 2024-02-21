@@ -18,11 +18,11 @@ class AddProductViewModel: ObservableObject {
     }
     @Published private(set) var total: Int = 0
     @Published private(set) var isCategoryEnabled: Bool = true
-    @Published private(set) var selectedCategory: String = "0.35"
+    @Published private(set) var selectedCategory: String = ""
     @Published private(set) var selectedColorCategory: String = "อลูซิงค์"
     @Published private(set) var selectedLong: String = "1"
     @Published private(set) var selectedQty: String = "1"
-    @Published private(set) var  currentPrice: Int = 0
+    @Published private(set) var  currentPrice: Int = 1
     @EnvironmentObject var loginViewModel: LoginViewModel
  
     
@@ -37,21 +37,25 @@ class AddProductViewModel: ObservableObject {
             total = items.reduce(0) { $0 + $1.calculatedPrice }
             UserDefaults.standard.set(total, forKey: totalKey)
         }
+	
     func getTotal() {
         if let savedTotal = UserDefaults.standard.value(forKey: totalKey) as? Int {
             total = savedTotal
         }
     }
 
-    func updateCurrentPrice(product: CartModel) {
-        var items = product
-        items.currentPrice = isCategoryEnabled ? product.priceColor : product.priceNocolor
-        currentPrice = items.currentPrice
-    }
-    
-    func updateisCategoryEnabled(_ newValue: Bool) {
-        isCategoryEnabled = newValue
-    }
+	func updateCurrentPrice(product: CartModel) {
+		var items = product
+		items.currentPrice = currentPrice
+		currentPrice = items.currentPrice
+	}
+	
+	func updateCurrentPrice2(_ Price: Int) {
+		currentPrice = Price
+	}
+//    func updateisCategoryEnabled(_ newValue: Bool) {
+  //      isCategoryEnabled = newValue
+    //}
     func updateSelectedCategory(_ category: String) {
             selectedCategory = category
         }
@@ -80,7 +84,7 @@ class AddProductViewModel: ObservableObject {
             var existingProduct = items[existingIndex]
 
             // Update the selectedCategory and other details in the new instance
-            existingProduct.currentPrice = isCategoryEnabled ? product.priceColor : product.priceNocolor
+            existingProduct.currentPrice = currentPrice
             existingProduct.selectedCategory = selectedCategory
             existingProduct.selectedColorCategory = selectedColorCategory
             existingProduct.selectedLong = selectedLong
@@ -88,7 +92,7 @@ class AddProductViewModel: ObservableObject {
            
 
             // Create a new instance with a unique ID
-            let newItem = CartModel(id: UUID().hashValue, productImage: product.productImage, productName: product.productName, description: product.description, categories: product.categories, priceNocolor: product.priceNocolor, priceColor: product.priceColor, colorCategories: product.colorCategories, currentPrice: existingProduct.currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
+            let newItem = CartModel(id: UUID().uuidString, productImage: product.productImage, productName: product.productName, description: product.description, categories: product.categories, priceNocolor: product.priceNocolor, priceColor: product.priceColor, colorCategories: product.colorCategories, currentPrice: existingProduct.currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
 
             // Append the new item to the cart
             items.append(newItem)
@@ -101,7 +105,7 @@ class AddProductViewModel: ObservableObject {
             var updatedProduct = product
 
             // Update the currentPrice in the copied product
-            updatedProduct.currentPrice = isCategoryEnabled ? product.priceColor : product.priceNocolor
+            updatedProduct.currentPrice = currentPrice
 
             // Assign the selected category to the copied product
             updatedProduct.selectedCategory = selectedCategory
@@ -141,7 +145,7 @@ class AddProductViewModel: ObservableObject {
     
 
     
-    func addItem(id: Int,productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String) {
+    func addItem(id: String,productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String) {
         
         let newItem = CartModel(id: id, productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
         

@@ -11,7 +11,7 @@ struct SplashScreenView: View {
     @State private var isShowingSplashScreen = true
 
     @EnvironmentObject var loginViewModel: LoginViewModel
-
+	
     var body: some View {
         ZStack {
             Color.white // White background covering the entire screen
@@ -25,10 +25,10 @@ struct SplashScreenView: View {
                     }
             } else {
                 if loginViewModel.isLoggedIn {
-                    AllView()
+					AllView()
                 } else {
                    // loginShelfView()
-                    AllView()
+					AllView()
                 }
             }
         }
