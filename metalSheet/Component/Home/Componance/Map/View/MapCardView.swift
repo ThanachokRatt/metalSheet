@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MapCard: View {
-    var mapCard: MapCardViewModel
+    var mapCard: MapCardModel
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             Link(destination: URL(string: mapCard.url)!,
