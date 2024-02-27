@@ -23,6 +23,7 @@ struct orderView: View {
     @State private var showAlerError = false
     @State private var isEditing = false
     @State private var isaddProductHistoryView = false
+	@State var additional = ""
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         ScrollView {
@@ -87,7 +88,12 @@ struct orderView: View {
                     Spacer()
                     
                 }.padding(.horizontal,15)
-                
+				TextField("รายละเอียดเพิ่มเติม...",text: $additional)
+					.textFieldStyle(RoundedBorderTextFieldStyle())
+					.padding(.horizontal,15)
+					.foregroundColor(Color(.black))
+				
+				
                 if isOrder {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -101,7 +107,12 @@ struct orderView: View {
                     .foregroundColor(Color.red)
                     .font(.subheadline)
                     .padding(.top,10)
-                
+			
+				
+					
+			
+					
+				
                 Button {
                
                     if locationViewModel.items.contains(where: { $0.isSelected }) {
@@ -125,10 +136,13 @@ struct orderView: View {
                     
                 }.padding()
                     .disabled(isOrder)
-            }
+            }	 
            
         }.background(Color.white)
-        
+			.onTapGesture {
+				// Hide the keyboard
+				UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+			}
         
             .navigationTitle(Text("สั่งซื้อ"))
             .preferredColorScheme(.light)
@@ -162,7 +176,7 @@ struct orderView: View {
 							
 							user.locationUrl = ("\(selectedLocation.locationLink)")
 							
-                            
+							user.additional = additional
                             
                         }
                         
@@ -189,6 +203,7 @@ struct orderView: View {
                         orderViewModel.saveOrder(user: user){
                                 isOrder = false
                                 userConfirmedOrder = false
+							   additional = ""
                             }
                     }
                 )

@@ -23,6 +23,7 @@ class AddProductViewModel: ObservableObject {
     @Published private(set) var selectedLong: String = "1"
     @Published private(set) var selectedQty: String = "1"
     @Published private(set) var  currentPrice: Int = 1
+	@Published private(set) var selectedAddOnsCategory: String = ""
     @EnvironmentObject var loginViewModel: LoginViewModel
  
     
@@ -67,6 +68,9 @@ class AddProductViewModel: ObservableObject {
         selectedQty = Qty
     }
     
+	func updateSelectedAddOnsCategory(_ addOnsName: String){
+		selectedAddOnsCategory =  addOnsName
+	}
     
    
 
@@ -89,10 +93,11 @@ class AddProductViewModel: ObservableObject {
             existingProduct.selectedColorCategory = selectedColorCategory
             existingProduct.selectedLong = selectedLong
             existingProduct.selectedQty = selectedQty
+			existingProduct.selectedAddOnsCategory = selectedAddOnsCategory
            
 
             // Create a new instance with a unique ID
-            let newItem = CartModel(id: UUID().uuidString, productImage: product.productImage, productName: product.productName, description: product.description, categories: product.categories, priceNocolor: product.priceNocolor, priceColor: product.priceColor, colorCategories: product.colorCategories, currentPrice: existingProduct.currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
+			let newItem = CartModel(id: UUID().uuidString, productImage: product.productImage, productName: product.productName, description: product.description, categories: product.categories, priceNocolor: product.priceNocolor, priceColor: product.priceColor, colorCategories: product.colorCategories, currentPrice: existingProduct.currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedAddOnsCategory: existingProduct.selectedAddOnsCategory, selectedLong: selectedLong, selectedQty: selectedQty)
 
             // Append the new item to the cart
             items.append(newItem)
@@ -112,7 +117,7 @@ class AddProductViewModel: ObservableObject {
             updatedProduct.selectedColorCategory = selectedColorCategory
             updatedProduct.selectedLong = selectedLong
             updatedProduct.selectedQty = selectedQty
-
+			updatedProduct.selectedAddOnsCategory = selectedAddOnsCategory
             // Append the updated product to the cart
             // Calculate the price
             items.append(updatedProduct)
@@ -147,7 +152,7 @@ class AddProductViewModel: ObservableObject {
     
     func addItem(id: String,productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String) {
         
-        let newItem = CartModel(id: id, productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
+		let newItem = CartModel(id: id, productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedAddOnsCategory: selectedAddOnsCategory, selectedLong: selectedLong, selectedQty: selectedQty)
         
         items.append(newItem)
         

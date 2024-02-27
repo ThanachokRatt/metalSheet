@@ -20,6 +20,7 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
     var currentPrice: Int = 0
     var selectedCategory: String = ""
     var selectedColorCategory: String = ""
+	var selectedAddOnsCategory: String = ""
     var selectedLong: String = ""
     var selectedQty: String = ""
     var compositeKey: String = "" // Unique identifier for each product
@@ -34,7 +35,7 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
             self.colorCategories = newCategories
         }
 
-    init(id: String, productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String, selectedLong: String, selectedQty: String) {
+	init(id: String, productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String,selectedAddOnsCategory: String, selectedLong: String, selectedQty: String) {
         self.id = id
         self.productImage = productImage
         self.productName = productName
@@ -46,6 +47,7 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
         self.currentPrice = currentPrice
         self.selectedCategory = selectedCategory
         self.selectedColorCategory = selectedColorCategory
+		self.selectedAddOnsCategory = selectedAddOnsCategory
         self.selectedLong = selectedLong
         self.selectedQty = selectedQty
         self.compositeKey = "\(id)_\(selectedCategory)_\(selectedColorCategory)_\(selectedLong)_\(selectedQty)"
@@ -65,7 +67,7 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
          categories <- map["bmt"]*/
     }
     func updateCart() -> CartModel {
-        return CartModel(id: id! , productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedLong: selectedLong, selectedQty: selectedQty)
+		return CartModel(id: id! , productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedAddOnsCategory: selectedAddOnsCategory, selectedLong: selectedLong, selectedQty: selectedQty)
     }
 
 }

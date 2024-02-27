@@ -48,7 +48,7 @@ struct productHStackView: View {
 		}
 	}
 
-#Preview {
-	productHStackView(viewmodel: CartModel(id: "1", productImage: "https://res.cloudinary.com/daz3a6zv4/image/upload/v1701889493/Image_product/eapbqoyejx2zx3hlmgpq.jpg", productName: "ลอน", description: "d", categories: ["0.25","0.30"], priceNocolor: 123, priceColor: 123, colorCategories: ["d"], currentPrice: 1, selectedCategory: "12", selectedColorCategory: "123", selectedLong: "123", selectedQty: "123"))
-	}
+//#Preview {
+//	productHStackView(viewmodel: CartModel(id: "1", productImage: "https://res.cloudinary.com/daz3a6zv4/image/upload/v1701889493/Image_product/eapbqoyejx2zx3hlmgpq.jpg", productName: "ลอน", description: "d", categories: ["0.25","0.30"], priceNocolor: 123, priceColor: 123, colorCategories: ["d"], currentPrice: 1, selectedCategory: "12", selectedColorCategory: "123", selectedLong: "123", selectedQty: "123"))
+//	}
 

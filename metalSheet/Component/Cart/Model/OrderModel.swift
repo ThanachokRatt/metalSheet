@@ -16,6 +16,7 @@ struct OrderModel:Mappable{
 	var type: String = ""
 	var grandTotal: String = ""
 	var locationUrl: String = ""
+	var additional: String = ""
 
 	var orderList: [OrderItem] = []
 	
@@ -30,7 +31,7 @@ struct OrderModel:Mappable{
 		type <- map["type"]
 		grandTotal <- map["grand_total"]
 		locationUrl <- map["location_url"]
-		
+		additional <- map["additional"]
 	    orderList <- map["order_list"]
 	}
   

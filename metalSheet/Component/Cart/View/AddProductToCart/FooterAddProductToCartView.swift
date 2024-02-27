@@ -18,6 +18,7 @@
 		@Binding var selectedModelPrice: Int // Use State instead of Binding
 		@Binding var selectedBMT: String?
 		@Binding var selectedColor: String?
+		@Binding var selectedAddOns: String?
 		@State private var showAlert = false
 		@State private var alertMessage = ""
 		
@@ -36,6 +37,9 @@
 					} else if selectedColor == nil {
 						showAlert = true
 						alertMessage = "กรุณาเลือกสี"
+					} else if selectedAddOns == nil && viewModel2.description.first?.addons.first?.name != nil {
+						showAlert = true
+						alertMessage = "กรุณาเลือกลายท้อง"
 					} else {
 						// Perform your action when everything is selected
 					//	print(stepperQty)
@@ -45,11 +49,12 @@
 						addProductHistoryModel.addToCart(product: viewModel)
 						addProductHistoryModel.updateCurrentPrice(product: viewModel)
 						addProductHistoryModel.updateSelectedCategory("")
-						
+						addProductHistoryModel.updateSelectedAddOnsCategory("")
 						stepperLong = 1.00
 						stepperQty = 1
 						selectedBMT = nil
 						selectedColor = nil
+						selectedAddOns = nil
 						addProductHistoryModel.updateSelectedColorCategory("อลูซิงค์")
 						
 					}

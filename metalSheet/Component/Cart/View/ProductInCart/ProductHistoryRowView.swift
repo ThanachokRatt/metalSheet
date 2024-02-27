@@ -12,6 +12,7 @@ struct ProductHistoryRowView: View {
     @EnvironmentObject var addProductHistoryModel: AddProductViewModel
     var viewModel: CartModel
     @Binding var isAddProducthistoryView: Bool
+	@EnvironmentObject var description: DescriptionViewModel
 
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
@@ -44,13 +45,17 @@ struct ProductHistoryRowView: View {
 					if !viewModel.selectedCategory.isEmpty{
 						Text("ความยาว : \(viewModel.selectedLong) ม.")
 					}
+					if !viewModel.selectedAddOnsCategory.isEmpty {
+						Text("ลายท้อง : \(viewModel.selectedAddOnsCategory)")
+					}
+					
 					
                     Text("สี : \(viewModel.selectedColorCategory)")
 			
 					
 					Text("ราคา : \(viewModel.currentPrice)  จำนวน : \(viewModel.selectedQty) ชิ้น").lineLimit(1).truncationMode(.tail)
 					
-				
+			
 				
 					
                    

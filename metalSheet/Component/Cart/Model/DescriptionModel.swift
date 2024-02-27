@@ -6,6 +6,33 @@
 //
 
 import Foundation
+struct Addons: Codable, Mappable {
+	var name: String = ""
+	var options: [String] = []
+
+	init() {}
+	init?(map: Map) {}
+
+
+	mutating func mapping(map: Map) {
+		name <- map["name"]
+		options <- map["options"]
+	}
+}
+struct AddonModels: Mappable {
+	var name: String?
+	var price: Int?
+	var status: Bool = false
+
+	init?(map: Map) {}
+
+
+	mutating func mapping(map: Map) {
+		name <- map["name"]
+		price <- map["price"]
+		status <- map["status"]
+	}
+}
 
 struct Variation: Codable, Mappable {
     var name: String = ""
@@ -49,6 +76,9 @@ class DescriptionModel: ObservableObject,Mappable,Identifiable {
     var description: String = ""
     var variations: [Variation] = []
     var models: [Model] = []
+	
+	var addons: [Addons] = []
+	var addonsModels:[AddonModels] = []
 	//addproductfunction
 	var currentPrice: Int = 0
 	var compositeKey: String = ""
@@ -67,6 +97,9 @@ class DescriptionModel: ObservableObject,Mappable,Identifiable {
         description <- map["description"]
         variations <- map["variations"]
         models <- map["models"]
+		
+		addons <- map["addons"]
+		addonsModels <- map["addon_models"]
     }
 }
 

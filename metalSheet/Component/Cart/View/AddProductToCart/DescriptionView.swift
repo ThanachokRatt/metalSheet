@@ -20,6 +20,8 @@ struct DescriptionView: View {
 	@State private var selectedColor: String?
 	@State private var selectedBMT: String?
 	@State private var selectedModelPrice: Int = 0 
+	
+	@State private var selectedAddOns: String?
     var viewmodel: CartModel
 	var viewModel : DescriptionViewModel
 	@EnvironmentObject var description: DescriptionViewModel
@@ -32,7 +34,7 @@ struct DescriptionView: View {
 
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
-
+		
         ZStack {
             Color("Bgp")
                 .edgesIgnoringSafeArea(.all)
@@ -133,9 +135,18 @@ struct DescriptionView: View {
 							}
 							
 						}
+						
 					}
 					
 					.padding()
+					if viewModel.description.first?.addons != nil{
+						if let variations2 = viewModel.description.first?.addons.first {
+								AddonsCategoryView(text:  variations2.name , addOnsCategories: variations2.options, selectedAddOns: $selectedAddOns)
+								.padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 0))
+						}
+					}
+				
+					
 
 					//addProductHistoryModel.updateisCategoryEnabled(isCategoryEnabled)
 					//addProductHistoryModel.updateSelectedCategory(viewmodel.categories[i])
@@ -201,7 +212,7 @@ struct DescriptionView: View {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
           
-			FooterAddProductToCartView(viewModel: viewmodel, viewModel2: viewModel, stepperLong: $stepperLong, stepperQty: $stepperQty, selectedModelPrice: $selectedModelPrice,selectedBMT: $selectedBMT,selectedColor: $selectedColor)	
+			FooterAddProductToCartView(viewModel: viewmodel, viewModel2: viewModel, stepperLong: $stepperLong, stepperQty: $stepperQty, selectedModelPrice: $selectedModelPrice,selectedBMT: $selectedBMT,selectedColor: $selectedColor,selectedAddOns: $selectedAddOns)
 
 				
         }
@@ -222,11 +233,14 @@ struct DescriptionView: View {
         
     }
 	func updatePrice() -> String {
-		if let selectedColor = selectedColor,
+		if viewModel.description.first?.addons.first?.name != nil,
+		   let selectedColor = selectedColor,
 		   let selectedBMT = selectedBMT,
+		   let selectedAddOns = selectedAddOns,
+		   let selectedModelAddOns = viewModel.description.first?.addonsModels.first(where: { $0.name == "\(selectedAddOns)" }) ,
 		   let selectedModel = viewModel.description.first?.models.first(where: { $0.name == "\(selectedBMT),\(selectedColor)" }) {
-			let currentPrice = selectedModel.price ?? 0
-		
+			let currentPrice = (selectedModel.price ?? 0) + (selectedModelAddOns.price ?? 0)
+			
 			DispatchQueue.main.async {
 				self.selectedModelPrice = currentPrice
 			}
@@ -238,15 +252,24 @@ struct DescriptionView: View {
 			DispatchQueue.main.async {
 				self.selectedModelPrice = currentPrice
 			}
-			  return "฿\(currentPrice)"
+			return "฿\(currentPrice)"
 			
 			
-		}else {
-			// Return the default price range
-		
-			return "฿\(viewModel.description.first?.priceMin ?? 0) ~ \(viewModel.description.first?.priceMax ?? 0)"
+		}else if  let selectedColor = selectedColor,
+				  let selectedBMT = selectedBMT,
+				  let selectedModel = viewModel.description.first?.models.first(where: { $0.name == "\(selectedBMT),\(selectedColor)" }){
+			let currentPrice = selectedModel.price ?? 0
+			
+			DispatchQueue.main.async {
+				self.selectedModelPrice = currentPrice
+			}
+			return "฿\(currentPrice)"}
+			else {
+				// Return the default price range
+				
+				return "฿\(viewModel.description.first?.priceMin ?? 0) ~ \(viewModel.description.first?.priceMax ?? 0)"
+			}
 		}
-	}
 }
 //MARK: - Adjust Keyboard
 struct KeyboardAwareModifier: ViewModifier {
