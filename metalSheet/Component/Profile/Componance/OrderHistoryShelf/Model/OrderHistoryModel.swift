@@ -42,6 +42,7 @@ struct orderDetailList: Mappable,Hashable{
     var qty: Int = 0
     var price: Int = 0
     var color: String = ""
+	var addon: String = ""
     
     init(){}
     init?(map: Map){}
@@ -52,6 +53,7 @@ struct orderDetailList: Mappable,Hashable{
         qty <- map["qty"]
         price <- map["price"]
         color <- map["color"]
+		addon <- map["addon"]
     }
     
 }

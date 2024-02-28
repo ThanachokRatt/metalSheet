@@ -94,6 +94,11 @@ struct OrderDetailView: View {
 									}
                        
 				}.padding(.horizontal,5)
+				
+				if !viewmodel.addon.isEmpty {
+					Text("ลายท้อง : \(viewmodel.addon)")
+				}
+				
                 HStack{
 					Text(viewmodel.color)
 						

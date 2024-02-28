@@ -40,13 +40,14 @@ struct OrderModel:Mappable{
 
 
 struct OrderItem: Mappable{
-	var itemId: Int = 0
+	var itemId: String = ""
 	var name: String = ""
 	var bmt: String = ""
 	var length: String = ""
 	var color: String = ""
 	var qty: Int = 0
 	var price: Int = 0
+	var addon: String = ""
 	
 	init() {}
 	init?(map: Map){}
@@ -58,6 +59,7 @@ struct OrderItem: Mappable{
 		color <- map["color"]
 		qty <- map["qty"]
 		price <- map["price"]
+		addon <- map["addon"]
 		
 	}
 }

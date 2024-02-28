@@ -37,7 +37,7 @@ struct TabBar: View {
                     .stroke(.linearGradient(colors: [.white.opacity(0.5), .white.opacity(0)], startPoint: .topLeading, endPoint: .bottomLeading))
             )
             
-        }.padding(.bottom,isiPad ? 7 : -10)
+        }.padding(.bottom,isiPad ? 7 : 5)
     }
 }
 

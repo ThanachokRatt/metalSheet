@@ -32,6 +32,10 @@ class OrderViewModel: ObservableObject{
             case .success(let value):
 				self.shouldDismiss = true
 				self.showAlert2 = true
+				if let jsonMessage = value as? [String: Any],
+				   let successMessage = jsonMessage["msg"] as? String{
+					self.showAlert(message: successMessage)
+				}
                /* if let jsonDict = value as? [String: Any],
                    let successMessage = jsonDict["succesfully"] as?
                     String{

@@ -165,8 +165,8 @@ public struct StyleInt {
 
     public init(
         height: Double = 34.0,
-        labelWidth: Double = 58.0,
-        buttonWidth: Double = 58.0,
+        labelWidth: Double = 62.0,
+        buttonWidth: Double = 62.0,
         buttonPadding: Double = 16.0,
         backgroundColor: Color = Color(.quaternarySystemFill),
         activeButtonColor: Color = Color(.label),

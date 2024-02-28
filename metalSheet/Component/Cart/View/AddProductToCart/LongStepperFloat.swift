@@ -193,45 +193,51 @@ public struct LabeledStepper2: View {
     }
 }*/
 
+import SwiftUI
+
 public struct Style {
 
-    public init(
-        height: Double = 34.0,
-        labelWidth: Double = 68.0,
-        buttonWidth: Double = 68.0,
-        buttonPadding: Double = 16.0,
-        backgroundColor: Color = Color(.quaternarySystemFill),
-        activeButtonColor: Color = Color(.label),
-        inactiveButtonColor: Color = Color(.tertiaryLabel),
-        titleColor: Color = Color(.label),
-        descriptionColor: Color = Color(.secondaryLabel),
-        valueColor: Color = Color(.label)
-    ) {
-        self.height = height
-        self.labelWidth = labelWidth
-        self.buttonWidth = buttonWidth
-        self.buttonPadding = buttonPadding
-        self.backgroundColor = backgroundColor
-        self.activeButtonColor = activeButtonColor
-        self.inactiveButtonColor = inactiveButtonColor
-        self.titleColor = titleColor
-        self.descriptionColor = descriptionColor
-        self.valueColor = valueColor
-    }
+	public init(
+		height: Double = 34.0,
+		buttonWidth: Double = 60.0,
+		buttonPadding: Double = 16.0,
+		backgroundColor: Color = Color(.quaternarySystemFill),
+		activeButtonColor: Color = Color(.label),
+		inactiveButtonColor: Color = Color(.tertiaryLabel),
+		titleColor: Color = Color(.label),
+		descriptionColor: Color = Color(.secondaryLabel),
+		valueColor: Color = Color(.label)
+	) {
+		self.height = height
+		self.buttonWidth = buttonWidth
+		self.buttonPadding = buttonPadding
+		self.backgroundColor = backgroundColor
+		self.activeButtonColor = activeButtonColor
+		self.inactiveButtonColor = inactiveButtonColor
+		self.titleColor = titleColor
+		self.descriptionColor = descriptionColor
+		self.valueColor = valueColor
 
-    // TODO: Make these dynamic
-    var height: Double
-    var labelWidth: Double
+		if UIDevice.current.userInterfaceIdiom == .pad {
+			self.labelWidth = 90.0
+		} else {
+			self.labelWidth = 67.0
+		}
+		
+	}
 
-    var buttonWidth: Double
-    var buttonPadding: Double
+	// Make these dynamic
+	public var height: Double
+	public var labelWidth: Double
+	public var buttonWidth: Double
+	public var buttonPadding: Double
 
-    // MARK: - Colors
-    var backgroundColor: Color
-    var activeButtonColor: Color
-    var inactiveButtonColor: Color
+	// MARK: - Colors
+	public var backgroundColor: Color
+	public var activeButtonColor: Color
+	public var inactiveButtonColor: Color
 
-    var titleColor: Color
-    var descriptionColor: Color
-    var valueColor: Color
+	public var titleColor: Color
+	public var descriptionColor: Color
+	public var valueColor: Color
 }

@@ -177,12 +177,13 @@ struct orderView: View {
 							user.locationUrl = ("\(selectedLocation.locationLink)")
 							
 							user.additional = additional
+							
                             
                         }
                         
                         for (id,item) in addProductHistoryModel.items.enumerated() {
                             var orderItem = OrderItem()
-                            orderItem.itemId = id + 1
+							orderItem.itemId =  ("\(item.id ?? "")")
                             orderItem.name = ("\(item.productName)")
 							
 							if !item.selectedCategory.isEmpty{
@@ -193,6 +194,7 @@ struct orderView: View {
                             orderItem.color = ("สี : \(item.selectedColorCategory)")
                             orderItem.qty = Int(item.selectedQty) ?? 0
                             orderItem.price = item.calculatedPrice
+							orderItem.addon = ("\(item.selectedAddOnsCategory)")
                             orderItems.append(orderItem)
                             
                         }
@@ -271,14 +273,14 @@ struct orderView: View {
                         .bold()
                         .font(.system(size: 27))
                         .foregroundColor(.black)
-                    Text(" กรุณารอทางทีมงานติดต่อกลับ")
+					Text(" \(orderViewModel.alertMessage)")
                         .foregroundColor(.black)
                         .font(.system(size: 18))
-                    Text("ทางทีมงานจะติดต่อกลับภายในเร็วๆนี้")
-                        .foregroundColor(.black)
-                        .font(.system(size: 18))
-                        .padding(.top,-15)
-                    
+                   // Text("ทางทีมงานจะติดต่อกลับภายในเร็วๆนี้")
+                    //    .foregroundColor(.black)
+                    //    .font(.system(size: 18))
+                    //    .padding(.top,-15)
+                   
                     Button(action: {
                         if orderViewModel.shouldDismiss{
                             addProductHistoryModel.removeAllItems()
@@ -301,7 +303,7 @@ struct orderView: View {
                 .padding(.horizontal, 60)
                 .background(BlurView())
                 .cornerRadius(25)
-            }
+			}.frame(width: 380,height: 600)
             
             
         }

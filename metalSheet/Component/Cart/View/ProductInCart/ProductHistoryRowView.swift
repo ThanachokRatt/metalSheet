@@ -25,13 +25,13 @@ struct ProductHistoryRowView: View {
                 }
             }
                 .aspectRatio(contentMode: .fit)
-                .frame(width: isiPad ? 230 : 130)
+                .frame(width:  isiPad ? 240 : 140)
                 .overlay(RoundedRectangle(cornerRadius: 20,style: .continuous).stroke(Color.black,lineWidth:  1))
                 .cornerRadius(20)
             
             VStack(alignment: .leading,spacing: 2) {
                 Text(viewModel.productName)
-                    .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
+                    .font(Font.custom("Pridi-Regular",size: isiPad ? 23 : 13))
                     .bold()
                     .foregroundColor(.black)
                     .padding(.bottom,-6)
@@ -45,15 +45,16 @@ struct ProductHistoryRowView: View {
 					if !viewModel.selectedCategory.isEmpty{
 						Text("ความยาว : \(viewModel.selectedLong) ม.")
 					}
+				
+					
+					
+                    Text("สี : \(viewModel.selectedColorCategory)")
 					if !viewModel.selectedAddOnsCategory.isEmpty {
 						Text("ลายท้อง : \(viewModel.selectedAddOnsCategory)")
 					}
 					
-					
-                    Text("สี : \(viewModel.selectedColorCategory)")
-			
-					
-					Text("ราคา : \(viewModel.currentPrice)  จำนวน : \(viewModel.selectedQty) ชิ้น").lineLimit(1).truncationMode(.tail)
+					Text("ราคา : \(viewModel.currentPrice)")
+					Text("จำนวน : \(viewModel.selectedQty) ชิ้น")
 					
 			
 				
@@ -61,7 +62,7 @@ struct ProductHistoryRowView: View {
                    
               
                        
-                }.font(Font.custom("Pridi-Light",size: isiPad ? 24 : 14))
+                }.font(Font.custom("Pridi-Light",size: isiPad ? 22 : 13))
                     .foregroundColor(Color(.black).opacity(0.6))
                 
                 Text("฿ \(viewModel.calculatedPrice)")

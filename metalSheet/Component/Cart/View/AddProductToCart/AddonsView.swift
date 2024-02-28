@@ -29,10 +29,11 @@ struct AddonsTabTextView:View{
 		AddonsTextView(text: addOns)
 			.onTapGesture {
 				selectedAddOns = addOns
-				print("Selected Add-Ons: \(addOns)")
+				//print("Selected Add-Ons: \(addOns)")
 				addProductHistoryModel.updateSelectedAddOnsCategory(addOns)
 			}
 			.overlay(RoundedRectangle(cornerRadius: 5).stroke(Color(selectedAddOns == addOns ? "lipstick" : "ดำ" ),lineWidth:  selectedAddOns == addOns ? 3 : 1))
+			.shadow(radius: 1)
 		
 	}
 }
@@ -43,7 +44,7 @@ struct AddonsCategoryView : View{
 	
 	@Binding var selectedAddOns: String?
 	
-
+	private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
 	
 	var body: some View{
 		let isiPad = UIDevice.current.userInterfaceIdiom == .pad
@@ -54,7 +55,7 @@ struct AddonsCategoryView : View{
 			
 			
 			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 7) {
+				HStack {
 					ForEach(addOnsCategories, id: \.self) { addOn in
 						AddonsTabTextView(selectedAddOns: $selectedAddOns, addOns: addOn)
 					}
@@ -68,3 +69,9 @@ struct AddonsCategoryView : View{
 //#Preview {
   //  AddonsView()
 //}
+/*LazyVGrid(columns: columns, alignment: .leading, spacing: 6){
+				ForEach(addOnsCategories,id: \.self){
+					addOn in
+					AddonsTabTextView(selectedAddOns: $selectedAddOns, addOns: addOn)
+				}
+			}*/

@@ -87,6 +87,7 @@ struct ListRowView:View{
                                     .foregroundColor(.red)
                                 Spacer()
                                 Text(navigationtoLocationView ? "(กดเพื่อไปยังหน้าจัดการที่อยู่)" : "(กดเพื่อแก้ไขที่อยู่)")
+									.font(Font.custom("Pridi-Light",size: isiPad ? 23 : 13))
                                 
                                     .foregroundColor(Color.gray.opacity(0.8))
                                 if navigationtoLocationView {

@@ -142,7 +142,7 @@ struct DescriptionView: View {
 					if viewModel.description.first?.addons != nil{
 						if let variations2 = viewModel.description.first?.addons.first {
 								AddonsCategoryView(text:  variations2.name , addOnsCategories: variations2.options, selectedAddOns: $selectedAddOns)
-								.padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 0))
+								.padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 0))
 						}
 					}
 				
@@ -156,7 +156,7 @@ struct DescriptionView: View {
 						if let variations = viewModel.description.first?.variations,
 						   let thicknessVariation = variations.first(where: { $0.name == "ความหนา" }) {
 							if !thicknessVariation.options.isEmpty {
-								LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22, longPressInterval: 0.09)
+								LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22.00, longPressInterval: 0.09)
 									.padding(.top, 10)
 									.font(Font.custom("Pridi-Regular", size: isiPad ? 24 : 20))
 									.bold()
