@@ -16,13 +16,13 @@ class AddProductViewModel: ObservableObject {
             UserDefaults.standard.set(total, forKey: totalKey)
         }
     }
-    @Published private(set) var total: Int = 0
+	@Published private(set) var total: Float = 1.00
     @Published private(set) var isCategoryEnabled: Bool = true
     @Published private(set) var selectedCategory: String = ""
     @Published private(set) var selectedColorCategory: String = "อลูซิงค์"
     @Published private(set) var selectedLong: String = "1"
     @Published private(set) var selectedQty: String = "1"
-    @Published private(set) var  currentPrice: Int = 1
+	@Published private(set) var  currentPrice: Int = 0
 	@Published private(set) var selectedAddOnsCategory: String = ""
     @EnvironmentObject var loginViewModel: LoginViewModel
  
@@ -40,7 +40,7 @@ class AddProductViewModel: ObservableObject {
         }
 	
     func getTotal() {
-        if let savedTotal = UserDefaults.standard.value(forKey: totalKey) as? Int {
+        if let savedTotal = UserDefaults.standard.value(forKey: totalKey) as? Float {
             total = savedTotal
         }
     }

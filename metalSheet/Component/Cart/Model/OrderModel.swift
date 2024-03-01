@@ -46,7 +46,7 @@ struct OrderItem: Mappable{
 	var length: String = ""
 	var color: String = ""
 	var qty: Int = 0
-	var price: Int = 0
+	var price: Float = 0.00
 	var addon: String = ""
 	
 	init() {}

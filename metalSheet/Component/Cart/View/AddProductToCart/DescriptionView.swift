@@ -19,7 +19,7 @@ struct DescriptionView: View {
 	
 	@State private var selectedColor: String?
 	@State private var selectedBMT: String?
-	@State private var selectedModelPrice: Int = 0 
+	@State private var selectedModelPrice: Int = 1
 	
 	@State private var selectedAddOns: String?
     var viewmodel: CartModel
@@ -242,7 +242,9 @@ struct DescriptionView: View {
 			let currentPrice = (selectedModel.price ?? 0) + (selectedModelAddOns.price ?? 0)
 			
 			DispatchQueue.main.async {
-				self.selectedModelPrice = currentPrice
+		
+					self.selectedModelPrice = currentPrice
+				
 			}
 			return "฿\(currentPrice)"
 		}else if   let selectedColor = selectedColor,
@@ -250,7 +252,9 @@ struct DescriptionView: View {
 			let currentPrice = selectedModel.price ?? 0
 			
 			DispatchQueue.main.async {
-				self.selectedModelPrice = currentPrice
+				
+					self.selectedModelPrice = currentPrice
+				
 			}
 			return "฿\(currentPrice)"
 			
@@ -261,7 +265,10 @@ struct DescriptionView: View {
 			let currentPrice = selectedModel.price ?? 0
 			
 			DispatchQueue.main.async {
-				self.selectedModelPrice = currentPrice
+				
+					self.selectedModelPrice = currentPrice
+				
+				
 			}
 			return "฿\(currentPrice)"}
 			else {

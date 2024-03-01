@@ -75,7 +75,7 @@ struct orderView: View {
                     Text("ราคาสินค้าทั้งหมด")
                     
                     Spacer()
-                    Text("฿ \(addProductHistoryModel.total).00")
+					Text("฿ \(String(format:"%.2f",(addProductHistoryModel.total)))")
                         
                 }.font(.system(size: isiPad ? 27 : 17))
                     .bold()
@@ -172,7 +172,7 @@ struct orderView: View {
 							user.type = ("\(selectedLocation.addressType)")
 							
 							
-							user.grandTotal = ("\(addProductHistoryModel.total).00")
+							user.grandTotal = ("\(String(format:"%.2f",(addProductHistoryModel.total)))")
 							
 							user.locationUrl = ("\(selectedLocation.locationLink)")
 							
@@ -193,7 +193,11 @@ struct orderView: View {
 
                             orderItem.color = ("สี : \(item.selectedColorCategory)")
                             orderItem.qty = Int(item.selectedQty) ?? 0
-                            orderItem.price = item.calculatedPrice
+							
+							
+							if let priceFloat = Float(String(format: "%.2f", item.calculatedPrice)) {
+								orderItem.price = priceFloat
+							}
 							orderItem.addon = ("\(item.selectedAddOnsCategory)")
                             orderItems.append(orderItem)
                             

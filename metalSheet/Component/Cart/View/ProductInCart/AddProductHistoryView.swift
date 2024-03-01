@@ -30,7 +30,7 @@ struct AddProductHistoryView: View {
 							Text("ราคาสินค้าทั้งหมด")
 						  
 							Spacer()
-							Text("฿ \(addProductHistoryModel.total).00")
+							Text("฿ \(String(format:"%.2f",(addProductHistoryModel.total)))")
 								.font(.system(size: isiPad ? 27 : 17))
 							
 						}

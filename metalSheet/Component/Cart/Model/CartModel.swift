@@ -17,18 +17,18 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
     var priceColor: Int = 0
     var colorCategories: [String] = [""]//["เทาด้าน", "เทาเงา", "ดำด้าน", "ดำเงา", "น้ำตาล", "ลายไม้เข้ม", "ลายไม้อ่อน","ขาว","แดงเม็ดมะขาม","แดงอิฐ","แดงสด","ส้มอิฐ","ส้มสด","ชมพู","ครีม","เหลือง","ม่วง","น้ำเงิน","ฟ้า","เขียวเข้ม","เขียวบางจาก","เขียวร็อกเก็จ","เขียวหยก"]
     var categories: [String] = [""]//["0.20", "0.23", "0.35", "0.40", "0.47"]
-    var currentPrice: Int = 0
+	var currentPrice: Int = 0
     var selectedCategory: String = ""
     var selectedColorCategory: String = ""
 	var selectedAddOnsCategory: String = ""
     var selectedLong: String = ""
     var selectedQty: String = ""
     var compositeKey: String = "" // Unique identifier for each product
-    var calculatedPrice: Int {
+    var calculatedPrice: Float {
         let floatSelectedLong = Float(selectedLong) ?? 1
         let intSelectedQty = Int(selectedQty) ?? 1
         
-        return Int(Float(currentPrice) * floatSelectedLong * Float(intSelectedQty))
+        return Float(currentPrice) * floatSelectedLong * Float(intSelectedQty)
     }
     var colorCategories2: [String] = ["อลูซิงค์"]
     mutating func updateColorCategories(newCategories: [String]) {
@@ -44,7 +44,7 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
         self.priceNocolor = priceNocolor
         self.priceColor = priceColor
         self.colorCategories = colorCategories
-        self.currentPrice = currentPrice
+		self.currentPrice = currentPrice
         self.selectedCategory = selectedCategory
         self.selectedColorCategory = selectedColorCategory
 		self.selectedAddOnsCategory = selectedAddOnsCategory
