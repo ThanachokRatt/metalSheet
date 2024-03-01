@@ -8,31 +8,24 @@
 import SwiftUI
 
 struct LineButton: View {
-    let urlLine: String = "https://line.me/ti/p/q_4GqY44yw"
+    let urlLine: String = "https://line.me/ti/p/gxyce5rV3r"
     var body: some View {
-        let iPadWidth: CGFloat = 185
+        let iPadWidth: CGFloat = 50
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
             Link(destination: URL(string: urlLine)!,
                  label: {
-                Image("lineButtonImage")
+                Image("lineButtonImage2")
                 
                     .resizable()
                     .scaledToFit()
-                    .frame(width: isiPad ? iPadWidth : 110)
-                
+                    .frame(width: isiPad ? iPadWidth : 35)
+                    .shadow(radius: 4)
                     
-                    .shadow(radius: 5)
+                   
                     
-                    .padding(.horizontal,20)
+                  
             })
          
-        
-    
-      
-        
-            
- 
-            
     }
 }
 

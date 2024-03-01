@@ -33,19 +33,21 @@ struct productSingleView: View {
                        
                     }
                 }
-                    .scaledToFit()
+				
+                    .scaledToFill()
                     .frame(width: isiPad ? 276 : 176, height: isiPad ? 278 : 178)
                     .cornerRadius(15)
-                   .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.black, lineWidth: 1))
+					.shadow(radius: 10)
+                 //  .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.black, lineWidth: 0))
                 Text(viewmodel.productName)
                        
-                        .fontWeight(.bold)
-                        .opacity(0.7)
-                        .foregroundColor(.black)
+                       
+                        
+					    .foregroundColor(.black)
                         .frame(maxWidth: .infinity,alignment: .leading)
-                
-                        .font(.system(size: isiPad ? 27 : 18))
-                   
+						
+                        .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 19))
+                        .padding(.top,-3)
                 }
                         
             }

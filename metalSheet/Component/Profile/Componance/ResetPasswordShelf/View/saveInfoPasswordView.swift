@@ -13,6 +13,7 @@ struct saveInfoPasswordView: View {
           
                 Text("บันทึกข้อมูล")
                     .padding()
+            
                     .frame(maxWidth: .infinity)
                     .background(Color("lipstick"))
                     .foregroundColor(.white)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct headerLocationView: View {
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack (spacing: 35){
             Image("busLogo")
                 .resizable()
@@ -17,14 +18,14 @@ struct headerLocationView: View {
                 .frame(width: 80,height: 80)
             
             Text("ที่อยู่จัดส่ง")
-                .foregroundColor(.black).opacity(0.5)
-                .font(.system(size:30))
+                .foregroundColor(.black)
+                .font(Font.custom("Pridi-Regular",size: isiPad ? 40 : 30))
                 .fontWeight(.bold)
                
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.leading, 5)
         
-        }.padding(EdgeInsets(top: 30, leading: 5, bottom: 30, trailing: 5))
+        }.padding(EdgeInsets(top: 30, leading: 5, bottom: 25, trailing: 5))
            
     }
 }

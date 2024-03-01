@@ -90,7 +90,7 @@ struct OtpView: View {
                 user.name = otpViewModel.name
                 user.phone = otpViewModel.phone
                 user.role = otpViewModel.role
-                user.code = otpViewModel.userOtp
+                user.code = otpViewModel.userOtp 
                 isRegister = true
                 
                 self.registerViewModel.registerUser(user: user) {
@@ -131,10 +131,10 @@ struct OtpView: View {
                           .padding(.horizontal,5)
                   }
               })
-        .background(
+       /* .background(
             // Use NavigationLink to navigate to OtpView when redirectToOtpView is true
             NavigationLink("", destination: loginShelfView().navigationBarTitleDisplayMode(.inline).navigationBarHidden(true), isActive: $isGoToLogin)
-        )
+        )*/
     }
     @ViewBuilder
     func OTPText(_ index: Int)-> some View{
@@ -164,6 +164,11 @@ struct OtpView: View {
         @Environment(\.presentationMode) var presentationMode
         @Binding var goToLogin: Bool
         @EnvironmentObject  var  registerViewModel: RegisterViewModel
+        
+        @EnvironmentObject  var  loginViewModel: LoginViewModel
+        @EnvironmentObject var otpViewModel: OtpViewModel
+        @State private var email = ""
+        @State private var password = ""
        
 
      
@@ -182,8 +187,8 @@ struct OtpView: View {
                         .font(.system(size: 22))
                         .foregroundColor(.black)
                         .bold()
-                    Text(" กรุณากลับสู่หน้าล็อกอินเพื่อเข้าสู่ระบบ")
-                        .foregroundColor(.black)
+                   // Text(" กรุณากลับสู่หน้าล็อกอินเพื่อเข้าสู่ระบบ")
+                     //   .foregroundColor(.black)
                         
                     Button(action: {
                         if registerViewModel.shouldDismiss{
@@ -192,13 +197,21 @@ struct OtpView: View {
                             
                             registerViewModel.setShouldShow()
                             registerViewModel.setErrorMessage()
-                           
+                            
+                            var user = LoginModel()
+                            user.email = otpViewModel.email
+                            user.password = otpViewModel.password
+                            
+                            
+                            self.loginViewModel.loginUser(user: user) {
+                            
+                        }
                    
                             
                         }
                         
                     }) {
-                        Text("กลับสู่หน้าล็อกอิน")
+                        Text("ยืนยัน")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
                             .padding(.vertical, 10)
@@ -218,11 +231,11 @@ struct OtpView: View {
     }
 }
 
-#Preview {
+/*#Preview {
     OtpView()
         .environmentObject(RegisterViewModel())
         .environmentObject(OtpViewModel())
-}
+}*/
 
 //MARK: - View Extensions
 

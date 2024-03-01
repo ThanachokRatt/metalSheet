@@ -10,8 +10,11 @@ struct profileSettingShelfView: View {
     @State private var confirmationAction: ConfirmationAction? = nil
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var loginViewModel: LoginViewModel
+    @EnvironmentObject var personalViewModel: PersonalViewModel
     @State private var isLogoutAlertPresented = false
+    @State private var isDeleteUserAlertPresented = false
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         NavigationView {
             ScrollView {
                 VStack {
@@ -19,6 +22,24 @@ struct profileSettingShelfView: View {
                     settingView()
 
                     forLoopSettingBtnView()
+                    
+                    Button{
+                        isDeleteUserAlertPresented = true
+                    } label: {
+                        btnView(image: "deleteLogo", name: "ลบบัญชีผู้ใช้งาน")
+                            .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 18))
+                    }
+                    .alert("ต้องการลบบัญชีผู้ใช้งานและออกจากระบบหรือไม่?", isPresented: $isDeleteUserAlertPresented ) {
+                        Button("ยืนยัน") {
+                            personalViewModel.deteleUser()
+                            loginViewModel.logoutUser()
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        Button("ยกเลิก", role: .cancel) {
+                            isDeleteUserAlertPresented = false
+                        }
+                    }
+                    
                     
                     Button {
                                     isLogoutAlertPresented = true

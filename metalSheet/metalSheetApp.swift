@@ -15,11 +15,12 @@ struct metalSheetApp: App {
     @StateObject var locationViewModel = LocationViewModel()
     @StateObject var personalViewModel = PersonalViewModel()
     @StateObject var  orderViewModel = OrderViewModel()
+    @StateObject var  orderHistoryViewModel = OrderHistoryViewModel()
     @StateObject var  resetPasswordViewModel = ResetPasswordViewModel()
     @StateObject var  register = RegisterViewModel()
     @StateObject var otp = OtpViewModel()
-
-    
+    @StateObject var description = DescriptionViewModel()
+	
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
@@ -28,9 +29,12 @@ struct metalSheetApp: App {
                 .environmentObject(locationViewModel)
                 .environmentObject(personalViewModel)
                 .environmentObject(orderViewModel)
+                .environmentObject(orderHistoryViewModel)
                 .environmentObject(resetPasswordViewModel)
                 .environmentObject(register)
                 .environmentObject(otp)
+                .environmentObject(description)
+			
                 .environment(\.colorScheme, .light)
               
         }

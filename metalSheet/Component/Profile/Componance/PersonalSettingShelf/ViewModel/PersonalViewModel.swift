@@ -19,9 +19,10 @@ class PersonalViewModel: ObservableObject{
     
     func updateUser(user: PersonalModel,completion: @escaping () -> Void){
         let userJson = user.toJSON()
-        let apiUrl = "https://domhee-api.onrender.com/api/user/\(id)"
+       // let apiUrl = "https://domhee-api.onrender.com/api/user/\(id)"
+		let apiUrl = "https://saprachanapi.onrender.com/user/?uid=\(id)"
         
-        AF.request(apiUrl, method: .put, parameters: userJson, encoding: JSONEncoding.default).responseJSON{
+		AF.request(apiUrl, method: .patch, parameters: userJson, encoding: JSONEncoding.default).responseJSON{
             response in
             switch response.result{
             case .success(let value):
@@ -39,6 +40,23 @@ class PersonalViewModel: ObservableObject{
                 self.shouldDismiss = false
                 self.shouldShow = false
                 completion()
+            }
+        }
+    }
+    func deteleUser(){
+        let apiUrl = "https://domhee-api.onrender.com/api/admin/delUser/\(id)"
+        AF.request(apiUrl,method: .delete,encoding: JSONEncoding.default).responseJSON{
+            response in
+            switch response.result{
+            case .success(let value):
+                if let jsonDict = value as? [String:Any],
+                   let successMessage = jsonDict["msg"] as?
+                    String{
+                    self.alertMessage = successMessage
+                    print(self.alertMessage)
+                }
+            case .failure(let error):
+                self.alertMessage = "\(error)"
             }
         }
     }

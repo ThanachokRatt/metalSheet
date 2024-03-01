@@ -14,17 +14,18 @@ struct addLocationView: View {
     @EnvironmentObject var locationViewModel: LocationViewModel
 
 
-    @State  var name = ""
-    @State  var phoneNumber = ""
-    @State  var address1 = ""
+    @State var name = ""
+    @State var phoneNumber = ""
+    @State var address1 = ""
     @State var address2 = ""
     @State var postCode = ""
-    @State  var selectedAddressType: AddressType? // เก็บประเภทของที่อยู่ที่ถูกเลือก
-    @State  var isHomeSelected = true // สถานะการเลือกที่อยู่บ้าน
+    @State var selectedAddressType: AddressType? // เก็บประเภทของที่อยู่ที่ถูกเลือก
+    @State var isHomeSelected = true // สถานะการเลือกที่อยู่บ้าน
     @State var isWorkSelected = false // สถานะการเลือกที่อยู่ที่ทำงาน
     @State var addressType = "บ้าน"
     @State var isSelected = false
-    
+	@State var locationLink = ""
+	
     //alert
     @State var alertTitle: String = ""
     @State var showAlert: Bool = false
@@ -34,30 +35,38 @@ struct addLocationView: View {
         }
     
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack (spacing: 0) {
             Form {
                 
-                Section(header: Text("ช่องทางการติดต่อ").font(.body)) {
+                Section(header: Text("ช่องทางการติดต่อ").font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))) {
                         TextField("ชื่อจริง-นามสกุล", text: $name)
                         TextField("เบอร์มือถือ", text: $phoneNumber)
+                        .keyboardType(.numberPad)
+                       
                         
-                    }
-                    Section(header: Text("ที่อยู่").font(.body)) {
+                    }.font(Font.custom("Pridi-Light",size: isiPad ? 26 : 16))
+                    Section(header: Text("ที่อยู่").font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))) {
                         TextField("จังหวัดม เขต/อำเภอ,แขวง/ตำบล", text: $address1)
                         TextField("บ้านเลขที่,ซอย,หมู่,ถนน", text: $address2)
                         TextField("รหัสไปรษณีย์", text: $postCode)
-                    }
-                    Section(header: Text("ประเภทที่อยู่").font(.body)) {
+                            .keyboardType(.numberPad)
+						TextField("ลิ้งค์ที่อยู่ Google Map (ไม่บังคับ)",text: $locationLink)
+                        
+                    }.font(Font.custom("Pridi-Light",size: isiPad ? 26 : 16))
+                    Section(header: Text("ประเภทที่อยู่").font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))) {
                         
                         
                         HStack {
                             Text("เลือกประเภทที่อยู่")
+                                .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                             Spacer()
                             
                             Text("บ้าน")
                                 .padding(.all,8)
                                 .background(isHomeSelected ? Color("green123").opacity(0.7) : Color.gray.opacity(0.4))
                                 .foregroundColor(isHomeSelected ? .white : .black)
+                                .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                                 .cornerRadius(10)
                                 .onTapGesture {
                                     selectedAddressType = .home
@@ -72,6 +81,7 @@ struct addLocationView: View {
                                 .padding(.all,8)
                                 .background(isWorkSelected ? Color("green123").opacity(0.7) : Color.gray.opacity(0.4))
                                 .foregroundColor(isWorkSelected ? .white : .black)
+                                .font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))
                                 .cornerRadius(10)
                                 .onTapGesture {
                                     selectedAddressType = .work
@@ -106,6 +116,7 @@ struct addLocationView: View {
                                     address1 = locationItem.addressOne
                                     address2 = locationItem.adressTwo
                                     postCode = locationItem.postCode
+									locationLink = locationItem.locationLink
                                     addressType = locationItem.addressType
                                     
                                     if locationItem.addressType == "บ้าน" {
@@ -120,6 +131,20 @@ struct addLocationView: View {
                             }
                             .alert(isPresented: $showAlert, content: getAlert)
                     
+            } .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                                           hideKeyboard()
+                                       }) {
+                                           Text("สำเร็จ")
+                                               .foregroundColor(Color.red)
+                                               .font(Font.custom("Pridi-Regular",size: isiPad ? 22 : 16))
+                                               .padding(.horizontal)
+                                       }
+                    }
+                }
             }
          
         }.alert(isPresented: $showAlert, content: getAlert)
@@ -135,7 +160,8 @@ struct addLocationView: View {
                     phone: phoneNumber,
                     addressOne: address2,
                     addressTwo: address1,
-                    postCode: postCode,
+					postCode: postCode, 
+					locationLink: locationLink,
                     addressType: addressType,
                     isSelected: isSelected
                 )
@@ -146,7 +172,7 @@ struct addLocationView: View {
                 }else {
                     isSelected = false
                 }
-                locationViewModel.addItem(name: name, phone: phoneNumber, addressOne: address2, addressTwo: address1, postCode: postCode, addressType: addressType, isSelected: isSelected )
+				locationViewModel.addItem(name: name, phone: phoneNumber, addressOne: address2, addressTwo: address1, postCode: postCode, locationLink: locationLink, addressType: addressType, isSelected: isSelected )
             }
             presentationMode.wrappedValue.dismiss()
         }

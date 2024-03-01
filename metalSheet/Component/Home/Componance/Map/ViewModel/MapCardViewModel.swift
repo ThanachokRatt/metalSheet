@@ -1,22 +1,38 @@
 //
-//  MapCardViewModel.swift
+//  ViewModel.swift
 //  metalSheet
 //
-//  Created by Schweppe on 5/9/2566 BE.
+//  Created by Schweppe on 21/2/2567 BE.
 //
 
 import Foundation
-import SwiftUI
+import ObjectMapper
+import Alamofire
 
-struct MapCardViewModel: Identifiable{
-    var id = UUID()
-    var image: String
-    var title : String
-    var url : String
+class MapCardViewModel: ObservableObject {
+	@Published var mapCardModel: [MapCardModel] = []
+	
+	init(){
+		fetchDataFromApilocation()
+	}
+	
+	func fetchDataFromApilocation(){
+		let apiUrl = "https://saprachanapi.onrender.com/factory/location/"
+	
+		AF.request(apiUrl, method: .get).responseJSON { [weak self] response in
+			switch response.result {
+			case .success(let jsonData):
+				if let mapModels = Mapper<MapCardModel>().mapArray(JSONObject: jsonData) {
+					self?.mapCardModel = mapModels
+			   
+				} else {
+					print("Error mapping JSON to CartModel")
+				}
+				
+			case .failure(let error):
+				print("Error fetching data: \(error)")
+			}
+		}
+	}
 }
 
-var mapCardViewModel = [
-MapCardViewModel(image: "lumluka", title: "สาขาลำลูกกา",url: "https://goo.gl/maps/MK7K3drtWHw3gsco6"),
-MapCardViewModel(image: "meanburi", title: "สาขามีนบุรี",url: "https://goo.gl/maps/BoRAYxs3trQtgf5o6"),
-MapCardViewModel(image: "ลาดกระบัง", title: "สาขาลาดกระบัง",url: "https://goo.gl/maps/y2AznroHAuuwHQGV8")
-]

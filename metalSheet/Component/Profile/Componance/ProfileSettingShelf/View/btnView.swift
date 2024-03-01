@@ -22,7 +22,7 @@ struct btnView: View {
                 Spacer()
                 Image(systemName: "chevron.right")
             }.padding()
-                .foregroundColor(Color.black.opacity(0.6))
+                .foregroundColor(Color.black)
         }
     
     

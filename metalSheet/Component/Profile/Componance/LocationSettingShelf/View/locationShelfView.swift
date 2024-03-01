@@ -35,7 +35,7 @@ struct locationShelfView: View {
                                        }
                                        .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous)
                                            .stroke(Color.black, lineWidth:  1)
-                                           .padding(EdgeInsets(top: 0, leading: -10, bottom: 0, trailing: -10))
+                                           .padding(EdgeInsets(top: 15, leading: -10, bottom: 15, trailing: -10))
                                        )
                                    }.onDelete(perform: locationViewModel.deleteItem)
                         .onMove(perform: locationViewModel.moveItem)

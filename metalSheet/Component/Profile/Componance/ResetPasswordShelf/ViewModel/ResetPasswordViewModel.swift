@@ -19,10 +19,10 @@ class ResetPasswordViewModel: ObservableObject{
  
     func resetPassword(user:ResetPasswordModel,completion: @escaping () -> Void){
         let userJson = user.toJSON()
-        let apiUrl = "https://domhee-api.onrender.com/api/reset-password"
+        let apiUrl = "https://saprachanapi.onrender.com/user/resetPassword"
         
       
-        AF.request(apiUrl, method: .post, parameters: userJson, encoding: JSONEncoding.default).responseJSON{
+		AF.request(apiUrl, method: .patch, parameters: userJson, encoding: JSONEncoding.default).responseJSON{
             response in
             switch response.result{
             case.success(let value):

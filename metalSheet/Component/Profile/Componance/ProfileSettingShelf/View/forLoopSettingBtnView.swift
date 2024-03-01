@@ -9,8 +9,11 @@ import SwiftUI
 
 struct forLoopSettingBtnView: View {
     @StateObject var viewModel: ProfileViewModel = ProfileViewModel()
+    @EnvironmentObject var viewModels : OrderHistoryViewModel
+
+
     var body: some View {
-        
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack {
             ForEach(viewModel.profileModel, id: \.id) { item in
                 NavigationLink(
@@ -20,7 +23,8 @@ struct forLoopSettingBtnView: View {
                     }
                 )
             }
-        }
+        } .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 18))
+           
       
         
 
@@ -32,6 +36,9 @@ struct forLoopSettingBtnView: View {
             return AnyView(personalSettingShelfView())
         case .addressSetting:
             return AnyView(locationShelfView())
+        case .orderHistory:
+            viewModels.getOrder()
+            return AnyView(OrderHistoryShelfView())
         case .chagePassword:
             return AnyView(changePasswordShelfView())
         }

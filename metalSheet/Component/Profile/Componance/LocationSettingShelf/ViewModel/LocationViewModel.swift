@@ -33,8 +33,8 @@ class LocationViewModel: ObservableObject {
     func moveItem(from: IndexSet, to: Int){
         items.move(fromOffsets: from, toOffset: to)
     }
-    func  addItem(name:String,phone:String,addressOne:String,addressTwo:String,postCode:String,addressType:String,isSelected:Bool){
-        let newItem = LocationItemModel(name: name, phone: phone, addressOne: addressOne, adressTwo: addressTwo, postCode: postCode, addressType: addressType,isSelected: isSelected)
+	func  addItem(name:String,phone:String,addressOne:String,addressTwo:String,postCode:String,locationLink:String,addressType:String,isSelected:Bool){
+		let newItem = LocationItemModel(name: name, phone: phone, addressOne: addressOne, adressTwo: addressTwo, postCode: postCode, locationLink: locationLink, addressType: addressType,isSelected: isSelected)
         
         
         items.append(newItem)
@@ -61,7 +61,7 @@ class LocationViewModel: ObservableObject {
             UserDefaults.standard.set(encodedData, forKey: itemsKey)
         } 
     }
-    func updateItemAtIndex(index: Int, name: String, phone: String, addressOne: String, addressTwo: String, postCode: String, addressType: String, isSelected: Bool) {
+	func updateItemAtIndex(index: Int, name: String, phone: String, addressOne: String, addressTwo: String, postCode: String,locationLink:String, addressType: String, isSelected: Bool) {
         if index < items.count {
             items[index] = LocationItemModel(
                 id: items[index].id,
@@ -69,7 +69,8 @@ class LocationViewModel: ObservableObject {
                 phone: phone,
                 addressOne: addressOne,
                 adressTwo: addressTwo,
-                postCode: postCode,
+				postCode: postCode,
+				locationLink: locationLink,
                 addressType: addressType,
                 isSelected: items[index].isSelected
             )

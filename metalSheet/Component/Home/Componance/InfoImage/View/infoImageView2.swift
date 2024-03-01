@@ -11,18 +11,12 @@ struct infoImageView2: View {
     let infoData: [InfoDataModel]
     
     var body: some View {
-        let iPadHeight: CGFloat = 700
-        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         TabView {
             ForEach(infoData, id: \.id) { infoModel in
                 ForEach(infoModel.img_src, id: \.self) { imageUrl in
                     LazyImage(source: imageUrl) { state in
                         if let image = state.image{
                             image
-                   
-                            
-                            
-                            
                         }else{
                             VStack{
                                 Image("removeTextLogo")
@@ -33,28 +27,23 @@ struct infoImageView2: View {
                                     .font(.subheadline)
                             }
                         }
-                        
-                        
                     }
-                    
-             
                     .scaledToFit()
                     .cornerRadius(20)
-                    .frame(width: UIScreen.main.bounds.width, height: isiPad ? iPadHeight : 400)
+                    .frame(width: UIScreen.main.bounds.width - 15, height:UIScreen.main.bounds.width)
+				
                   
                 }
                 .cornerRadius(20)
                 .padding(.horizontal,5)
                 
             }
-            
-            
-            
+
         }
         
         .cornerRadius(20)
         
-        .frame(width: UIScreen.main.bounds.width, height: isiPad ? iPadHeight : 400)
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
 
         .tabViewStyle(PageTabViewStyle())
         .padding(EdgeInsets(top: 5, leading: 12, bottom: 5, trailing: 12))

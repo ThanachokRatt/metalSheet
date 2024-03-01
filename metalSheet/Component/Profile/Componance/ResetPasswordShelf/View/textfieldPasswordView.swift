@@ -19,6 +19,7 @@ struct textfieldPasswordView: View {
     
 
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack(spacing: 10){
             
             HStack (spacing: 22){
@@ -96,7 +97,7 @@ struct textfieldPasswordView: View {
             }
            
             
-        }
+        } .font(Font.custom("Pridi-Light",size: isiPad ? 25 : 17))
         
     }
  

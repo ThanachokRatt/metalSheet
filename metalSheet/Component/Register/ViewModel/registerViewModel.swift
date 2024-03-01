@@ -29,8 +29,9 @@ class RegisterViewModel: ObservableObject{
         
         let userJson = user.toJSON()
       //  let apiUrl = "https://domhee-api.onrender.com/api/register"
-        let apiUrl = "https://domhee-api.onrender.com/api/sign-up"
-        
+        //let apiUrl = "https://domhee-api.onrender.com/api/sign-up"
+		let apiUrl = "https://saprachanapi.onrender.com/auth/v1/verify_OTP"
+
         AF.request(apiUrl,method: .post,parameters: userJson,encoding: JSONEncoding.default).responseJSON {
             response in
             switch response.result {

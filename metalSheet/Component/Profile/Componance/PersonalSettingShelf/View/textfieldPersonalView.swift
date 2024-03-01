@@ -17,6 +17,7 @@ struct textfieldPersonalView: View {
     @Binding var isEditingEnabled: Bool
     
     var body: some View {
+        let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         VStack(spacing: 10){
            
             HStack  (spacing: 22){
@@ -72,7 +73,7 @@ struct textfieldPersonalView: View {
                         Image(systemName: "phone")
                             .foregroundColor(Color(.black))
                         Text("เบอร์มือถือ")
-                           
+                            
                         
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     
@@ -81,6 +82,7 @@ struct textfieldPersonalView: View {
                         .foregroundColor(isEditingEnabled ? Color.black : Color.gray)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(!isEditingEnabled)
+                        .keyboardType(.numberPad)
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                
                
@@ -90,6 +92,7 @@ struct textfieldPersonalView: View {
      
             
         }
+        .font(Font.custom("Pridi-Light",size: isiPad ? 25 : 17))
         .accentColor(Color.black)
     }
   

@@ -23,10 +23,11 @@ struct orderView: View {
     @State private var showAlerError = false
     @State private var isEditing = false
     @State private var isaddProductHistoryView = false
+	@State var additional = ""
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         ScrollView {
-            VStack {
+            LazyVStack {
                 
                 if locationViewModel.items.contains(where: { $0.isSelected }) {
                     ForEach(locationViewModel.items.filter { $0.isSelected }) { selectedLocation in
@@ -34,7 +35,7 @@ struct orderView: View {
                             VStack {
                                 
                                 ListRowView(item: selectedLocation, navigationtoLocationView: $navigationToLocationView)
-                                    .overlay(RoundedRectangle(cornerRadius: 10,style: .continuous).stroke(Color.black,lineWidth:  1))
+                                    .overlay(RoundedRectangle(cornerRadius: 10,style: .continuous).stroke(Color.black,lineWidth:  1).padding(EdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)))
                                     .padding(.horizontal,8)
                                     .padding(.vertical,8)
                             }
@@ -74,7 +75,7 @@ struct orderView: View {
                     Text("ราคาสินค้าทั้งหมด")
                     
                     Spacer()
-                    Text("฿\(addProductHistoryModel.total).00")
+					Text("฿ \(String(format:"%.2f",(addProductHistoryModel.total)))")
                         
                 }.font(.system(size: isiPad ? 27 : 17))
                     .bold()
@@ -87,7 +88,12 @@ struct orderView: View {
                     Spacer()
                     
                 }.padding(.horizontal,15)
-                
+				TextField("รายละเอียดเพิ่มเติม...",text: $additional)
+					.textFieldStyle(RoundedBorderTextFieldStyle())
+					.padding(.horizontal,15)
+					.foregroundColor(Color(.black))
+				
+				
                 if isOrder {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -101,7 +107,12 @@ struct orderView: View {
                     .foregroundColor(Color.red)
                     .font(.subheadline)
                     .padding(.top,10)
-                
+			
+				
+					
+			
+					
+				
                 Button {
                
                     if locationViewModel.items.contains(where: { $0.isSelected }) {
@@ -125,10 +136,13 @@ struct orderView: View {
                     
                 }.padding()
                     .disabled(isOrder)
-            }
+            }	 
            
         }.background(Color.white)
-        
+			.onTapGesture {
+				// Hide the keyboard
+				UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+			}
         
             .navigationTitle(Text("สั่งซื้อ"))
             .preferredColorScheme(.light)
@@ -149,23 +163,42 @@ struct orderView: View {
                         var orderItems = [OrderItem]()
                         
                         if let selectedLocation = locationViewModel.items.first(where: { $0.isSelected }) {
-                            user.name = ("\(selectedLocation.name)")
-                            user.phone = ("\(selectedLocation.phone)")
-                            user.address = ("ที่อยู่: \(selectedLocation.addressOne) \(selectedLocation.adressTwo) รหัสไปรษณีย์: \(selectedLocation.postCode) ประเภทที่อยู่: \(selectedLocation.addressType)")
-                            user.detail = ("\(addProductHistoryModel.total).00 บาท")
-                            
+							user.name = ("\(selectedLocation.name)")
+							user.phone = ("\(selectedLocation.phone)")
+							
+							user.address = ("\(selectedLocation.addressOne) \(selectedLocation.adressTwo)")
+							
+							user.postcode = "\(selectedLocation.postCode)"
+							user.type = ("\(selectedLocation.addressType)")
+							
+							
+							user.grandTotal = ("\(String(format:"%.2f",(addProductHistoryModel.total)))")
+							
+							user.locationUrl = ("\(selectedLocation.locationLink)")
+							
+							user.additional = additional
+							
                             
                         }
                         
                         for (id,item) in addProductHistoryModel.items.enumerated() {
                             var orderItem = OrderItem()
-                            orderItem.itemId = id + 1
+							orderItem.itemId =  ("\(item.id ?? "")")
                             orderItem.name = ("\(item.productName)")
-                            orderItem.bmt =  ("ความหนา: \(item.selectedCategory) มม.")
-                            orderItem.length = ("ความยาว: \(item.selectedLong) ม.")
-                            orderItem.color = ("สี: \(item.selectedColorCategory)")
+							
+							if !item.selectedCategory.isEmpty{
+								orderItem.bmt =  ("ความหนา : \(item.selectedCategory) มม.")
+								orderItem.length = ("ความยาว : \(item.selectedLong) ม.")
+							}
+
+                            orderItem.color = ("สี : \(item.selectedColorCategory)")
                             orderItem.qty = Int(item.selectedQty) ?? 0
-                            orderItem.price = item.calculatedPrice
+							
+							
+							if let priceFloat = Float(String(format: "%.2f", item.calculatedPrice)) {
+								orderItem.price = priceFloat
+							}
+							orderItem.addon = ("\(item.selectedAddOnsCategory)")
                             orderItems.append(orderItem)
                             
                         }
@@ -176,6 +209,7 @@ struct orderView: View {
                         orderViewModel.saveOrder(user: user){
                                 isOrder = false
                                 userConfirmedOrder = false
+							   additional = ""
                             }
                     }
                 )
@@ -243,14 +277,14 @@ struct orderView: View {
                         .bold()
                         .font(.system(size: 27))
                         .foregroundColor(.black)
-                    Text(" กรุณาตรวจสอบอีเมลของท่าน")
+					Text(" \(orderViewModel.alertMessage)")
                         .foregroundColor(.black)
                         .font(.system(size: 18))
-                    Text("ทางทีมงานจะติดต่อกลับภายในเร็วๆนี้")
-                        .foregroundColor(.black)
-                        .font(.system(size: 18))
-                        .padding(.top,-15)
-                    
+                   // Text("ทางทีมงานจะติดต่อกลับภายในเร็วๆนี้")
+                    //    .foregroundColor(.black)
+                    //    .font(.system(size: 18))
+                    //    .padding(.top,-15)
+                   
                     Button(action: {
                         if orderViewModel.shouldDismiss{
                             addProductHistoryModel.removeAllItems()
@@ -273,7 +307,7 @@ struct orderView: View {
                 .padding(.horizontal, 60)
                 .background(BlurView())
                 .cornerRadius(25)
-            }
+			}.frame(width: 380,height: 600)
             
             
         }

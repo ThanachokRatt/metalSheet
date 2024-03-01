@@ -24,23 +24,22 @@ class OtpViewModel: ObservableObject{
     
     func sendOtp(user: RegisterModel, completion: @escaping () -> Void){
         let userJson = user.toJSON()
-        let apiUrl = "https://domhee-api.onrender.com/api/sendOTP"
-        
+       // let apiUrl = "https://domhee-api.onrender.com/api/sendOTP"
+		let apiUrl = "https://saprachanapi.onrender.com/auth/v1/register"
         AF.request(apiUrl,method: .post,parameters: userJson,encoding: JSONEncoding.default).responseJSON{
             response in
             switch response.result{
             case .success(let value):
-                if let jsonDict = value as? [String: Any] {
-                    if let successMessage = jsonDict["message"] as? String,
-                       let codeArray = jsonDict["code"] as? [String],
-                               let code = codeArray.first {
-                                self.alertMessage = successMessage
-                                self.verifyOtp = code
-                              //  print("alert: \(self.alertMessage)")
-                                //print("otp: \(self.verifyOtp)")
-                        self.redirectToOtpView = true
-                        
-                    }
+				if let jsonDict = value as? [String: Any] {
+					if let successMessage = jsonDict["message"] as? String,
+					   let  code = jsonDict["code"] as? String {
+								self.alertMessage = successMessage
+								self.verifyOtp = code
+							  //  print("alert: \(self.alertMessage)")
+								print("otp: \(self.verifyOtp)")
+						self.redirectToOtpView = true
+						
+					}
                     
                 };if let jsonDict = value as? [String: Any],
                          let Message = jsonDict["err"] as? String {

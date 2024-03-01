@@ -90,7 +90,7 @@ struct registerShlefView: View {
                              showAlert = false*/
                             
                             otpViewModel.email = "\(email)"
-                            otpViewModel.password = "\(password)"
+							otpViewModel.password = "\(password)"
                             otpViewModel.name = "\(name)"
                             otpViewModel.phone = "\(phone)"
                             otpViewModel.role = "\(role)"
@@ -115,6 +115,7 @@ struct registerShlefView: View {
                     }
                 }
             }
+            .preferredColorScheme(.light)
             .background(
                 // Use NavigationLink to navigate to OtpView when redirectToOtpView is true
                 NavigationLink("", destination: OtpView(), isActive: $otpViewModel.redirectToOtpView)

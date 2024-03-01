@@ -15,123 +15,159 @@ struct DescriptionView: View {
     @State private var selectedIndex: Int = 2
     @State var stepperLong: Float = 1.00
     @State var stepperQty: Int = 1
-    
-   var viewmodel: CartModel
-    
+	//@State var currentPrice: Int = 1
+	
+	@State private var selectedColor: String?
+	@State private var selectedBMT: String?
+	@State private var selectedModelPrice: Int = 1
+	
+	@State private var selectedAddOns: String?
+    var viewmodel: CartModel
+	var viewModel : DescriptionViewModel
+	@EnvironmentObject var description: DescriptionViewModel
     @EnvironmentObject var addProductHistoryModel: AddProductViewModel
-    
-    var isCategoryEnabled: Bool {
+  /*  var isCategoryEnabled: Bool {
         return viewmodel.categories[selectedIndex] == "0.35"
-    }
+    }*/
     
     
 
     var body: some View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
-
+		
         ZStack {
             Color("Bgp")
                 .edgesIgnoringSafeArea(.all)
-            ScrollView {
-                
-                LazyImage(source: viewmodel.productImage) { state in
-                    if let image = state.image{
-                        image
-                    }else {
-                        VStack{
-                            Image("removeTextLogo")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                            Text("กำลังโหลด...")
-                                .foregroundColor(Color.black.opacity(0.5))
-                                .font(.subheadline)
-                            
-                        }
-                    }
-                }
-                .aspectRatio(contentMode: .fit)
-                .scaledToFit()
+			ScrollView {
+				TabView {
+					ForEach(viewModel.description) { infoModel in
+						ForEach(infoModel.images, id: \.self) { imageUrl in
+							LazyImage(source: imageUrl) { state in
+								if let image = state.image{
+									image
+								}else {
+									VStack{
+										Image("removeTextLogo")
+											.resizable()
+											.aspectRatio(contentMode: .fit)
+										Text("กำลังโหลด...")
+											.foregroundColor(Color.black.opacity(0.7))
+											.font(.subheadline)
+									}
+								}
+							}
+							.scaledToFit()
+						.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+						}
+						//.padding(.horizontal,5)
+						//.padding(.horizontal,5)
+					}
+				}
+				//.cornerRadius(20)
+				.scaledToFill()
+				.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+
+				.tabViewStyle(PageTabViewStyle())
+			/*	LazyImage(source: viewModel.description.first?.image ?? "") { state in
+					if let image = state.image{
+						image
+					}else {
+						VStack{
+							Image("removeTextLogo")
+								.resizable()
+								.aspectRatio(contentMode: .fit)
+							Text("กำลังโหลด...")
+								.foregroundColor(Color.black.opacity(0.5))
+								.font(.subheadline)
+							
+						}
+					}
+				}
+				.aspectRatio(contentMode: .fit)
+				.scaledToFit()*/
                    
                 
                 VStack (alignment: .leading,spacing: 10){
-                    Text(viewmodel.productName)
-                        .font(.system(size: isiPad ? 34 : 24))
+					Text(viewModel.description.first?.title ?? "")
+                        .font(Font.custom("Pridi-Regular",size: isiPad ? 36 : 26))
                         .bold()
                     HStack {
-                        Text("฿\(isCategoryEnabled ? viewmodel.priceColor : viewmodel.priceNocolor) ")
-                           
+						Text(updatePrice())
+							.font(Font.system(size: isiPad ? 36 : 26))
                         
-                        Text("(ราคาต่อเมตร)")
-                            .font(.system(size: isiPad ? 24 : 14))
-                            .padding(.bottom,-5)
+						Text("\(viewModel.description.first?.note ?? "")")
+							.font(Font.custom("Pridi-Light",size: isiPad ? 28 : 18))
+							.padding(.bottom,-5)
                     } .font(.system(size: isiPad ? 34 : 24))
                      
                        
                        
-                    Text("(สามารถเลือกสีได้เฉพาะความหนา 0.35มิลลิเมตร)")
+					Text("\(viewModel.description.first?.note2 ?? "")")
                         .foregroundColor(.red)
                         .opacity(0.8)
-                        .font(.system(size: isiPad ? 25 : 15))
+                        .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 17))
                     
                     Text("รายละเอียด")
-                        .fontWeight(.medium)
-                        .font(.system(size: isiPad ? 26 : 18))
+                        
+                        .font(Font.custom("Pridi-Regular",size: isiPad ? 28 : 20))
                         .fontWeight(.semibold)
                         .padding(.vertical, 4)
                     
-                    Text(viewmodel.description)
+					Text(" \(viewModel.description.first?.description ?? "")")
                         .lineSpacing(8.0)
                         .opacity(0.6)
+                        .font(Font.custom("Pridi-Light",size: isiPad ? 28 : 20))
                    
-                    HStack (alignment: .top){
-                        VStack(alignment: .leading) {
-                            Text("ความหนา(มิลลิเมตร)")
-                            
-                                .fontWeight(.semibold)
-                                .padding(.bottom,4)
-                            
-                            HStack{
-                                ForEach(0 ..< viewmodel
-                                    .categories.count) { i in
-                                        CategoryView(isActive: i == selectedIndex, text: viewmodel.categories[i])
-                                        .onTapGesture {
-                                            selectedIndex = i
-                                            addProductHistoryModel.updateisCategoryEnabled(isCategoryEnabled)
-                                            addProductHistoryModel.updateSelectedCategory(viewmodel.categories[i])
-                                            if viewmodel
-                                                .categories[i] != "0.35"{
-                                                
-                                                addProductHistoryModel.updateSelectedColorCategory("อลูซิงค์")
-                                             
-                                                
-                                                
-                                                
-                                            }
-                                            
-                                        }
-                                }
-                            }
-                        }
-                        .frame(maxWidth:.infinity, alignment: .leading)
-                        
-                        
-                    }
-                    .padding(.vertical)
-                    
-                    ColorDotCategoryView(colorCategories: isCategoryEnabled ? viewmodel.colorCategories : viewmodel.colorCategories2, isCategoryEnabled: isCategoryEnabled)
-                    
-                    
-                    HStack(alignment: .bottom) {
-                        LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22,longPressInterval: 0.09)
-                            .padding(.top, 10)
-                            .font(.system(size:isiPad ? 22 : 18))
-                            .bold()
-                            
-                    }
-                    .onChange(of: stepperLong) { newValue in
-                        let formattedValue = String(format: "%.2f", newValue)
-                        addProductHistoryModel.updateSelectedLong(formattedValue)
-                    }
+					VStack(alignment: .leading,spacing: 20) {
+						if let variations = viewModel.description.first?.variations {
+							ForEach(0..<variations.count, id: \.self) { index in
+								if variations.indices.contains(index) {
+									let variation = variations[index]
+
+									if variation.name == "สี" {
+										ColorDotCategoryView(selectedColor:$selectedColor,colorCategories: variation.options, text: variation.name, isCategoryEnabled: true, selectedBMT: $selectedBMT)
+									} else if variation.name == "ความหนา" {
+										
+										CategoryView(selectedBMT: $selectedBMT,text: variation.name, bmt: variation.options)
+										
+									}
+								}
+							}
+							
+						}
+						
+					}
+					
+					.padding()
+					if viewModel.description.first?.addons != nil{
+						if let variations2 = viewModel.description.first?.addons.first {
+								AddonsCategoryView(text:  variations2.name , addOnsCategories: variations2.options, selectedAddOns: $selectedAddOns)
+								.padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 0))
+						}
+					}
+				
+					
+
+					//addProductHistoryModel.updateisCategoryEnabled(isCategoryEnabled)
+					//addProductHistoryModel.updateSelectedCategory(viewmodel.categories[i])
+					
+					//addProductHistoryModel.updateSelectedColorCategory("อลูซิงค์")
+					HStack(alignment: .bottom) {
+						if let variations = viewModel.description.first?.variations,
+						   let thicknessVariation = variations.first(where: { $0.name == "ความหนา" }) {
+							if !thicknessVariation.options.isEmpty {
+								LabeledStepper2("ความยาว", description: "(เมตร)", value: $stepperLong, in: 1...22.00, longPressInterval: 0.09)
+									.padding(.top, 10)
+									.font(Font.custom("Pridi-Regular", size: isiPad ? 24 : 20))
+									.bold()
+							}
+						}
+					}
+					.onChange(of: stepperLong) { newValue in
+						let formattedValue = String(format: "%.2f", newValue)
+						addProductHistoryModel.updateSelectedLong(formattedValue)
+					}
+
 
           
                     
@@ -139,7 +175,7 @@ struct DescriptionView: View {
                         LabelStepperInt("จำนวน",description: "(ชิ้น)",value: $stepperQty, in:  1...1000,longPressInterval: 0.09)
                         
                             .padding(.top,10)
-                            .font(.system(size:isiPad ? 22 : 18))
+                            .font(Font.custom("Pridi-Regular",size: isiPad ? 24 : 20))
                             .bold()
                         
                     }.onChange(of: stepperQty) { newValue in
@@ -154,7 +190,7 @@ struct DescriptionView: View {
                         Text("(แตะค้างหรือคลิกเพื่อพิมพ์เพื่อเพิ่มจำนวนอย่างรวดเร็ว)")
                             .foregroundColor(.red)
                             .opacity(0.8)
-                            .font(.system(size: isiPad ? 24 : 15))
+                            .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 17))
                     }
                     
                  
@@ -165,6 +201,7 @@ struct DescriptionView: View {
                 .background(Color("Bgp"))
             .cornerRadius(15.0)
             }
+		
            
             .safeAreaInset(edge: .bottom) {
                 Color.clear.frame(height: 80)
@@ -175,16 +212,71 @@ struct DescriptionView: View {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
           
-            FooterAddProductToCartView(viewModel: viewmodel,stepperLong: $stepperLong,stepperQty: $stepperQty)
+			FooterAddProductToCartView(viewModel: viewmodel, viewModel2: viewModel, stepperLong: $stepperLong, stepperQty: $stepperQty, selectedModelPrice: $selectedModelPrice,selectedBMT: $selectedBMT,selectedColor: $selectedColor,selectedAddOns: $selectedAddOns)
+
+				
         }
         .edgesIgnoringSafeArea(.bottom)
        
         
         .toolbar{
-            buttonCartView(numberOfProduct: addProductHistoryModel.items.count)
+			
+			ToolbarItem(placement: .navigationBarTrailing){
+				HStack(spacing: 0){
+					FaceBookButton()
+					LineButton()
+					buttonCartView(numberOfProduct: addProductHistoryModel.items.count)
+				}
+			}
         }
+		.toolbarColorScheme(.light, for: .navigationBar)
         
     }
+	func updatePrice() -> String {
+		if viewModel.description.first?.addons.first?.name != nil,
+		   let selectedColor = selectedColor,
+		   let selectedBMT = selectedBMT,
+		   let selectedAddOns = selectedAddOns,
+		   let selectedModelAddOns = viewModel.description.first?.addonsModels.first(where: { $0.name == "\(selectedAddOns)" }) ,
+		   let selectedModel = viewModel.description.first?.models.first(where: { $0.name == "\(selectedBMT),\(selectedColor)" }) {
+			let currentPrice = (selectedModel.price ?? 0) + (selectedModelAddOns.price ?? 0)
+			
+			DispatchQueue.main.async {
+		
+					self.selectedModelPrice = currentPrice
+				
+			}
+			return "฿\(currentPrice)"
+		}else if   let selectedColor = selectedColor,
+				   let selectedModel = viewModel.description.first?.models.first(where: { $0.name == "\(selectedColor)" }) {
+			let currentPrice = selectedModel.price ?? 0
+			
+			DispatchQueue.main.async {
+				
+					self.selectedModelPrice = currentPrice
+				
+			}
+			return "฿\(currentPrice)"
+			
+			
+		}else if  let selectedColor = selectedColor,
+				  let selectedBMT = selectedBMT,
+				  let selectedModel = viewModel.description.first?.models.first(where: { $0.name == "\(selectedBMT),\(selectedColor)" }){
+			let currentPrice = selectedModel.price ?? 0
+			
+			DispatchQueue.main.async {
+				
+					self.selectedModelPrice = currentPrice
+				
+				
+			}
+			return "฿\(currentPrice)"}
+			else {
+				// Return the default price range
+				
+				return "฿\(viewModel.description.first?.priceMin ?? 0) ~ \(viewModel.description.first?.priceMax ?? 0)"
+			}
+		}
 }
 //MARK: - Adjust Keyboard
 struct KeyboardAwareModifier: ViewModifier {
