@@ -44,7 +44,7 @@ class PersonalViewModel: ObservableObject{
         }
     }
     func deteleUser(){
-        let apiUrl = "https://domhee-api.onrender.com/api/admin/delUser/\(id)"
+        let apiUrl = "https://saprachanapi.onrender.com/user/?uid=\(id)"
         AF.request(apiUrl,method: .delete,encoding: JSONEncoding.default).responseJSON{
             response in
             switch response.result{

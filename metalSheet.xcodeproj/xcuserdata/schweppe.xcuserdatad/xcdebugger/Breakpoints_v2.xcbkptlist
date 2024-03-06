@@ -52,5 +52,101 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0EF15863-317C-4E4F-A740-D30155A09A18"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "metalSheet/Component/Profile/Componance/ResetPasswordShelf/ViewModel/ResetPasswordViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "resetPassword(user:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0EF15863-317C-4E4F-A740-D30155A09A18 - 3b8fa7f233952815"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.ResetPasswordViewModel.resetPassword(user: metalSheet.ResetPasswordModel, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Profile/Componance/ResetPasswordShelf/ViewModel/ResetPasswordViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "147">
+               </Location>
+               <Location
+                  uuid = "0EF15863-317C-4E4F-A740-D30155A09A18 - 3b8fa7f233952815"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.ResetPasswordViewModel.resetPassword(user: metalSheet.ResetPasswordModel, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Profile/Componance/ResetPasswordShelf/ViewModel/ResetPasswordViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D72D1305-EA7A-470D-8751-00B9B63560F3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "metalSheet/Component/Register/ViewModel/otpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "sendOtp(user:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D72D1305-EA7A-470D-8751-00B9B63560F3 - 62347b14e3273f3c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.OtpViewModel.sendOtp(user: metalSheet.RegisterModel, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Register/ViewModel/otpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "91">
+               </Location>
+               <Location
+                  uuid = "D72D1305-EA7A-470D-8751-00B9B63560F3 - 62347b14e3273f3c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "metalSheet.OtpViewModel.sendOtp(user: metalSheet.RegisterModel, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "metalSheet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Register/ViewModel/otpViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

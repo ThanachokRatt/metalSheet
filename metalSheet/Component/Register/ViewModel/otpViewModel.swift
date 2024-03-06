@@ -31,7 +31,7 @@ class OtpViewModel: ObservableObject{
             switch response.result{
             case .success(let value):
 				if let jsonDict = value as? [String: Any] {
-					if let successMessage = jsonDict["message"] as? String,
+					if let successMessage = jsonDict["msg"] as? String,
 					   let  code = jsonDict["code"] as? String {
 								self.alertMessage = successMessage
 								self.verifyOtp = code

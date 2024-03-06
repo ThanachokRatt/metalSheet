@@ -19,7 +19,7 @@ struct Addons: Codable, Mappable {
 		options <- map["options"]
 	}
 }
-struct AddonModels: Mappable {
+struct AddonModels: Mappable,Codable  {
 	var name: String?
 	var price: Int?
 	var status: Bool = false
@@ -48,7 +48,7 @@ struct Variation: Codable, Mappable {
     }
 }
 
-struct Model: Mappable {
+struct Model: Mappable ,Codable {
     var name: String?
     var price: Int?
     var status: Bool = false
@@ -64,7 +64,7 @@ struct Model: Mappable {
 }
 import ObjectMapper
 
-class DescriptionModel: ObservableObject,Mappable,Identifiable {
+class DescriptionModel: ObservableObject,Mappable,Identifiable,Codable {
     var id: String = ""
     var title: String = ""
     var image: String = ""
@@ -86,7 +86,7 @@ class DescriptionModel: ObservableObject,Mappable,Identifiable {
 	required init?(map: Map) {}
 
 	func mapping(map: Map) {
-        id <- map["id"]
+        id <- map["_id"]
         title <- map["title"]
         image <- map["image"]
         note <- map["note"]

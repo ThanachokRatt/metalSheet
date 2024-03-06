@@ -40,11 +40,15 @@ struct homeShelfView: View {
                         }
                         
                         
-                    }
+					}
                     .safeAreaInset(edge: .bottom) {
                         Color.clear.frame(height: 120)
-                    }
+					}
                     .ignoresSafeArea()
+					.refreshable {
+						homeViewModel.refreshData()
+						mapCardViewModel.refreshData()
+					}
                 }
                 .background(Color.white)
             }

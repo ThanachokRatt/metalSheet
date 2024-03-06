@@ -55,11 +55,15 @@ struct ProductCartView: View {
 					}
 					
 					
-				}.background(Color.white)
-					
+				}
+				.refreshable {
+					viewModel.refreshData()
+				}
+				.background(Color.white)
 				
 				
 			}.background(Color.white)
+				
 			
 		}
 		.toolbar{
@@ -110,7 +114,7 @@ struct ProductCartView: View {
 					if let productId = cartModel.id {
 						description.productid = productId
 						description.isDataFetched = false
-						description.fetchDataDesFromApi()
+						description.clearCacheIfNeeded()
 						selectedProductId = productId
 					}
 				}

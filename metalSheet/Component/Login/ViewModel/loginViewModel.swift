@@ -120,14 +120,14 @@ class LoginViewModel: ObservableObject {
                       
                     }
                     if let data = json["data"] as? [String: Any] {
-                        self.id = data["id"] as? String ?? ""
+                        self.id = data["_id"] as? String ?? ""
                         self.email = data["email"] as? String ?? ""
                         self.token = data["token"] as? String ?? ""
                         self.name = data["name"] as? String ?? ""
                         self.phone = data["phone"] as? String ?? ""
                         self.passWord = data["pwd"] as? String ?? ""
                         
-                        if let userId = data["id"] as? String {
+                        if let userId = data["_id"] as? String {
                             self.setUserId(userId)
                         }
                         if let userName = data["name"] as? String {

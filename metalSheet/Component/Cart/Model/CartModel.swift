@@ -57,7 +57,7 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
     init?(map: Map) { }
 
     mutating func mapping(map: Map) {
-        id <- map["id"]
+        id <- map["_id"]
         productImage <- map["image"]
         productName <- map["title"]
         /*description <- map["details"]

@@ -9,7 +9,7 @@ import Foundation
 import ObjectMapper
 
 
-struct InfoImageModel: Mappable {
+struct InfoImageModel: Mappable,Codable {
     var data: [InfoDataModel] = []
 
     init?(map: Map) {}
@@ -18,7 +18,7 @@ struct InfoImageModel: Mappable {
         data <- map["data"]
     }
 }
-struct InfoDataModel: Mappable, Identifiable,Hashable {
+struct InfoDataModel: Mappable, Identifiable,Codable {
     var id: Int
     var descriptionHome: String = ""
     var img_src: [String] = []

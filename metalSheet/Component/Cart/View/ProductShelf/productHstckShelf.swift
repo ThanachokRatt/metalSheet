@@ -64,7 +64,7 @@ import SwiftUI
 					 if let productId = cartModel.id {
 						 description.productid = productId
 						 description.isDataFetched = false
-						 description.fetchDataDesFromApi()
+						 description.clearCacheIfNeeded()
 						 selectedProductId = productId
 					 }
 				 }
@@ -78,9 +78,9 @@ import SwiftUI
 
 	
  }
- #Preview {
-	 productHstckShelf()
- }
+ //#Preview {
+	// productHstckShelf()
+ //}
 /*import SwiftUI
  struct productHstckShelf: View {
 	 @StateObject var viewModel: CartViewModel = CartViewModel()

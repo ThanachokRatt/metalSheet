@@ -24,6 +24,7 @@
 		F85A3CC62B30538600B34739 /* headerOrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85A3CC52B30538600B34739 /* headerOrderHistoryView.swift */; };
 		F85A6CB02B2DB168001E8E1C /* Pridi-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F85A6CAF2B2DB168001E8E1C /* Pridi-Light.ttf */; };
 		F85A6CB32B2DB8C0001E8E1C /* Pridi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F85A6CB22B2DB8C0001E8E1C /* Pridi-Regular.ttf */; };
+		F85A95BB2B91B33C00E51EA6 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F85A95BA2B91B33C00E51EA6 /* ObjectMapper */; };
 		F85E43AA2B2E291C003DBC1C /* FaceBookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85E43A92B2E291C003DBC1C /* FaceBookButton.swift */; };
 		F860629B2B84A0C900786AFA /* ImageDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F860629A2B84A0C900786AFA /* ImageDescriptionView.swift */; };
 		F86563632AF88C15004633FD /* otpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86563622AF88C15004633FD /* otpViewModel.swift */; };
@@ -34,6 +35,7 @@
 		F86EE3F32B2F2DD600CA1AA1 /* OrderHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EE3F22B2F2DD600CA1AA1 /* OrderHistoryModel.swift */; };
 		F86EE3F52B2F2DE400CA1AA1 /* OrderHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EE3F42B2F2DE400CA1AA1 /* OrderHistoryViewModel.swift */; };
 		F87B71CE2B8C9E2300DDD5A7 /* AddonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87B71CD2B8C9E2300DDD5A7 /* AddonsView.swift */; };
+		F885FFDE2B93033A00320D24 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F885FFDD2B93033A00320D24 /* Cache.swift */; };
 		F88722642B20D8BD003B78E9 /* singInAndRegisterBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88722632B20D8BD003B78E9 /* singInAndRegisterBtnView.swift */; };
 		F88A2FAC2AC41A4C0025F5DC /* NavigationStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */; };
 		F895817B2A9EFECD00973837 /* BasketShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F895817A2A9EFECD00973837 /* BasketShelfView.swift */; };
@@ -102,7 +104,6 @@
 		F8BAFA442AD95AC00045131D /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BAFA432AD95AC00045131D /* OrderModel.swift */; };
 		F8BAFA462AD95AD00045131D /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BAFA452AD95AD00045131D /* OrderViewModel.swift */; };
 		F8BF91302AAABB4F0071F2F3 /* productSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BF912F2AAABB4F0071F2F3 /* productSingleView.swift */; };
-		F8FF7C4D2AC95C7200B27D3D /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F8FF7C4C2AC95C7200B27D3D /* ObjectMapper */; };
 		F8FF7C502AC95C9F00B27D3D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F8FF7C4F2AC95C9F00B27D3D /* Alamofire */; };
 		F8FF7C522AC95CB800B27D3D /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FF7C512AC95CB800B27D3D /* RegisterModel.swift */; };
 		F8FF7C552AC95CD900B27D3D /* registerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FF7C542AC95CD900B27D3D /* registerViewModel.swift */; };
@@ -137,6 +138,7 @@
 		F86EE3F22B2F2DD600CA1AA1 /* OrderHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryModel.swift; sourceTree = "<group>"; };
 		F86EE3F42B2F2DE400CA1AA1 /* OrderHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryViewModel.swift; sourceTree = "<group>"; };
 		F87B71CD2B8C9E2300DDD5A7 /* AddonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddonsView.swift; sourceTree = "<group>"; };
+		F885FFDD2B93033A00320D24 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		F88722632B20D8BD003B78E9 /* singInAndRegisterBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = singInAndRegisterBtnView.swift; sourceTree = "<group>"; };
 		F88A2FAB2AC41A4C0025F5DC /* NavigationStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackController.swift; sourceTree = "<group>"; };
 		F895817A2A9EFECD00973837 /* BasketShelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketShelfView.swift; sourceTree = "<group>"; };
@@ -213,9 +215,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F85A95BB2B91B33C00E51EA6 /* ObjectMapper in Frameworks */,
 				F83EC3472AFE258200AC5A5B /* Alamofire in Frameworks */,
 				F8FF7C502AC95C9F00B27D3D /* Alamofire in Frameworks */,
-				F8FF7C4D2AC95C7200B27D3D /* ObjectMapper in Frameworks */,
 				F897E0062AD18AE90061A92A /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +320,14 @@
 				F86EE3F42B2F2DE400CA1AA1 /* OrderHistoryViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F885FFDC2B93031800320D24 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				F885FFDD2B93033A00320D24 /* Cache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		F895817C2A9EFF5400973837 /* Basket */ = {
@@ -473,6 +483,7 @@
 		F89B80072A984B2E000FE241 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				F885FFDC2B93031800320D24 /* Cache */,
 				F85A6CAB2B2DAECA001E8E1C /* fonts */,
 				F897855C2ADFAC280032FE0B /* Alert */,
 				F89805F22A98A36000369887 /* Login */,
@@ -855,10 +866,10 @@
 			);
 			name = metalSheet;
 			packageProductDependencies = (
-				F8FF7C4C2AC95C7200B27D3D /* ObjectMapper */,
 				F8FF7C4F2AC95C9F00B27D3D /* Alamofire */,
 				F897E0052AD18AE90061A92A /* NukeUI */,
 				F83EC3462AFE258200AC5A5B /* Alamofire */,
+				F85A95BA2B91B33C00E51EA6 /* ObjectMapper */,
 			);
 			productName = metalSheet;
 			productReference = F8206B842A92FD88006B728B /* metalSheet.app */;
@@ -889,9 +900,9 @@
 			);
 			mainGroup = F8206B7B2A92FD87006B728B;
 			packageReferences = (
-				F8FF7C4B2AC95C7200B27D3D /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 				F8FF7C4E2AC95C9F00B27D3D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F897E0042AD18AE90061A92A /* XCRemoteSwiftPackageReference "NukeUI" */,
+				F85A95B92B91B33C00E51EA6 /* XCRemoteSwiftPackageReference "ObjectMapper" */,
 			);
 			productRefGroup = F8206B852A92FD88006B728B /* Products */;
 			projectDirPath = "";
@@ -971,6 +982,7 @@
 				F89F12B02ACF395A00912492 /* ResetPasswordViewModel.swift in Sources */,
 				F8A425592AADAF2100D4CE99 /* profileViewModel.swift in Sources */,
 				F898195B2AB0D6100069EDCE /* addLocationView.swift in Sources */,
+				F885FFDE2B93033A00320D24 /* Cache.swift in Sources */,
 				F8B057912AA74C7500E9A0B8 /* AllView.swift in Sources */,
 				F86EE3EF2B2F1BFF00CA1AA1 /* OrderHistoryRowView.swift in Sources */,
 				F8A1BDF02AA84173005FA5AE /* TabBarViewModel.swift in Sources */,
@@ -1224,20 +1236,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F85A95B92B91B33C00E51EA6 /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 		F897E0042AD18AE90061A92A /* XCRemoteSwiftPackageReference "NukeUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/NukeUI.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.8.3;
-			};
-		};
-		F8FF7C4B2AC95C7200B27D3D /* XCRemoteSwiftPackageReference "ObjectMapper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tristanhimmelman/ObjectMapper.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
 			};
 		};
 		F8FF7C4E2AC95C9F00B27D3D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -1256,15 +1268,15 @@
 			package = F8FF7C4E2AC95C9F00B27D3D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
+		F85A95BA2B91B33C00E51EA6 /* ObjectMapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F85A95B92B91B33C00E51EA6 /* XCRemoteSwiftPackageReference "ObjectMapper" */;
+			productName = ObjectMapper;
+		};
 		F897E0052AD18AE90061A92A /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F897E0042AD18AE90061A92A /* XCRemoteSwiftPackageReference "NukeUI" */;
 			productName = NukeUI;
-		};
-		F8FF7C4C2AC95C7200B27D3D /* ObjectMapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F8FF7C4B2AC95C7200B27D3D /* XCRemoteSwiftPackageReference "ObjectMapper" */;
-			productName = ObjectMapper;
 		};
 		F8FF7C4F2AC95C9F00B27D3D /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

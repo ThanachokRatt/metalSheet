@@ -30,8 +30,8 @@ struct MapCardModel: Identifiable, Codable, Mappable {
 	
 	mutating func mapping(map: Map) {
 		title <- map["title"]
-		image <- map["img_name"]
-		url <- map["img_url"]
+		image <- map["img_url"]
+		url <- map["location_url"]
 	}
 	
 }

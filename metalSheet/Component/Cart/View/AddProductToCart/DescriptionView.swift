@@ -56,18 +56,19 @@ struct DescriptionView: View {
 									}
 								}
 							}
-							.scaledToFit()
-						.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+						.scaledToFit()
+						.frame(width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.width)
 						}
 						//.padding(.horizontal,5)
 						//.padding(.horizontal,5)
 					}
 				}
 				//.cornerRadius(20)
-				.scaledToFill()
+				
 				.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
 
 				.tabViewStyle(PageTabViewStyle())
+				
 			/*	LazyImage(source: viewModel.description.first?.image ?? "") { state in
 					if let image = state.image{
 						image
@@ -200,13 +201,15 @@ struct DescriptionView: View {
                 .padding()
                 .background(Color("Bgp"))
             .cornerRadius(15.0)
-            }
+			}.refreshable {
+				viewModel.refreshData()
+			}
 		
            
             .safeAreaInset(edge: .bottom) {
                 Color.clear.frame(height: 80)
                     .modifier(KeyboardAwareModifier())
-            }.edgesIgnoringSafeArea(.top)
+			}.edgesIgnoringSafeArea(.top)
                 .onTapGesture {
                     // Hide the keyboard
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
