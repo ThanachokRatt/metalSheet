@@ -14,7 +14,7 @@ struct locationShelfView: View {
     @EnvironmentObject var locationViewModel: LocationViewModel
     @State private var navigationToLocationView : Bool = false
     @State private var selectedLocationItem: LocationItemModel? = nil
-    @State private var isEditing = true
+    @State private var isEditing = false
     
     
     var body: some View {

@@ -37,6 +37,7 @@ struct ListRowView:View{
                     
                     HStack (spacing: 25) {
                         Text(item.name).bold()
+							.foregroundColor(.black)
                         Text(item.phone)
                             .foregroundColor(Color.gray.opacity(0.8))
                         
@@ -52,9 +53,11 @@ struct ListRowView:View{
                                 .foregroundColor(.black)
                             Text(item.adressTwo)
                                 .frame(maxWidth: .infinity,alignment: .leading)
+								.foregroundColor(.black)
                             HStack {
                                 Text(item.postCode)
                                     .frame(maxWidth: .infinity,alignment: .leading)
+									.foregroundColor(.black)
                                 
                                 Spacer()
                                 
@@ -69,6 +72,7 @@ struct ListRowView:View{
                                 }
                             }
                             Text(item.addressType)
+								.foregroundColor(.black)
                                 .padding(.all,4)
                                 .background(RoundedRectangle(cornerRadius: 5, style: .continuous)
                                     .stroke(Color.gray.opacity(0.8), lineWidth: 1))
@@ -79,6 +83,7 @@ struct ListRowView:View{
 								Text(item.locationLink)
 									.frame(maxWidth: .infinity,alignment: .leading)
 									.lineLimit(1)
+									.foregroundColor(.blue)
 							}
 							
                             HStack{

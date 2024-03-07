@@ -36,8 +36,7 @@ struct DescriptionView: View {
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
 		
         ZStack {
-            Color("Bgp")
-                .edgesIgnoringSafeArea(.all)
+           
 			ScrollView {
 				TabView {
 					ForEach(viewModel.description) { infoModel in
@@ -199,7 +198,7 @@ struct DescriptionView: View {
                 .font(.system(size: isiPad ? 24 : 18))
              
                 .padding()
-                .background(Color("Bgp"))
+              
             .cornerRadius(15.0)
 			}.refreshable {
 				viewModel.refreshData()
@@ -232,7 +231,7 @@ struct DescriptionView: View {
 				}
 			}
         }
-		.toolbarColorScheme(.light, for: .navigationBar)
+		
         
     }
 	func updatePrice() -> String {

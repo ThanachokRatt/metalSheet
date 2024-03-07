@@ -49,7 +49,7 @@ struct AllView: View {
                 }
                 TabBar()
             }
-        }.accentColor(.black)
+        }
         .navigationViewStyle(StackNavigationViewStyle())
     //    .environmentObject(navigationStackController)
         .onAppear{

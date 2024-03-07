@@ -69,7 +69,7 @@ class DescriptionViewModel: ObservableObject {
 		let lastClearDateKey = "lastClearDesDate_\(productid)"
 		let lastClearDate = UserDefaults.standard.object(forKey: lastClearDateKey) as? Date ?? Date.distantPast
 		
-		if Date().timeIntervalSince(lastClearDate) >= 600 { // 86400 seconds = 1 day
+		if Date().timeIntervalSince(lastClearDate) >= 43200 { // 86400 seconds = 1 day
 			UserDefaults.standard.removeObject(forKey: "product_\(productid)")
 			UserDefaults.standard.set(Date(), forKey: lastClearDateKey)
 			fetchDataDesFromApi()

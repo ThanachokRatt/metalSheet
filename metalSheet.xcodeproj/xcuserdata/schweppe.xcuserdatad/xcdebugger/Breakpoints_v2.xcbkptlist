@@ -100,53 +100,5 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D72D1305-EA7A-470D-8751-00B9B63560F3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "metalSheet/Component/Register/ViewModel/otpViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "sendOtp(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D72D1305-EA7A-470D-8751-00B9B63560F3 - 62347b14e3273f3c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "metalSheet.OtpViewModel.sendOtp(user: metalSheet.RegisterModel, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "metalSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Register/ViewModel/otpViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "91">
-               </Location>
-               <Location
-                  uuid = "D72D1305-EA7A-470D-8751-00B9B63560F3 - 62347b14e3273f3c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "metalSheet.OtpViewModel.sendOtp(user: metalSheet.RegisterModel, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "metalSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Register/ViewModel/otpViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "92">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

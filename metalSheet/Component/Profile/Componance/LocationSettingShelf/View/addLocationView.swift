@@ -54,6 +54,11 @@ struct addLocationView: View {
 						TextField("ลิ้งค์ที่อยู่ Google Map (ไม่บังคับ)",text: $locationLink)
                         
                     }.font(Font.custom("Pridi-Light",size: isiPad ? 26 : 16))
+					.onTapGesture {
+						// Hide the keyboard
+			UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+		}
+				
                     Section(header: Text("ประเภทที่อยู่").font(Font.custom("Pridi-Regular",size: isiPad ? 26 : 16))) {
                         
                         
@@ -94,6 +99,7 @@ struct addLocationView: View {
                                 .contentShape(Rectangle()) // Make the button tappable
                             
                         }
+						
                         Button {
                             Save()
                         } label: {
@@ -131,7 +137,7 @@ struct addLocationView: View {
                             }
                             .alert(isPresented: $showAlert, content: getAlert)
                     
-            } .toolbar {
+            }/*.toolbar {
                 ToolbarItem(placement: .keyboard) {
                     HStack {
                         Spacer()
@@ -145,10 +151,10 @@ struct addLocationView: View {
                                        }
                     }
                 }
-            }
+            }*/
          
         }.alert(isPresented: $showAlert, content: getAlert)
-        
+			
     }
     func Save() {
         if textcheck() {

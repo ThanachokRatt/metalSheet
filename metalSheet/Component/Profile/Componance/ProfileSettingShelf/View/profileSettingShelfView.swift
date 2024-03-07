@@ -66,7 +66,7 @@ struct profileSettingShelfView: View {
                         }
                         .background(Color(.white))
                     }
-                    .accentColor(Color.black)
+                    
                 }
             }
 

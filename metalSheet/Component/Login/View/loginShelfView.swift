@@ -82,7 +82,7 @@ struct loginShelfView: View {
                 
                 
             }
-            .accentColor(Color(.black))
+           
             .preferredColorScheme(.light)
             .navigationViewStyle(StackNavigationViewStyle())
             
