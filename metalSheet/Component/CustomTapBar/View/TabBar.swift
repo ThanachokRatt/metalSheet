@@ -53,16 +53,17 @@ struct TabBarButton: View {
     var action: () -> Void
 
     var body: some View {
+		let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         
         Button(action: action) {
             VStack{
                 Image(systemName: item.icon)
                     .resizable()
-                    .frame(width: 23,height: 23)
+					.frame(width: isiPad ? 33 : 23,height: isiPad ? 33 : 23)
                     .foregroundColor(Color.white)
                    
                 Text(item.iconText)
-                  .font(.caption)
+				  .font(Font.custom("Pridi-Light",size: isiPad ? 20 : 12))
                   .foregroundColor(Color.white)
                  
             }

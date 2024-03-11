@@ -20,6 +20,7 @@ struct MapCardView: View {
 				LazyImage(source: viewmodel.image) { state in
 					if let image = state.image {
 						image
+							.resizingMode(.aspectFit)
 					} else {
 						ZStack {
 							
@@ -34,11 +35,12 @@ struct MapCardView: View {
 					}
 				}
 				.overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.black, lineWidth: 2))
-				.frame(width: UIScreen.main.bounds.width - 15, height: isiPad ? 220 : 120)
+				
+				.frame(width: isiPad ? UIScreen.main.bounds.width / 1.3 - 15 : UIScreen.main.bounds.width - 15, height: isiPad ? 200 : 120)
 				.cornerRadius(15)
 				
 			})
-			.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+			.padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
 			
 			
 			

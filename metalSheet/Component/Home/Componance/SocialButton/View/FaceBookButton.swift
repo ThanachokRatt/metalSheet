@@ -10,7 +10,7 @@ import SwiftUI
 struct FaceBookButton: View {
     let urlFacebook: String = "https://www.facebook.com/profile.php?id=100087169930140"
     var body: some View {
-        let iPadWidth: CGFloat = 50
+        let iPadWidth: CGFloat = 45
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
             Link(destination: URL(string: urlFacebook)!,
                  label: {
@@ -18,6 +18,7 @@ struct FaceBookButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: isiPad ? iPadWidth : 35)
+					.frame(height: isiPad ? iPadWidth : 35)
                     .shadow(radius: 4)
         
             })

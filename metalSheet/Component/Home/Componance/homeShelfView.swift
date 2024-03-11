@@ -14,7 +14,7 @@ struct homeShelfView: View {
         NavigationView {
             ZStack {
                 VStack(spacing: 0) {
-                    headerView().frame(height: 50)
+					headerView()//.frame(height: 50)
                  
                     ScrollView(.vertical, showsIndicators: false) {
                         if !homeViewModel.homeModel.isEmpty {
@@ -68,16 +68,17 @@ struct homeCaptionView: View {
     let infoData: [InfoDataModel]
     let isiPad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
+		let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         if let firstInfoData = infoData.first {
             Text(" \(firstInfoData.descriptionHome)")
                 .padding()
                 .foregroundColor(.black)
                 .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
                 .font(Font.custom("Pridi-Light",size: isiPad ? 25 : 16))
-                .frame(maxWidth:.infinity)
-            
+				.frame(width: isiPad ? UIScreen.main.bounds.width / 1.3 - 5 : UIScreen.main.bounds.width - 5 )
+               
                 .overlay(
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    RoundedRectangle(cornerRadius: 15, style: .continuous)
                         .stroke(Color.black, lineWidth: 1)
                         .padding(5)
                         .shadow(radius: 2)

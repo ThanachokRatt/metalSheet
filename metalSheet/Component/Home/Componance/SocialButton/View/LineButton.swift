@@ -10,7 +10,7 @@ import SwiftUI
 struct LineButton: View {
     let urlLine: String = "https://line.me/ti/p/gxyce5rV3r"
     var body: some View {
-        let iPadWidth: CGFloat = 50
+        let iPadWidth: CGFloat = 45
         let isiPad = UIDevice.current.userInterfaceIdiom == .pad
             Link(destination: URL(string: urlLine)!,
                  label: {
@@ -19,6 +19,7 @@ struct LineButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: isiPad ? iPadWidth : 35)
+					.frame(height: isiPad ? iPadWidth : 35)
                     .shadow(radius: 4)
                     
                    

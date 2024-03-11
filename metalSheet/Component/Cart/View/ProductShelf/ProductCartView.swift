@@ -73,6 +73,7 @@ struct ProductCartView: View {
 					.resizable()
 					.scaledToFit()
 					.frame(width: isiPad ? 65 : 55)
+					.frame(height: isiPad ? 65 : 55)
 					.shadow(radius: 2)
 				
 			}

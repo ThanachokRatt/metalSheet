@@ -11,6 +11,7 @@ struct infoImageView2: View {
     let infoData: [InfoDataModel]
     
     var body: some View {
+		let isiPad = UIDevice.current.userInterfaceIdiom == .pad
         TabView {
             ForEach(infoData, id: \.id) { infoModel in
                 ForEach(infoModel.img_src, id: \.self) { imageUrl in
@@ -30,7 +31,7 @@ struct infoImageView2: View {
                     }
                     .scaledToFit()
                     .cornerRadius(20)
-                    .frame(width: UIScreen.main.bounds.width - 15, height:UIScreen.main.bounds.width)
+					.frame(width: isiPad ? UIScreen.main.bounds.width / 1.3 : UIScreen.main.bounds.width - 15, height: isiPad ? UIScreen.main.bounds.width / 1.3 : UIScreen.main.bounds.width)
 				
                   
                 }
@@ -43,7 +44,7 @@ struct infoImageView2: View {
         
         .cornerRadius(20)
         
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+		.frame(width: isiPad ? UIScreen.main.bounds.width / 1.3   : UIScreen.main.bounds.width - 15, height: isiPad ? UIScreen.main.bounds.width / 1.3 : UIScreen.main.bounds.width)
 
         .tabViewStyle(PageTabViewStyle())
         .padding(EdgeInsets(top: 5, leading: 12, bottom: 5, trailing: 12))
