@@ -10,6 +10,7 @@ import ObjectMapper
 
 struct CartModel: Identifiable, Codable, Mappable ,Equatable{
     var id: String?
+	var id_Item : String = ""
     var productImage: String = ""
     var productName: String = ""
     var description: String = ""
@@ -35,8 +36,9 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
             self.colorCategories = newCategories
         }
 
-	init(id: String, productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String,selectedAddOnsCategory: String, selectedLong: String, selectedQty: String) {
+	init(id: String,id_Item: String, productImage: String, productName: String, description: String, categories: [String], priceNocolor: Int, priceColor: Int, colorCategories: [String], currentPrice: Int, selectedCategory: String, selectedColorCategory: String,selectedAddOnsCategory: String, selectedLong: String, selectedQty: String) {
         self.id = id
+		self.id_Item = id_Item
         self.productImage = productImage
         self.productName = productName
         self.description = description
@@ -57,7 +59,8 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
     init?(map: Map) { }
 
     mutating func mapping(map: Map) {
-        id <- map["_id"]
+		id <- map["_id"]
+        id_Item <- map["_id"]
         productImage <- map["image"]
         productName <- map["title"]
         /*description <- map["details"]
@@ -67,7 +70,7 @@ struct CartModel: Identifiable, Codable, Mappable ,Equatable{
          categories <- map["bmt"]*/
     }
     func updateCart() -> CartModel {
-		return CartModel(id: id! , productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedAddOnsCategory: selectedAddOnsCategory, selectedLong: selectedLong, selectedQty: selectedQty)
+		return CartModel(id: id!, id_Item: id_Item , productImage: productImage, productName: productName, description: description, categories: categories, priceNocolor: priceNocolor, priceColor: priceColor, colorCategories: colorCategories, currentPrice: currentPrice, selectedCategory: selectedCategory, selectedColorCategory: selectedColorCategory, selectedAddOnsCategory: selectedAddOnsCategory, selectedLong: selectedLong, selectedQty: selectedQty)
     }
 
 }

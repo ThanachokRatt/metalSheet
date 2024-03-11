@@ -21,7 +21,7 @@
 		@Binding var selectedAddOns: String?
 		@State private var showAlert = false
 		@State private var alertMessage = ""
-		
+	//	@Binding var id_item: String
 
 		var body: some View {
 			VStack{
@@ -45,6 +45,7 @@
 					//	print(stepperQty)
 					//	print(stepperLong)
 					//	print(selectedModelPrice)
+						//addProductHistoryModel.updateid(id_item)
 						addProductHistoryModel.updateCurrentPrice2(selectedModelPrice)
 						addProductHistoryModel.addToCart(product: viewModel)
 						addProductHistoryModel.updateCurrentPrice(product: viewModel)
@@ -56,6 +57,7 @@
 						selectedColor = nil
 						selectedAddOns = nil
 						addProductHistoryModel.updateSelectedColorCategory("อลูซิงค์")
+						
 						
 					}
 						

@@ -52,53 +52,5 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0EF15863-317C-4E4F-A740-D30155A09A18"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "metalSheet/Component/Profile/Componance/ResetPasswordShelf/ViewModel/ResetPasswordViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "resetPassword(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0EF15863-317C-4E4F-A740-D30155A09A18 - 3b8fa7f233952815"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "metalSheet.ResetPasswordViewModel.resetPassword(user: metalSheet.ResetPasswordModel, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "metalSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Profile/Componance/ResetPasswordShelf/ViewModel/ResetPasswordViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "147">
-               </Location>
-               <Location
-                  uuid = "0EF15863-317C-4E4F-A740-D30155A09A18 - 3b8fa7f233952815"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "metalSheet.ResetPasswordViewModel.resetPassword(user: metalSheet.ResetPasswordModel, completion: () -&gt; ()) -&gt; ()"
-                  moduleName = "metalSheet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/schweppe/Developer/metalSheet/metalSheet/Component/Profile/Componance/ResetPasswordShelf/ViewModel/ResetPasswordViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "172">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

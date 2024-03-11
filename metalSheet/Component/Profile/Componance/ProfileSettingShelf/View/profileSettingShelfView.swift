@@ -23,22 +23,7 @@ struct profileSettingShelfView: View {
 
                     forLoopSettingBtnView()
                     
-                    Button{
-                        isDeleteUserAlertPresented = true
-                    } label: {
-                        btnView(image: "deleteLogo", name: "ลบบัญชีผู้ใช้งาน")
-                            .font(Font.custom("Pridi-Light",size: isiPad ? 27 : 18))
-                    }
-                    .alert("ต้องการลบบัญชีผู้ใช้งานและออกจากระบบหรือไม่?", isPresented: $isDeleteUserAlertPresented ) {
-                        Button("ยืนยัน") {
-                            personalViewModel.deteleUser()
-                            loginViewModel.logoutUser()
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                        Button("ยกเลิก", role: .cancel) {
-                            isDeleteUserAlertPresented = false
-                        }
-                    }
+                    
                     
                     
                     Button {
@@ -55,6 +40,22 @@ struct profileSettingShelfView: View {
                                         isLogoutAlertPresented = false
                                     }
                                 }
+					Button{
+						isDeleteUserAlertPresented = true
+					} label: {
+						btnView(image: "deleteLogo", name: "ลบบัญชีผู้ใช้งาน")
+							.font(Font.custom("Pridi-Light",size: isiPad ? 27 : 18))
+					}
+					.alert("ต้องการลบบัญชีผู้ใช้งานและออกจากระบบหรือไม่?", isPresented: $isDeleteUserAlertPresented ) {
+						Button("ยืนยัน") {
+							personalViewModel.deteleUser()
+							loginViewModel.logoutUser()
+							presentationMode.wrappedValue.dismiss()
+						}
+						Button("ยกเลิก", role: .cancel) {
+							isDeleteUserAlertPresented = false
+						}
+					}
 
                                 Spacer()
                             }

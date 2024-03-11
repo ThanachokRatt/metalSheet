@@ -48,18 +48,20 @@ struct OrderItem: Mappable{
 	var qty: Int = 0
 	var price: Float = 0.00
 	var addon: String = ""
+	var pricePerUnit: Int = 0
 	
 	init() {}
 	init?(map: Map){}
 	mutating func mapping(map: Map) {
 		itemId <- map["item_id"]
-		name <- map["name"]
+		name <- map["title"]
 		bmt <- map["bmt"]
 		length <- map["length"]
 		color <- map["color"]
 		qty <- map["qty"]
 		price <- map["price"]
 		addon <- map["addon"]
+		pricePerUnit <- map["price_per_unit"]
 		
 	}
 }

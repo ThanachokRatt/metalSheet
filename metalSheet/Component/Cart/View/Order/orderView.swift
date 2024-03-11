@@ -180,17 +180,17 @@ struct orderView: View {
 							
 							for (id,item) in addProductHistoryModel.items.enumerated() {
 								var orderItem = OrderItem()
-								orderItem.itemId =  ("\(item.id ?? "")")
+								orderItem.itemId =  ("\(item.id_Item)")
 								orderItem.name = ("\(item.productName)")
 								
 								if !item.selectedCategory.isEmpty{
-									orderItem.bmt =  ("ความหนา : \(item.selectedCategory) มม.")
-									orderItem.length = ("ความยาว : \(item.selectedLong) ม.")
+									orderItem.bmt =  ("ความหนา: \(item.selectedCategory) มม.")
+									orderItem.length = ("ความยาว: \(item.selectedLong) ม.")
 								}
 								
-								orderItem.color = ("สี : \(item.selectedColorCategory)")
+								orderItem.color = ("สี: \(item.selectedColorCategory)")
 								orderItem.qty = Int(item.selectedQty) ?? 0
-								
+								orderItem.pricePerUnit = (item.currentPrice)
 								
 								if let priceFloat = Float(String(format: "%.2f", item.calculatedPrice)) {
 									orderItem.price = priceFloat

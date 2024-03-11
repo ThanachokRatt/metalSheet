@@ -36,12 +36,12 @@ struct textfieldPersonalView: View {
                        
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))// Set text alignment to leading
-                        .background(
+                     /*   .background(
                             RoundedRectangle(cornerRadius: 5) // RoundedRectangle overlay
                                 .stroke(Color.black, lineWidth: 1) // Black border
                         )
                         .background(Color.gray.opacity(0.5))
-                        .cornerRadius(5)
+                        .cornerRadius(5)*/
                 }.padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                
                
