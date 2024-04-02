@@ -65,7 +65,7 @@ struct ProductHistoryRowView: View {
                 }.font(Font.custom("Pridi-Light",size: isiPad ? 22 : 13))
                     .foregroundColor(Color(.black).opacity(0.6))
                 
-                Text("฿ \(String(format:"%.2f",(viewModel.calculatedPrice)))")
+				Text("฿ \(String(viewModel.calculatedPrice.format2))")
                     .font(.system(size: isiPad ? 25 : 15)).bold()
                         .foregroundColor(Color(.black).opacity(1))
                 

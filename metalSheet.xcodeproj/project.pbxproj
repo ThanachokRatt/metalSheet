@@ -26,6 +26,7 @@
 		F85A6CB32B2DB8C0001E8E1C /* Pridi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F85A6CB22B2DB8C0001E8E1C /* Pridi-Regular.ttf */; };
 		F85A95BB2B91B33C00E51EA6 /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = F85A95BA2B91B33C00E51EA6 /* ObjectMapper */; };
 		F85E43AA2B2E291C003DBC1C /* FaceBookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85E43A92B2E291C003DBC1C /* FaceBookButton.swift */; };
+		F85F6C402BBC347E0066B9D4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85F6C3F2BBC347E0066B9D4 /* Extension.swift */; };
 		F860629B2B84A0C900786AFA /* ImageDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F860629A2B84A0C900786AFA /* ImageDescriptionView.swift */; };
 		F86563632AF88C15004633FD /* otpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86563622AF88C15004633FD /* otpViewModel.swift */; };
 		F866B93C2B85C009007D5448 /* MapCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F866B93B2B85C009007D5448 /* MapCardViewModel.swift */; };
@@ -129,6 +130,7 @@
 		F85A6CB12B2DB2F4001E8E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F85A6CB22B2DB8C0001E8E1C /* Pridi-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pridi-Regular.ttf"; sourceTree = "<group>"; };
 		F85E43A92B2E291C003DBC1C /* FaceBookButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBookButton.swift; sourceTree = "<group>"; };
+		F85F6C3F2BBC347E0066B9D4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		F860629A2B84A0C900786AFA /* ImageDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDescriptionView.swift; sourceTree = "<group>"; };
 		F86563622AF88C15004633FD /* otpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpViewModel.swift; sourceTree = "<group>"; };
 		F866B93B2B85C009007D5448 /* MapCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardViewModel.swift; sourceTree = "<group>"; };
@@ -276,6 +278,14 @@
 				F89BD0102AB18BA8006D099C /* signOutBtnView.swift */,
 			);
 			path = LogOutShelf;
+			sourceTree = "<group>";
+		};
+		F85F6C3E2BBC34690066B9D4 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				F85F6C3F2BBC347E0066B9D4 /* Extension.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 		F866B93D2B85C01D007D5448 /* ViewModel */ = {
@@ -483,6 +493,7 @@
 		F89B80072A984B2E000FE241 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				F85F6C3E2BBC34690066B9D4 /* extension */,
 				F885FFDC2B93031800320D24 /* Cache */,
 				F85A6CAB2B2DAECA001E8E1C /* fonts */,
 				F897855C2ADFAC280032FE0B /* Alert */,
@@ -1001,6 +1012,7 @@
 				F8AE46C72ABFEB2500D7D5B3 /* LocationViewModel.swift in Sources */,
 				F8A69F7A2AE30567003BE8F2 /* LineButton.swift in Sources */,
 				F85E43AA2B2E291C003DBC1C /* FaceBookButton.swift in Sources */,
+				F85F6C402BBC347E0066B9D4 /* Extension.swift in Sources */,
 				F89888372A9B29A7008ED3FB /* registerButtonInLoginView.swift in Sources */,
 				F898195D2AB0DF950069EDCE /* addNewlocationView.swift in Sources */,
 				F86563632AF88C15004633FD /* otpViewModel.swift in Sources */,
@@ -1150,7 +1162,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
 				DEVELOPMENT_TEAM = 3799YSC9W3;
 				ENABLE_PREVIEWS = YES;
@@ -1184,7 +1196,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"metalSheet/Preview Content\"";
 				DEVELOPMENT_TEAM = 3799YSC9W3;
 				ENABLE_PREVIEWS = YES;

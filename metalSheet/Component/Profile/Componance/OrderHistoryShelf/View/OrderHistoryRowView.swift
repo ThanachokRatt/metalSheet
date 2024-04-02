@@ -60,7 +60,7 @@ struct OrderHistoryRowView: View {
             formatter.numberStyle = .decimal
 
             if let number = formatter.number(from: amount) {
-                return "\(formatter.string(from: number) ?? "").00 บาท"
+                return "\(formatter.string(from: number) ?? "") บาท"
             } else {
                 return amount
             }
